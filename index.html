@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,75 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/23/FeatureEngineering_01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/23/FeatureEngineering_01/" class="post-title-link" itemprop="url">Feature Engineering (1)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-11-23 09:19:21 / Modified: 14:47:34" itemprop="dateCreated datePublished" datetime="2023-11-23T09:19:21+09:00">2023-11-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -179,7 +248,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-22 10:36:56" itemprop="dateModified" datetime="2023-11-22T10:36:56+09:00">2023-11-22</time>
+      <time title="Modified: 2023-11-23 14:52:40" itemprop="dateModified" datetime="2023-11-23T14:52:40+09:00">2023-11-23</time>
     </span>
 
   
@@ -193,163 +262,216 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>안녕하세요?<br>EDA 진행관련 자주 사용하는 python code를 기록하였습니다.</p>
-<h2 id="1-데이터의-기본-정보-보기"><a href="#1-데이터의-기본-정보-보기" class="headerlink" title="1. 데이터의 기본 정보 보기"></a>1. 데이터의 기본 정보 보기</h2><p>df &#x3D; pd.read_csv(path_house)</p>
-<ul>
-<li><p>DataFrame 데이터 보기<br>df.head()</p>
+<h2 id="1-데이터의-기본-정보-보기"><a href="#1-데이터의-기본-정보-보기" class="headerlink" title="1. 데이터의 기본 정보 보기"></a>1. 데이터의 기본 정보 보기</h2><ul>
+<li><p>데이터 읽어 오기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(path_house)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>DataFrame의 info 보기<br>df.info()</p>
+<li><p>DataFrame 데이터 보기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>DataFrame의 description 보기<br>df.describe() # type이 int와 float 정보 보여줌<br>df.describe(include&#x3D;[‘O’]) # type이 object 정보 보여줌</p>
+<li><p>DataFrame의 info 보기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.info()</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>DataFrame의 description 보기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.describe() <span class="comment"># type이 int와 float 정보 보여줌</span></span><br><span class="line">df.describe(include=[<span class="string">&#x27;O&#x27;</span>]) <span class="comment"># type이 object 정보 보여줌</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="2-Null-확인-방법"><a href="#2-Null-확인-방법" class="headerlink" title="2. Null 확인 방법"></a>2. Null 확인 방법</h2><p>2.1 Null 확인하기</p>
-<ul>
-<li><p>DataFrame 전체 Null 확인하기<br>df.isnull().sum()</p>
+<h2 id="2-Null-확인-방법"><a href="#2-Null-확인-방법" class="headerlink" title="2. Null 확인 방법"></a>2. Null 확인 방법</h2><ul>
+<li><p>DataFrame 전체 Null 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>한개 column Null 확인하기<br>col &#x3D; [‘column’]<br>df[col].isnull().sum()</p>
+<li><p>한개 column Null 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">col = [<span class="string">&#x27;column&#x27;</span>]</span><br><span class="line">df[col].isnull().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>모든 column에 대한 Null 비율 확인하기<br>for col in df.columns:<br>  msg &#x3D; ‘column: {:&gt;10}\t Percent of NaN value: {:.2f}%’.format(col, 100 * (df_train[col].isnull().sum() &#x2F; df_train[col].shape[0]))<br>  print(msg)</p>
+<li><p>모든 column에 대한 Null 비율 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    msg = <span class="string">&#x27;column: &#123;:&gt;10&#125;\t Percent of NaN value: &#123;:.2f&#125;%&#x27;</span>.<span class="built_in">format</span>(col, <span class="number">100</span> * (df_train[col].isnull().<span class="built_in">sum</span>() / df_train[col].shape[<span class="number">0</span>]))</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>특정 column에 Null이 있는 Null 확인하기<br>df[df[col].isnull()]</p>
-</li>
+<li><p>특정 column에 Null이 있는 Null 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[col].isnull()]</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="3-Column별-내용-확인하기"><a href="#3-Column별-내용-확인하기" class="headerlink" title="3. Column별 내용 확인하기"></a>3. Column별 내용 확인하기</h2><p>col &#x3D; [‘column’]</p>
-<ul>
-<li><p>한개 column 내용중에 unique() 확인하기<br>df[col].unique()</p>
+<h2 id="3-Column별-내용-확인하기"><a href="#3-Column별-내용-확인하기" class="headerlink" title="3. Column별 내용 확인하기"></a>3. Column별 내용 확인하기</h2><ul>
+<li><p>한개 column 내용중에 unique() 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">col = [<span class="string">&#x27;column&#x27;</span>]</span><br><span class="line">df[col].unique()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>한개 column 내용중에 데이터 고유값 확인하기<br>df[col].nunique()</p>
+<li><p>한개 column 내용중에 데이터 고유값 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col].nunique()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>한개 column 내용 확인하기<br>df[col].value_counts()</p>
+<li><p>한개 column 내용 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col].value_counts()</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>모든 column 내용중에 데이터 고유값 확인하기<br>for col in df_train.columns:<br>  msg &#x3D; ‘column: {}, unique kind: {}’.format(col, df_train[col].nunique())<br>  print(msg)</p>
+<li><p>모든 column 내용중에 데이터 고유값 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    msg = <span class="string">&#x27;column: &#123;&#125;, type: &#123;&#125;, unique kind: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(col, df[col].dtype, df[col].nunique())</span><br><span class="line">    <span class="built_in">print</span>(msg)</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>값이 1개만 있는 columns 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">del_cols = []</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> df.columns:</span><br><span class="line">    <span class="keyword">if</span> df[col].nunique() == <span class="number">1</span>:</span><br><span class="line">        del_cols.append(col)</span><br><span class="line"><span class="built_in">print</span>(del_cols)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="4-불필요한-row-또는-column-삭제하기-Delete"><a href="#4-불필요한-row-또는-column-삭제하기-Delete" class="headerlink" title="4. 불필요한 row 또는 column 삭제하기 (Delete)"></a>4. 불필요한 row 또는 column 삭제하기 (Delete)</h2><ul>
-<li><p>column 삭제하기<br>cols &#x3D; [‘column1’, ‘column2’]<br>df.drop(cols)</p>
+<li><p>column 삭제하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cols = [<span class="string">&#x27;column1&#x27;</span>, <span class="string">&#x27;column2&#x27;</span>]</span><br><span class="line">df.drop(columns=cols)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>특정 row 삭제하기<br>col &#x3D; [‘column’]<br>cond &#x3D; df[col] &#x3D;&#x3D; 0<br>df &#x3D; df.drop(df[cond].index)</p>
+<li><p>특정 row 삭제하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">col = [<span class="string">&#x27;column&#x27;</span>]</span><br><span class="line">cond = df[col] == <span class="number">0</span></span><br><span class="line">df = df.drop(df[cond].index)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>데이터가 있지 않은 col 정리<br>df &#x3D; df.dropna(axis &#x3D; 1, how &#x3D; ‘all’)</p>
+<li><p>데이터가 있지 않은 col 정리</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(axis = <span class="number">1</span>, how = <span class="string">&#x27;all&#x27;</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>결측치 전부 제거. row에 하나라도 null이 있으면 해당 row 삭제<br>df &#x3D; df.dropna(axis &#x3D; 0, how &#x3D; ‘any’)<br>df.info()</p>
-</li>
+<li><p>결측치 전부 제거. row에 하나라도 null이 있으면 해당 row 삭제</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(axis = <span class="number">0</span>, how = <span class="string">&#x27;any&#x27;</span>)</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="5-채우기-Fill"><a href="#5-채우기-Fill" class="headerlink" title="5. 채우기 (Fill)"></a>5. 채우기 (Fill)</h2><p>col &#x3D; [‘column’]</p>
-<ul>
-<li><p>df[col] 값이 null일 경우 0으로 채우기<br>df[col] &#x3D; df[col].fillna(0)</p>
+<h2 id="5-채우기-Fill"><a href="#5-채우기-Fill" class="headerlink" title="5. 채우기 (Fill)"></a>5. 채우기 (Fill)</h2><ul>
+<li><p>df[col] 값이 null일 경우 0으로 채우기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">col = [<span class="string">&#x27;column&#x27;</span>]</span><br><span class="line">df[col] = df[col].fillna(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우  ‘column’의 평균값으로 채우기<br>df[col] &#x3D; df[col].fillna(df[col].mean())</p>
+<li><p>df[col] 값이 null일 경우  ‘column’의 평균값으로 채우기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df[col].mean())</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우  ‘column’의 중앙값으로 채우기<br>df[col] &#x3D; df[col].fillna(df[col].median())</p>
+<li><p>df[col] 값이 null일 경우  ‘column’의 중앙값으로 채우기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df[col].median())</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우  ‘column’의 최소값으로 채우기<br>df[col] &#x3D; df[col].fillna(df[col].min())</p>
+<li><p>df[col] 값이 null일 경우  ‘column’의 최소값으로 채우기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df[col].<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우  ‘column’의 최대값으로 채우기<br>df[col] &#x3D; df[col].fillna(df[col].max())</p>
+<li><p>df[col] 값이 null일 경우  ‘column’의 최대값으로 채우기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df[col].<span class="built_in">max</span>())</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우  ‘column’의 최빈값으로 채우기 (많이 사용한 값)<br>df[col] &#x3D; df[col].fillna(df[col].mode()[0])</p>
+<li><p>df[col] 값이 null일 경우  ‘column’의 최빈값으로 채우기 (많이 사용한 값)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df[col].mode()[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우 특정 컬럼(Age)을 기준으로 평균값 할당<br>df[col] &#x3D; df[col].fillna(df.groupby(‘Age’)[‘column’].transform(‘mean’))</p>
+<li><p>df[col] 값이 null일 경우 특정 컬럼(Age)을 기준으로 평균값 할당</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df.groupby(<span class="string">&#x27;Age&#x27;</span>)[<span class="string">&#x27;column&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>))</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>df[col] 값이 null일 경우 특정 컬럼(Age)을 기준으로 평균값 할당<br>df[col] &#x3D; df[col].fillna(df.groupby(‘Age’)[‘column’].transform(‘median’))</p>
+<li><p>df[col] 값이 null일 경우 특정 컬럼(Age)을 기준으로 평균값 할당</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(df.groupby(<span class="string">&#x27;Age&#x27;</span>)[<span class="string">&#x27;column&#x27;</span>].transform(<span class="string">&#x27;median&#x27;</span>))</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>앞 값으로 채우기 (시계열 데이터 채울때)<br>df[col] &#x3D; df[col].fillna(method&#x3D;’ffill’)</p>
+<li><p>앞 값으로 채우기 (시계열 데이터 채울때)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(method=<span class="string">&#x27;ffill&#x27;</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>뒷 값으로 채우기 (시계열 데이터 채울때)<br>df[col] &#x3D; df[col].fillna(method&#x3D;’bfill’)</p>
+<li><p>뒷 값으로 채우기 (시계열 데이터 채울때)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col] = df[col].fillna(method=<span class="string">&#x27;bfill&#x27;</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>시계열데이터에서 선형으로 비례하는 방식으로 결측값 보간<br>df &#x3D; df.interpolate()</p>
-</li>
+<li><p>시계열데이터에서 선형으로 비례하는 방식으로 결측값 보간</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.interpolate()</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="6-아웃라이어-처리하기-Outlier"><a href="#6-아웃라이어-처리하기-Outlier" class="headerlink" title="6. 아웃라이어 처리하기 (Outlier)"></a>6. 아웃라이어 처리하기 (Outlier)</h2><ul>
-<li><p>아웃라이어 scatter plot으로 count 확인하기<br>plt.scatter(x&#x3D;df[‘GrLivArea’], y&#x3D;df[‘SalePrice’])<br>plt.xlabel(‘GrLivArea’, fontsize&#x3D;12)<br>plt.ylabel(‘SalePrice’, fontsize&#x3D;12)</p>
+<li><p>아웃라이어 scatter plot으로 count 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x=df[<span class="string">&#x27;GrLivArea&#x27;</span>], y=df[<span class="string">&#x27;SalePrice&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;GrLivArea&#x27;</span>, fontsize=<span class="number">12</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;SalePrice&#x27;</span>, fontsize=<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>아웃라이어 hist plot으로 count 확인하기<br>ax &#x3D; sns.histplot(data&#x3D;df, x&#x3D;’GrLivArea’) # x 축으로 확인하기<br>ax &#x3D; sns.histplot(data&#x3D;df, y&#x3D;’GrLivArea’) # y 축으로 확인하기</p>
+<li><p>아웃라이어 hist plot으로 count 확인하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ax = sns.histplot(data=df, x=<span class="string">&#x27;GrLivArea&#x27;</span>) <span class="comment"># x 축으로 확인하기</span></span><br><span class="line">ax = sns.histplot(data=df, y=<span class="string">&#x27;GrLivArea&#x27;</span>) <span class="comment"># y 축으로 확인하기</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>모든 컬럼 distplot로 비율 보기<br>col_n &#x3D; 2<br>row_n &#x3D; 2</p>
+<li><p>모든 컬럼 distplot로 비율 보기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">col_n = <span class="number">2</span></span><br><span class="line">row_n = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(ncols=col_n, nrows=row_n, figsize=(<span class="number">20</span>,row_n*<span class="number">5</span>))</span><br><span class="line"><span class="keyword">for</span> i,col <span class="keyword">in</span> <span class="built_in">enumerate</span>(df.columns[:-<span class="number">1</span>]):</span><br><span class="line">    sns.distplot(df[col], bins=<span class="number">20</span>, ax=ax[<span class="built_in">int</span>(i/col_n),<span class="built_in">int</span>(i%col_n)])</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>fig, ax &#x3D; plt.subplots(ncols&#x3D;col_n, nrows&#x3D;row_n, figsize&#x3D;(20,row_n*5))<br>for i,col in enumerate(df.columns[:-1]):<br>    sns.distplot(df[col], bins&#x3D;20, ax&#x3D;ax[int(i&#x2F;col_n),int(i%col_n)])</p>
-<ul>
-<li>아웃라이어 제거하기<br>outlier &#x3D; df[(df[‘GrLivArea’]&gt;4000)&amp;(df[‘SalePrice’]&lt;500000)].index<br>df&#x3D;df.drop(outlier, axis&#x3D;0)</li>
+<li><p>아웃라이어 제거하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">outlier = df[(df[<span class="string">&#x27;GrLivArea&#x27;</span>]&gt;<span class="number">4000</span>)&amp;(df[<span class="string">&#x27;SalePrice&#x27;</span>]&lt;<span class="number">500000</span>)].index</span><br><span class="line">df=df.drop(outlier, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="7-카테고리-변수-처리하기-Categorical-Features"><a href="#7-카테고리-변수-처리하기-Categorical-Features" class="headerlink" title="7. 카테고리 변수 처리하기 (Categorical Features)"></a>7. 카테고리 변수 처리하기 (Categorical Features)</h2><ul>
-<li>Feature의 데이터 type을 category로 변경하기<br>cols &#x3D; [‘MSZoning’, ‘Neighborhood’]<br>for col in cols :<br>  df[col] &#x3D; df[col].astype(‘category’)</li>
+<li><p>Feature의 데이터 type을 category로 변경하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cols = [<span class="string">&#x27;MSZoning&#x27;</span>, <span class="string">&#x27;Neighborhood&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cols : </span><br><span class="line">    df[col] = df[col].astype(<span class="string">&#x27;category&#x27;</span>) </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>라벨 인코딩 (Label encoding)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Feature의 내용을 문자에서 숫자로 변환시킴. 모델에 학습에 사용하기 위함.</span></span><br><span class="line"><span class="comment"># display(df[cols].head(1)) # 변경전</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line">cols = [<span class="string">&#x27;SaleType&#x27;</span>, <span class="string">&#x27;SaleCondition&#x27;</span>]</span><br><span class="line"><span class="comment"># from tqdm import tqdm_notebook</span></span><br><span class="line"><span class="comment"># for col in tqdm_notebook(cols): # 진행 상태를 알고 싶을 경우 사용</span></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> cols:</span><br><span class="line">    le = LabelEncoder()</span><br><span class="line">    df[col]=le.fit_transform(df[col])</span><br><span class="line"></span><br><span class="line"><span class="comment"># display(df[cols].head(1)) # 변경후</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>원핫 인코딩 (ont-hot encoding)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모델의 정확도 성능을 향상시켜줌</span></span><br><span class="line">cols = [<span class="string">&#x27;SaleType&#x27;</span>, <span class="string">&#x27;SaleCondition&#x27;</span>]</span><br><span class="line">display(df.head(<span class="number">1</span>)) <span class="comment"># 변경전</span></span><br><span class="line">df_oh = pd.get_dummies(df[cols])</span><br><span class="line">df = pd.concat([df, df_oh], axis=<span class="number">1</span>)</span><br><span class="line">df = df.drop(cols, axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># display(df.head(1)) # 변경후</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Count encoding</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Feature의 내용 각각에 대한 빈도를 알려줌.</span></span><br><span class="line">col =[<span class="string">&#x27;MSZoning&#x27;</span>]</span><br><span class="line">display(df[col].head(<span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> tqdm_notebook(cols):</span><br><span class="line">    count_enc = ce.CountEncoder()</span><br><span class="line">    df[col]=count_enc.fit_transform(df[col])</span><br><span class="line"></span><br><span class="line">display(df[col].head(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LabelCount encoding (랭킹)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Feature에 대한 랭킹을 계산해줌 </span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">labelcount_encode</span>(<span class="params">X, categorical_features, ascending=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;LabelCount encoding: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(categorical_features))</span><br><span class="line">    X_ = pd.DataFrame()</span><br><span class="line">    <span class="keyword">for</span> cat_feature <span class="keyword">in</span> categorical_features:</span><br><span class="line">        cat_feature_value_counts = X[cat_feature].value_counts()</span><br><span class="line">        value_counts_list = cat_feature_value_counts.index.tolist()</span><br><span class="line">        <span class="keyword">if</span> ascending:</span><br><span class="line">            <span class="comment"># for ascending ordering</span></span><br><span class="line">            value_counts_range = <span class="built_in">list</span>(</span><br><span class="line">                <span class="built_in">reversed</span>(<span class="built_in">range</span>(<span class="built_in">len</span>(cat_feature_value_counts))))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># for descending ordering</span></span><br><span class="line">            value_counts_range = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="built_in">len</span>(cat_feature_value_counts)))</span><br><span class="line">        labelcount_dict = <span class="built_in">dict</span>(<span class="built_in">zip</span>(value_counts_list, value_counts_range))</span><br><span class="line">        X_[cat_feature] = X[cat_feature].<span class="built_in">map</span>(</span><br><span class="line">            labelcount_dict)</span><br><span class="line">    X_ = X_.add_suffix(<span class="string">&#x27;_labelcount_encoded&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> ascending:</span><br><span class="line">        X_ = X_.add_suffix(<span class="string">&#x27;_ascending&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        X_ = X_.add_suffix(<span class="string">&#x27;_descending&#x27;</span>)</span><br><span class="line">    X_ = X_.astype(np.uint32)</span><br><span class="line">    <span class="keyword">return</span> X_</span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;LotArea&#x27;</span>] = labelcount_encode(df, [<span class="string">&#x27;LotArea&#x27;</span>])</span><br><span class="line">df.head(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># df[&#x27;LotAreaRank&#x27;] =  df[&#x27;LotArea&#x27;].rank(method=&#x27;min&#x27;, ascending=False)와 동일함</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Target(Mean) encoding</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 평균값 할당</span></span><br><span class="line"><span class="comment"># import category_encoders as ce</span></span><br><span class="line">y = df[<span class="string">&#x27;LotArea&#x27;</span>]</span><br><span class="line">X = df[<span class="string">&#x27;SaleCondition&#x27;</span>]</span><br><span class="line">ce_target = ce.TargetEncoder(cols = [<span class="string">&#x27;SaleCondition&#x27;</span>])</span><br><span class="line">ce_target.fit(X, y)</span><br><span class="line">ce_target.transform(X, y)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="7-1-라벨-인코딩-Label-encoding"><a href="#7-1-라벨-인코딩-Label-encoding" class="headerlink" title="7.1 라벨 인코딩 (Label encoding)"></a>7.1 라벨 인코딩 (Label encoding)</h2><ul>
-<li>Feature의 내용을 문자에서 숫자로 변환시킴. 모델에 학습에 사용하기 위함.<br>from sklearn.preprocessing import LabelEncoder</li>
+<h2 id="8-수치-변수-처리하기-Numerical-Features"><a href="#8-수치-변수-처리하기-Numerical-Features" class="headerlink" title="8. 수치 변수 처리하기 (Numerical Features)"></a>8. 수치 변수 처리하기 (Numerical Features)</h2><ul>
+<li><p>Standard Scaling</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 평균을 0, 분산을 1로 변경</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">data = [[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</span><br><span class="line">scaler = StandardScaler()</span><br><span class="line"><span class="built_in">print</span>(scaler.fit(data))</span><br><span class="line"><span class="built_in">print</span>(scaler.mean_)</span><br><span class="line"><span class="built_in">print</span>(scaler.transform(data))</span><br><span class="line"><span class="built_in">print</span>(scaler.transform([[<span class="number">2</span>, <span class="number">2</span>]]))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MinMax Scaling</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MinMax Scaling 0과 1사이로 변경</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line">data = [[-<span class="number">1</span>, <span class="number">2</span>], [-<span class="number">0.5</span>, <span class="number">6</span>], [<span class="number">0</span>, <span class="number">10</span>], [<span class="number">1</span>, <span class="number">18</span>]]</span><br><span class="line">scaler = MinMaxScaler()</span><br><span class="line"><span class="built_in">print</span>(scaler.fit(data))</span><br><span class="line"><span class="built_in">print</span>(scaler.data_max_)</span><br><span class="line"><span class="built_in">print</span>(scaler.transform(data))</span><br><span class="line"><span class="built_in">print</span>(scaler.transform([[<span class="number">2</span>, <span class="number">2</span>]]))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Nomalization</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 정규화시킴</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line">X = [[<span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>],</span><br><span class="line">    [<span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">3</span>],</span><br><span class="line">    [<span class="number">5</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">1</span>]]</span><br><span class="line">transformer = Normalizer().fit(X)  <span class="comment"># fit does nothing.</span></span><br><span class="line">transformer</span><br><span class="line">transformer.transform(X)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RobustScaler</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Standard와 유사 하나 평균과 분산 대신, median과 quartile을 사용</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> RobustScaler</span><br><span class="line">X = [[ <span class="number">1.</span>, -<span class="number">2.</span>,  <span class="number">2.</span>],</span><br><span class="line">    [ -<span class="number">2.</span>,  <span class="number">1.</span>,  <span class="number">3.</span>],</span><br><span class="line">    [ <span class="number">4.</span>,  <span class="number">1.</span>, -<span class="number">2.</span>]]</span><br><span class="line">transformer = RobustScaler().fit(X)</span><br><span class="line">transformer</span><br><span class="line">transformer.transform(X)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Log Scaling</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 로그 함수를 대입하여 값을 변경함. 가장 많이 사용함.</span></span><br><span class="line">col =[<span class="string">&#x27;SalePrice&#x27;</span>]</span><br><span class="line">display(df[col].head(<span class="number">3</span>))</span><br><span class="line">df[col].plot(kind=<span class="string">&#x27;kde&#x27;</span>)</span><br><span class="line">df[col] = np.log1p(df[col]) <span class="comment"># 원본 값</span></span><br><span class="line">df[col].plot(kind=<span class="string">&#x27;kde&#x27;</span>)</span><br><span class="line"></span><br><span class="line">display(df[col].head(<span class="number">3</span>)) <span class="comment"># 로그 스케일</span></span><br><span class="line"></span><br><span class="line">display(np.expm1(df[col]).head(<span class="number">3</span>)) <span class="comment"># expm으로 환원</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Quantile binning</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># quantile 기준으로 값을 할당</span></span><br><span class="line">df[col].describe()</span><br><span class="line"></span><br><span class="line">col =[<span class="string">&#x27;LotArea&#x27;</span>]</span><br><span class="line"><span class="comment"># .1 : 10% 이하일 경우 10% median 값 할당, 0.5 : 50% 이하 일  median 값 할당, 1 : 최대값 할당</span></span><br><span class="line">q = df[col].quantile([<span class="number">.1</span>,<span class="number">.5</span>,<span class="number">1</span>]) </span><br><span class="line">q</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>이진화 (0 또는 1)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># threshold 기준으로 미만이면 0, 크면 1을 할당</span></span><br><span class="line">col =[<span class="string">&#x27;LotArea&#x27;</span>]</span><br><span class="line"></span><br><span class="line">binarizer = preprocessing.Binarizer(threshold=<span class="number">10000</span>)</span><br><span class="line">b = binarizer.transform(df[col])</span><br><span class="line">b = pd.DataFrame(b)</span><br><span class="line">display(df[col])</span><br><span class="line">display(b)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h1 id="display-df-cols-head-1-변경전"><a href="#display-df-cols-head-1-변경전" class="headerlink" title="display(df[cols].head(1)) # 변경전"></a>display(df[cols].head(1)) # 변경전</h1><p>cols &#x3D; [‘SaleType’, ‘SaleCondition’]</p>
-<h1 id="from-tqdm-import-tqdm-notebook"><a href="#from-tqdm-import-tqdm-notebook" class="headerlink" title="from tqdm import tqdm_notebook"></a>from tqdm import tqdm_notebook</h1><h1 id="for-col-in-tqdm-notebook-cols-진행-상태를-알고-싶을-경우-사용"><a href="#for-col-in-tqdm-notebook-cols-진행-상태를-알고-싶을-경우-사용" class="headerlink" title="for col in tqdm_notebook(cols): # 진행 상태를 알고 싶을 경우 사용"></a>for col in tqdm_notebook(cols): # 진행 상태를 알고 싶을 경우 사용</h1><p>for col in cols:<br>    le &#x3D; LabelEncoder()<br>    df[col]&#x3D;le.fit_transform(df[col])</p>
-<h1 id="display-df-cols-head-1-변경후"><a href="#display-df-cols-head-1-변경후" class="headerlink" title="display(df[cols].head(1)) # 변경후"></a>display(df[cols].head(1)) # 변경후</h1><h2 id="7-2-원핫-인코딩-ont-hot-encoding"><a href="#7-2-원핫-인코딩-ont-hot-encoding" class="headerlink" title="7.2 원핫 인코딩 (ont-hot encoding)"></a>7.2 원핫 인코딩 (ont-hot encoding)</h2><ul>
-<li>모델의 정확도 성능을 향상시켜줌</li>
+<h2 id="9-Date-Feature"><a href="#9-Date-Feature" class="headerlink" title="9. Date Feature"></a>9. Date Feature</h2><ul>
+<li><p>문자열을 datetime 타입으로 변경</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;일시&#x27;</span>:[<span class="string">&#x27;2020.7.1 19:00&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2020.8.1 20:10&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2021.9.1 21:20&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.10.1 22:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.11.1 23:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.12.1 23:40&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2023.1.1 08:30&#x27;</span>]&#125;)</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">df.info()</span><br><span class="line">df[<span class="string">&#x27;일시&#x27;</span>] = df.일시.apply(pd.to_datetime)</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>데이터 관련 값 할당하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">df = df.assign(</span><br><span class="line">            year=df.일시.dt.year,</span><br><span class="line">            month=df.일시.dt.month,</span><br><span class="line">            day=df.일시.dt.day,</span><br><span class="line">            hour=df.일시.dt.hour,</span><br><span class="line">            minute=df.일시.dt.minute,</span><br><span class="line">    </span><br><span class="line">            quarter=df.일시.dt.quarter,</span><br><span class="line">            weekday=df.일시.dt.weekday,</span><br><span class="line">            weekofyear=df.일시.dt.weekofyear,</span><br><span class="line">    </span><br><span class="line">            month_start=df.일시.dt.is_month_start,</span><br><span class="line">            month_end=df.일시.dt.is_month_end,</span><br><span class="line">            quarter_start=df.일시.dt.is_quarter_start,</span><br><span class="line">            quarter_end=df.일시.dt.is_quarter_end,</span><br><span class="line">    </span><br><span class="line">            daysinmonth=df.일시.dt.daysinmonth</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">df.head(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>datetime 타입에서 년, 월, 일, 시간 추출</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;year&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.year)</span><br><span class="line">df[<span class="string">&#x27;month&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.month)</span><br><span class="line">df[<span class="string">&#x27;day&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.day)</span><br><span class="line">df[<span class="string">&#x27;hour&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x: x.hour)</span><br><span class="line">df[<span class="string">&#x27;minute&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x: x.minute)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>datetime 타입에서 요일, 주차(주의 차수), 분기 추출</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;weekday&#x27;</span>] = df[<span class="string">&#x27;일시&#x27;</span>].dt.weekday</span><br><span class="line">df[<span class="string">&#x27;weekofyear&#x27;</span>] = df[<span class="string">&quot;일시&quot;</span>].dt.weekofyear</span><br><span class="line">df[<span class="string">&#x27;quarter&#x27;</span>] = df[<span class="string">&quot;일시&quot;</span>].dt.quarter</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>cols &#x3D; [‘SaleType’, ‘SaleCondition’]</p>
-<h1 id="display-df-head-1-변경전"><a href="#display-df-head-1-변경전" class="headerlink" title="display(df.head(1)) # 변경전"></a>display(df.head(1)) # 변경전</h1><p>df_oh &#x3D; pd.get_dummies(df[cols])<br>df &#x3D; pd.concat([df, df_oh], axis&#x3D;1)<br>df &#x3D; df.drop(cols, axis&#x3D;1)</p>
-<h1 id="display-df-head-1-변경후"><a href="#display-df-head-1-변경후" class="headerlink" title="display(df.head(1)) # 변경후"></a>display(df.head(1)) # 변경후</h1><h2 id="7-3-Count-encoding"><a href="#7-3-Count-encoding" class="headerlink" title="7.3 Count encoding"></a>7.3 Count encoding</h2><ul>
-<li>Feature의 내용 각각에 대한 빈도를 알려줌.</li>
-</ul>
-<p>col &#x3D;[‘MSZoning’]</p>
-<p>display(df[col].head(1))</p>
-<p>for col in tqdm_notebook(cols):<br>    count_enc &#x3D; ce.CountEncoder()<br>    df[col]&#x3D;count_enc.fit_transform(df[col])</p>
-<p>display(df[col].head(1))</p>
-<h2 id="7-4-LabelCount-encoding-랭킹"><a href="#7-4-LabelCount-encoding-랭킹" class="headerlink" title="7.4 LabelCount encoding (랭킹)"></a>7.4 LabelCount encoding (랭킹)</h2><ul>
-<li>Feature에 대한 랭킹을 계산해줌</li>
-</ul>
-<p>def labelcount_encode(X, categorical_features, ascending&#x3D;False):<br>    print(‘LabelCount encoding: {}’.format(categorical_features))<br>    X_ &#x3D; pd.DataFrame()<br>    for cat_feature in categorical_features:<br>        cat_feature_value_counts &#x3D; X[cat_feature].value_counts()<br>        value_counts_list &#x3D; cat_feature_value_counts.index.tolist()<br>        if ascending:<br>            # for ascending ordering<br>            value_counts_range &#x3D; list(<br>                reversed(range(len(cat_feature_value_counts))))<br>        else:<br>            # for descending ordering<br>            value_counts_range &#x3D; list(range(len(cat_feature_value_counts)))<br>        labelcount_dict &#x3D; dict(zip(value_counts_list, value_counts_range))<br>        X_[cat_feature] &#x3D; X[cat_feature].map(<br>            labelcount_dict)<br>    X_ &#x3D; X_.add_suffix(‘<em>labelcount_encoded’)<br>    if ascending:<br>        X</em> &#x3D; X_.add_suffix(‘<em>ascending’)<br>    else:<br>        X</em> &#x3D; X_.add_suffix(‘<em>descending’)<br>    X</em> &#x3D; X_.astype(np.uint32)<br>    return X_</p>
-<p>df[‘LotArea’] &#x3D; labelcount_encode(df, [‘LotArea’])<br>df.head(3)</p>
-<h1 id="df-‘LotAreaRank’-df-‘LotArea’-rank-method-’min’-ascending-False-와-동일함"><a href="#df-‘LotAreaRank’-df-‘LotArea’-rank-method-’min’-ascending-False-와-동일함" class="headerlink" title="df[‘LotAreaRank’] &#x3D;  df[‘LotArea’].rank(method&#x3D;’min’, ascending&#x3D;False)와 동일함"></a>df[‘LotAreaRank’] &#x3D;  df[‘LotArea’].rank(method&#x3D;’min’, ascending&#x3D;False)와 동일함</h1><h2 id="7-5-Target-Mean-encoding"><a href="#7-5-Target-Mean-encoding" class="headerlink" title="7.5 Target(Mean) encoding"></a>7.5 Target(Mean) encoding</h2><ul>
-<li>평균값 할당</li>
-</ul>
-<h1 id="import-category-encoders-as-ce"><a href="#import-category-encoders-as-ce" class="headerlink" title="import category_encoders as ce"></a>import category_encoders as ce</h1><p>y &#x3D; df[‘LotArea’]<br>X &#x3D; df[‘SaleCondition’]<br>ce_target &#x3D; ce.TargetEncoder(cols &#x3D; [‘SaleCondition’])<br>ce_target.fit(X, y)<br>ce_target.transform(X, y)</p>
-<h2 id="8-수치-변수-처리하기-Numerical-Features"><a href="#8-수치-변수-처리하기-Numerical-Features" class="headerlink" title="8. 수치 변수 처리하기 (Numerical Features)"></a>8. 수치 변수 처리하기 (Numerical Features)</h2><h2 id="8-1-Standard-Scaling"><a href="#8-1-Standard-Scaling" class="headerlink" title="8.1 Standard Scaling"></a>8.1 Standard Scaling</h2><ul>
-<li>평균을 0, 분산을 1로 변경</li>
-</ul>
-<p>from sklearn.preprocessing import StandardScaler<br>data &#x3D; [[0, 0], [0, 0], [1, 1], [1, 1]]<br>scaler &#x3D; StandardScaler()<br>print(scaler.fit(data))<br>print(scaler.mean_)<br>print(scaler.transform(data))<br>print(scaler.transform([[2, 2]]))</p>
-<h2 id="8-2-MinMax-Scaling"><a href="#8-2-MinMax-Scaling" class="headerlink" title="8.2 MinMax Scaling"></a>8.2 MinMax Scaling</h2><ul>
-<li>MinMax Scaling 0과 1사이로 변경<br>from sklearn.preprocessing import MinMaxScaler<br>data &#x3D; [[-1, 2], [-0.5, 6], [0, 10], [1, 18]]<br>scaler &#x3D; MinMaxScaler()<br>print(scaler.fit(data))<br>print(scaler.data_max_)<br>print(scaler.transform(data))<br>print(scaler.transform([[2, 2]]))</li>
-</ul>
-<h2 id="8-3-Nomalization"><a href="#8-3-Nomalization" class="headerlink" title="8.3 Nomalization"></a>8.3 Nomalization</h2><ul>
-<li>정규화시킴</li>
-</ul>
-<p>from sklearn.preprocessing import Normalizer<br>X &#x3D; [[4, 1, 2, 2],<br>     [1, 3, 9, 3],<br>     [5, 7, 5, 1]]<br>transformer &#x3D; Normalizer().fit(X)  # fit does nothing.<br>transformer<br>transformer.transform(X)</p>
-<h2 id="8-4-RobustScaler"><a href="#8-4-RobustScaler" class="headerlink" title="8.4 RobustScaler"></a>8.4 RobustScaler</h2><ul>
-<li>Standard와 유사 하나 평균과 분산 대신, median과 quartile을 사용</li>
-</ul>
-<p>from sklearn.preprocessing import RobustScaler<br>X &#x3D; [[ 1., -2.,  2.],<br>     [ -2.,  1.,  3.],<br>     [ 4.,  1., -2.]]<br>transformer &#x3D; RobustScaler().fit(X)<br>transformer<br>transformer.transform(X)</p>
-<h2 id="8-5-Log-Scaling"><a href="#8-5-Log-Scaling" class="headerlink" title="8.5 Log Scaling"></a>8.5 Log Scaling</h2><ul>
-<li>로그 함수를 대입하여 값을 변경함. 가장 많이 사용함.</li>
-</ul>
-<p>col &#x3D;[‘SalePrice’]<br>display(df[col].head(3))<br>df[col].plot(kind&#x3D;’kde’)<br>df[col] &#x3D; np.log1p(df[col]) # 원본 값<br>df[col].plot(kind&#x3D;’kde’)</p>
-<p>display(df[col].head(3)) # 로그 스케일</p>
-<p>display(np.expm1(df[col]).head(3)) # expm으로 환원</p>
-<h2 id="8-6-Quantile-binning"><a href="#8-6-Quantile-binning" class="headerlink" title="8.6 Quantile binning"></a>8.6 Quantile binning</h2><ul>
-<li>quantile 기준으로 값을 할당</li>
-</ul>
-<p>df[col].describe()</p>
-<p>col &#x3D;[‘LotArea’]</p>
-<h1 id="1-10-이하일-경우-10-median-값-할당-0-5-50-이하-일-median-값-할당-1-최대값-할당"><a href="#1-10-이하일-경우-10-median-값-할당-0-5-50-이하-일-median-값-할당-1-최대값-할당" class="headerlink" title=".1 : 10% 이하일 경우 10% median 값 할당, 0.5 : 50% 이하 일  median 값 할당, 1 : 최대값 할당"></a>.1 : 10% 이하일 경우 10% median 값 할당, 0.5 : 50% 이하 일  median 값 할당, 1 : 최대값 할당</h1><p>q &#x3D; df[col].quantile([.1,.5,1])<br>q</p>
-<h2 id="8-7-이진화-0-또는-1"><a href="#8-7-이진화-0-또는-1" class="headerlink" title="8.7 이진화 (0 또는 1)"></a>8.7 이진화 (0 또는 1)</h2><ul>
-<li>threshold 기준으로 미만이면 0, 크면 1을 할당</li>
-</ul>
-<p>col &#x3D;[‘LotArea’]</p>
-<p>binarizer &#x3D; preprocessing.Binarizer(threshold&#x3D;10000)<br>b &#x3D; binarizer.transform(df[col])<br>b &#x3D; pd.DataFrame(b)<br>display(df[col])<br>display(b)</p>
-<h2 id="9-Date-Feature"><a href="#9-Date-Feature" class="headerlink" title="9. Date Feature"></a>9. Date Feature</h2><p>df &#x3D; pd.DataFrame({‘일시’:[‘2020.7.1 19:00’,<br>                   ‘2020.8.1 20:10’,<br>                   ‘2021.9.1 21:20’,<br>                   ‘2022.10.1 22:30’,<br>                   ‘2022.11.1 23:30’,<br>                   ‘2022.12.1 23:40’,<br>                   ‘2023.1.1 08:30’]})<br>df</p>
-<h2 id="9-1-문자열을-datetime-타입으로-변경"><a href="#9-1-문자열을-datetime-타입으로-변경" class="headerlink" title="9.1 문자열을 datetime 타입으로 변경"></a>9.1 문자열을 datetime 타입으로 변경</h2><p>df.info()<br>df[‘일시’] &#x3D; df.일시.apply(pd.to_datetime)<br>df.info()</p>
-<h2 id="9-2-데이터-관련-값-할당하기"><a href="#9-2-데이터-관련-값-할당하기" class="headerlink" title="9.2 데이터 관련 값 할당하기"></a>9.2 데이터 관련 값 할당하기</h2><p>df &#x3D; df.assign(<br>               year&#x3D;df.일시.dt.year,<br>               month&#x3D;df.일시.dt.month,<br>               day&#x3D;df.일시.dt.day,<br>               hour&#x3D;df.일시.dt.hour,<br>               minute&#x3D;df.일시.dt.minute,</p>
-<pre><code>           quarter=df.일시.dt.quarter,
-           weekday=df.일시.dt.weekday,
-           weekofyear=df.일시.dt.weekofyear,
-
-           month_start=df.일시.dt.is_month_start,
-           month_end=df.일시.dt.is_month_end,
-           quarter_start=df.일시.dt.is_quarter_start,
-           quarter_end=df.일시.dt.is_quarter_end,
-
-           daysinmonth=df.일시.dt.daysinmonth
-           )
+<h2 id="10-Group-by"><a href="#10-Group-by" class="headerlink" title="10. Group by"></a>10. Group by</h2><pre><code>- 그룹으로 묶어서 값을 만들기
 </code></pre>
-<p>df.head(7)</p>
-<h2 id="9-3-datetime-타입에서-년-월-일-시간-추출"><a href="#9-3-datetime-타입에서-년-월-일-시간-추출" class="headerlink" title="9.3 datetime 타입에서 년, 월, 일, 시간 추출"></a>9.3 datetime 타입에서 년, 월, 일, 시간 추출</h2><p>df[‘year’] &#x3D; df.일시.apply(lambda x : x.year)<br>df[‘month’] &#x3D; df.일시.apply(lambda x : x.month)<br>df[‘day’] &#x3D; df.일시.apply(lambda x : x.day)<br>df[‘hour’] &#x3D; df.일시.apply(lambda x: x.hour)<br>df[‘minute’] &#x3D; df.일시.apply(lambda x: x.minute)</p>
-<h2 id="9-4-datetime-타입에서-요일-주차-주의-차수-분기-추출"><a href="#9-4-datetime-타입에서-요일-주차-주의-차수-분기-추출" class="headerlink" title="9.4 datetime 타입에서 요일, 주차(주의 차수), 분기 추출"></a>9.4 datetime 타입에서 요일, 주차(주의 차수), 분기 추출</h2><p>df[‘weekday’] &#x3D; df[‘일시’].dt.weekday<br>df[‘weekofyear’] &#x3D; df[“일시”].dt.weekofyear<br>df[‘quarter’] &#x3D; df[“일시”].dt.quarter</p>
+<ul>
+<li><p>최대, 최소, 평균, 건수 추출</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;MSZoning&#x27;</span>)[<span class="string">&#x27;LotArea&#x27;</span>].<span class="built_in">max</span>()</span><br><span class="line">df.groupby(<span class="string">&#x27;MSZoning&#x27;</span>)[<span class="string">&#x27;LotArea&#x27;</span>].<span class="built_in">min</span>()</span><br><span class="line">df.groupby(<span class="string">&#x27;MSZoning&#x27;</span>)[<span class="string">&#x27;LotArea&#x27;</span>].mean()</span><br><span class="line">df.groupby([<span class="string">&#x27;MSZoning&#x27;</span>,<span class="string">&#x27;LotShape&#x27;</span>])[<span class="string">&#x27;LotArea&#x27;</span>].count()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MSZoning 컬럼 기준으로 값을 맵핑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;new_max&#x27;</span>] = df.groupby(<span class="string">&#x27;MSZoning&#x27;</span>)[<span class="string">&#x27;LotArea&#x27;</span>].transform(<span class="keyword">lambda</span> x: x.<span class="built_in">max</span>())</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>동시에 max, min, mean 가져오기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_agg =  df.groupby(<span class="string">&#x27;MSZoning&#x27;</span>)[<span class="string">&#x27;LotArea&#x27;</span>].agg([<span class="string">&#x27;max&#x27;</span>, <span class="string">&#x27;min&#x27;</span>, <span class="string">&#x27;mean&#x27;</span>])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>생성한 값 합치기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_all = pd.merge(df, df_agg, how=<span class="string">&#x27;left&#x27;</span>, on=[<span class="string">&#x27;MSZoning&#x27;</span>])</span><br><span class="line">df_all.head()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="11-TEXT-관련-간단한-피처생성"><a href="#11-TEXT-관련-간단한-피처생성" class="headerlink" title="11. TEXT 관련 간단한 피처생성"></a>11. TEXT 관련 간단한 피처생성</h2><ul>
+<li><p>문자열 길이 가져오기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&quot;length&quot;</span>] = df[<span class="string">&quot;text&quot;</span>].<span class="built_in">str</span>.<span class="built_in">len</span>()</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>문자열에서 키워드 찾기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">&#x27;text&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;911&#x27;</span>)].head()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>문자열에서 키워드 찾아서 값 할당하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;k&#x27;</span>] = <span class="number">0</span></span><br><span class="line">df.loc[df[df[<span class="string">&#x27;text&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;emergency&#x27;</span>)].index,<span class="string">&#x27;k&#x27;</span>] = <span class="number">1</span></span><br><span class="line">df.loc[df[df[<span class="string">&#x27;text&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;help&#x27;</span>)].index,<span class="string">&#x27;k&#x27;</span>] = <span class="number">2</span></span><br><span class="line">df.loc[df[df[<span class="string">&#x27;text&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;accident&#x27;</span>)].index,<span class="string">&#x27;k&#x27;</span>] = <span class="number">3</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="12-Moving-Average-이동평균"><a href="#12-Moving-Average-이동평균" class="headerlink" title="12. Moving Average: 이동평균"></a>12. Moving Average: 이동평균</h2><ul>
+<li><p>평균 할당하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이동평균 rolling(windows=x): 이전 x개의 평균</span></span><br><span class="line">df[<span class="string">&#x27;ma5&#x27;</span>] = df[<span class="string">&#x27;close&#x27;</span>].rolling(window=<span class="number">5</span>).mean() <span class="comment"># 현재 index포함하여 앞에 4개를 가지고 평균 값을 가짐</span></span><br><span class="line">df[<span class="string">&#x27;ma30&#x27;</span>] = df[<span class="string">&#x27;close&#x27;</span>].rolling(window=<span class="number">30</span>).mean() <span class="comment"># 현재 index포함하여 앞에 29개를 가지고 평균 값을 가짐</span></span><br><span class="line">df[<span class="string">&#x27;ma60&#x27;</span>] = df[<span class="string">&#x27;close&#x27;</span>].rolling(window=<span class="number">60</span>).mean() <span class="comment"># 현재 index포함하여 앞에 59개를 가지고 평균 값을 가짐</span></span><br><span class="line">df.tail(<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>시각화 하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(df.index, df[<span class="string">&#x27;ma5&#x27;</span>], label = <span class="string">&quot;ma5&quot;</span>)</span><br><span class="line">plt.plot(df.index, df[<span class="string">&#x27;ma30&#x27;</span>], label = <span class="string">&quot;ma30&quot;</span>)</span><br><span class="line">plt.plot(df.index, df[<span class="string">&#x27;ma60&#x27;</span>], label = <span class="string">&quot;ma60&quot;</span>)</span><br><span class="line">plt.plot(df.index, df[<span class="string">&#x27;close&#x27;</span>], label=<span class="string">&#x27;close&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.grid()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="13-Shift-이동하기"><a href="#13-Shift-이동하기" class="headerlink" title="13. Shift : 이동하기"></a>13. Shift : 이동하기</h2><ul>
+<li><p>다음으로 이동하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;nextClose&#x27;</span>]= df[<span class="string">&#x27;close&#x27;</span>].shift(<span class="number">1</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>이전으로 이동하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;nextClose&#x27;</span>]= df[<span class="string">&#x27;close&#x27;</span>].shift(-<span class="number">1</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>주가변동 시각화 하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;fluctuation&#x27;</span>] = df[<span class="string">&#x27;nextClose&#x27;</span>] - df[<span class="string">&#x27;close&#x27;</span>]</span><br><span class="line">df[<span class="string">&#x27;f_rate&#x27;</span>] = df[<span class="string">&#x27;fluctuation&#x27;</span>] / df[<span class="string">&#x27;nextClose&#x27;</span>]</span><br><span class="line">df.head()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">6</span>))</span><br><span class="line">plt.plot(df.index, df[<span class="string">&#x27;f_rate&#x27;</span>])</span><br><span class="line">plt.axhline(y=<span class="number">0</span>, color=<span class="string">&#x27;gray&#x27;</span>, ls = <span class="string">&#x27;-&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="14-diff-차이-얻어내기"><a href="#14-diff-차이-얻어내기" class="headerlink" title="14. diff : 차이 얻어내기"></a>14. diff : 차이 얻어내기</h2><pre><code>- 특정 컬럼에 대해서 row간의 차이 얻어내기
+</code></pre>
+<ul>
+<li><p>이전 첫번째와 차이 얻기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col].diff()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3번째 이전값과 차이 얻기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col].diff(periods=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>컬럼과 컬럼간에 차이 얻어내기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[col].diff(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><ul>
 <li><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/code/agileteam/data-preprocessing-feature-engineering-tutorial/notebook">Data Preprocessing Feature Engineering Tutorial 한글</a></p>
 </li>
