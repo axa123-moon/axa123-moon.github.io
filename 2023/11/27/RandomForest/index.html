@@ -19,30 +19,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="안녕하세요. 저의 블로그에 오신것을 환영합니다. 블로그 제작 관련 내용입니다. 설치관련 순서는 아래와 같습니다.  nodejs 설치  hexo  설치  hexo로 블로그 작성 및 생성hexo new post “My first post”hexo clean &amp;&amp; hexo generate  github repository 생성  hexo 환경설정_">
+    <meta name="description" content="RandomForest Hyperparameter 설정 가이드입니다.sklearn API 기준입니다. 1. 데이타 프레임 조건 row 수 : 10,000개 이하  feature 수 : 100개 이하   2. Hyperparameter 설정 max_depth : tree의 최대 깊이   3 ~ 15   max_features : feature sampling">
 <meta property="og:type" content="article">
-<meta property="og:title" content="블로그 제작하기 위한 환경 설정">
-<meta property="og:url" content="https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/index.html">
+<meta property="og:title" content="RandomForest">
+<meta property="og:url" content="https://axa123-moon.github.io/2023/11/27/RandomForest/index.html">
 <meta property="og:site_name" content="AI Beginner&#39;s Blog">
-<meta property="og:description" content="안녕하세요. 저의 블로그에 오신것을 환영합니다. 블로그 제작 관련 내용입니다. 설치관련 순서는 아래와 같습니다.  nodejs 설치  hexo  설치  hexo로 블로그 작성 및 생성hexo new post “My first post”hexo clean &amp;&amp; hexo generate  github repository 생성  hexo 환경설정_">
+<meta property="og:description" content="RandomForest Hyperparameter 설정 가이드입니다.sklearn API 기준입니다. 1. 데이타 프레임 조건 row 수 : 10,000개 이하  feature 수 : 100개 이하   2. Hyperparameter 설정 max_depth : tree의 최대 깊이   3 ~ 15   max_features : feature sampling">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-21T00:27:53.000Z">
-<meta property="article:modified_time" content="2023-11-22T05:41:24.469Z">
+<meta property="article:published_time" content="2023-11-27T01:12:31.000Z">
+<meta property="article:modified_time" content="2023-11-30T08:00:10.196Z">
 <meta property="article:author" content="axa123">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="RandomForest">
+<meta property="article:tag" content="Hyperparameter">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/">
+<link rel="canonical" href="https://axa123-moon.github.io/2023/11/27/RandomForest/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/","path":"2023/11/21/Blog_Setting_Deploy/","title":"블로그 제작하기 위한 환경 설정"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2023/11/27/RandomForest/","path":"2023/11/27/RandomForest/","title":"RandomForest"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>블로그 제작하기 위한 환경 설정 | AI Beginner's Blog</title>
+<title>RandomForest | AI Beginner's Blog</title>
   
 
 
@@ -107,7 +106,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.</span> <span class="nav-text">reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%EB%8D%B0%EC%9D%B4%ED%83%80-%ED%94%84%EB%A0%88%EC%9E%84-%EC%A1%B0%EA%B1%B4"><span class="nav-number">1.</span> <span class="nav-text">1. 데이타 프레임 조건</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Hyperparameter-%EC%84%A4%EC%A0%95"><span class="nav-number">2.</span> <span class="nav-text">2. Hyperparameter 설정</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%EC%98%88%EC%A0%9C-%EC%BD%94%EB%93%9C"><span class="nav-number">3.</span> <span class="nav-text">3. 예제 코드</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -152,7 +151,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/27/RandomForest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -165,12 +164,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="블로그 제작하기 위한 환경 설정 | AI Beginner's Blog">
+      <meta itemprop="name" content="RandomForest | AI Beginner's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          블로그 제작하기 위한 환경 설정
+          RandomForest
         </h1>
 
         <div class="post-meta-container">
@@ -181,14 +180,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2023-11-21 09:27:53" itemprop="dateCreated datePublished" datetime="2023-11-21T09:27:53+09:00">2023-11-21</time>
+      <time title="Created: 2023-11-27 10:12:31" itemprop="dateCreated datePublished" datetime="2023-11-27T10:12:31+09:00">2023-11-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-22 14:41:24" itemprop="dateModified" datetime="2023-11-22T14:41:24+09:00">2023-11-22</time>
+      <time title="Modified: 2023-11-30 17:00:10" itemprop="dateModified" datetime="2023-11-30T17:00:10+09:00">2023-11-30</time>
     </span>
 
   
@@ -200,33 +199,44 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>안녕하세요. 저의 블로그에 오신것을 환영합니다.</p>
-<p>블로그 제작 관련 내용입니다.</p>
-<p>설치관련 순서는 아래와 같습니다.</p>
-<ol>
-<li><p>nodejs 설치</p>
+    <div class="post-body" itemprop="articleBody"><p>RandomForest Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
+<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
+<li><p>row 수 : 10,000개 이하</p>
 </li>
-<li><p>hexo  설치</p>
+<li><p>feature 수 : 100개 이하</p>
 </li>
-<li><p>hexo로 블로그 작성 및 생성<br>hexo new post “My first post”<br>hexo clean &amp;&amp; hexo generate</p>
+</ul>
+<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
+<li><p>max_depth : tree의 최대 깊이</p>
+<pre><code>  3 ~ 15
+</code></pre>
 </li>
-<li><p>github repository 생성</p>
+<li><p>max_features : feature sampling rate</p>
+<pre><code>  0.5 ~ 0.8 (피처가 20개 미만일 경우 0.8사용)
+</code></pre>
 </li>
-<li><p>hexo 환경설정<br>_config.yml 파일 수정 및 저장</p>
+<li><p>criterion : 회귀일때 사용<br>  1. squared_error<br>  2. absolute_error</p>
 </li>
-<li><p>local서버에서 배포 후 확인<br>hexo server</p>
+<li><p>min_samples_split : 분할할 최소 갯수</p>
+<pre><code>  2 ~ 50
+</code></pre>
 </li>
-<li><p>github 배포<br>hexo deploy</p>
+<li><p>min_samples_leaf : 마지막 leaf에 갯수</p>
+<pre><code>  1 ~ 50
+</code></pre>
 </li>
-<li><p>theme 교체</p>
+<li><p>n_estimators : number of tree</p>
+<pre><code>  50 ~ 200
+</code></pre>
 </li>
-<li><p>github 재배포</p>
+<li><p>random_state : reproducibility</p>
+<pre><code>  42 (아무 숫자나 관계 없음)
+</code></pre>
 </li>
-</ol>
-<p>hexo를 사용하여 제작한 blog를 github에 배포하는 동영상 정보를 공유합니다.</p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=lATUeAYJygc">https://www.youtube.com/watch?v=lATUeAYJygc</a></p>
-<p>감사합니다.</p>
-
+<li><p>n_jobs : number of cpu cores<br>  1. n : 최대 core수 - 2개 (개인 컴퓨터의 경우)<br>  2. -1 : 전체 core (개인 컴퓨터의 경우 사용하지 말 것)</p>
+</li>
+</ul>
+<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line">model = RandomForestRegressor(n_estimators=<span class="number">200</span>,</span><br><span class="line">                               max_depth=<span class="number">15</span>,</span><br><span class="line">                               max_features=<span class="number">0.7</span>,</span><br><span class="line">                               min_samples_split=<span class="number">10</span>,</span><br><span class="line">                               min_samples_leaf=<span class="number">5</span>,</span><br><span class="line">                               random_state=<span class="number">42</span>,</span><br><span class="line">                               n_jobs=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -235,19 +245,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
-              <a href="/tags/blog/" rel="tag"># blog</a>
-              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/RandomForest/" rel="tag"># RandomForest</a>
+              <a href="/tags/Hyperparameter/" rel="tag"># Hyperparameter</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2023/11/24/Visualization_01/" rel="prev" title="Visualization (1)">
+                  <i class="fa fa-angle-left"></i> Visualization (1)
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/11/21/EDA-Processing/" rel="next" title="EDA Processing">
-                  EDA Processing <i class="fa fa-angle-right"></i>
+                <a href="/2023/11/30/XGBoost/" rel="next" title="XGBoost">
+                  XGBoost <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
