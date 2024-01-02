@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,193 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/12/28/Conda-Jupyter-Notebook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/28/Conda-Jupyter-Notebook/" class="post-title-link" itemprop="url">Conda환경에서 Jupyter Notebook 실행하기</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-12-28 15:27:16 / Modified: 15:34:17" itemprop="dateCreated datePublished" datetime="2023-12-28T15:27:16+09:00">2023-12-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Conda환경에서 Jupyter Notebook 실행하기</p>
+<h1 id="1-Conda-환경으로-이동"><a href="#1-Conda-환경으로-이동" class="headerlink" title="1. Conda 환경으로 이동"></a>1. Conda 환경으로 이동</h1><p>conda activate pytorch_gpu_cuda11</p>
+<h1 id="2-주피터-노트북-설치"><a href="#2-주피터-노트북-설치" class="headerlink" title="2. 주피터 노트북 설치"></a>2. 주피터 노트북 설치</h1><p>pip install jupyter notebook</p>
+<h1 id="3-가상환경에-kernel을-연결"><a href="#3-가상환경에-kernel을-연결" class="headerlink" title="3. 가상환경에 kernel을 연결"></a>3. 가상환경에 kernel을 연결</h1><p>python -m ipykernel install –user –name pytorch_gpu_cuda11</p>
+<p> –display-name pytorch_gpu_cuda11 추가해도 됨</p>
+<h1 id="4-주피터-노트북-실행"><a href="#4-주피터-노트북-실행" class="headerlink" title="4. 주피터 노트북 실행"></a>4. 주피터 노트북 실행</h1><p>jupyter notebook</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/12/04/CatBoost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/12/04/CatBoost/" class="post-title-link" itemprop="url">CatBoost</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-12-04 10:39:23 / Modified: 10:57:41" itemprop="dateCreated datePublished" datetime="2023-12-04T10:39:23+09:00">2023-12-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>CatBoost Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
+<ul>
+<li>GBDT가 Categorical feature에 대해서 학습이 잘되도록 설계되어 있음</li>
+<li>default parameter설계가 잘 되어있어, parameter tuning이 쉬움</li>
+<li>categorical feature가 30%이상일 경우 좋음</li>
+<li>gpu 사용이 쉬움</li>
+</ul>
+<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
+<li><p>row 수 : 1,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)</p>
+</li>
+<li><p>feature 수 : 200개 이하</p>
+</li>
+</ul>
+<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
+<li><p>max_leaves : max_leaves를 잘 사용하는 것이 좋음 (2의 depth를 제곱해줌. 2의 depth 제곱 이하로 해주어야 함.)</p>
+<pre><code>  63, 127, 255, 511, 1023, 2047
+</code></pre>
+</li>
+<li><p>iterations : tree 갯수 (tree 갯수, 2억개일 경우 20,000개. 20,000개 이상은 의미가 없음) </p>
+<pre><code>  50 ~ 20000 
+</code></pre>
+</li>
+<li><p>depth : tree의 최대 깊이 (row가 많을수록 크게 해주어야 함)</p>
+<pre><code>  5 ~ 25
+</code></pre>
+</li>
+<li><p>learning_rate : shrinkage factor (iterations가 50이면 0.3, 20,000이면 0.001을 사용함)</p>
+<pre><code>  0.3 ~ 0.001 
+</code></pre>
+</li>
+<li><p>reg_lambda : regularization (loss를 크게 해주면, 오버피팅을 줄여줌)</p>
+<pre><code>  0.5 ~ 50
+</code></pre>
+</li>
+<li><p>min_data_in_leaf : leaf에 포함되는 최소 갯수 (오버피팅을 방지하기 위함. 적을수록 오버피팅됨)</p>
+<pre><code>  5 ~ 50
+</code></pre>
+</li>
+<li><p>rsm : 0.5 ~ 0.8 (xgboost의 colsample_bynode와 같음[컬럼 갯수 비율]. random subspace method)</p>
+</li>
+</ul>
+<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line"> model = CatBoostRegressor(max_leaves=<span class="number">511</span></span><br><span class="line">                        iterations=<span class="number">1000</span>,</span><br><span class="line">                        depth=<span class="number">5</span>,</span><br><span class="line">                        learning_rate=<span class="number">0.3</span>,</span><br><span class="line">                        reg_lambda=<span class="number">0.5</span>,</span><br><span class="line">                        min_data_in_leaf=<span class="number">5</span>,</span><br><span class="line">                        rsm=<span class="number">0.5</span>,</span><br><span class="line">                        random_seed=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -171,9 +358,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-11-30 15:35:47 / Modified: 16:54:18" itemprop="dateCreated datePublished" datetime="2023-11-30T15:35:47+09:00">2023-11-30</time>
+      <time title="Created: 2023-11-30 15:35:47" itemprop="dateCreated datePublished" datetime="2023-11-30T15:35:47+09:00">2023-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-12-04 10:45:04" itemprop="dateModified" datetime="2023-12-04T10:45:04+09:00">2023-12-04</time>
     </span>
 
   
@@ -194,7 +387,7 @@
 </li>
 </ul>
 <h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
-<li><p>num_leaves :num_leaves를 잘 사용하는 것이 좋음 (2의 max_depth를 제곱해줌. 2의 max_depth 제곱 이하로 해주어야 함.)</p>
+<li><p>num_leaves : num_leaves를 잘 사용하는 것이 좋음 (2의 max_depth를 제곱해줌. 2의 max_depth 제곱 이하로 해주어야 함.)</p>
 <pre><code>  63, 127, 255, 511, 1023, 2047
 </code></pre>
 </li>
@@ -742,7 +935,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-30 17:00:56" itemprop="dateModified" datetime="2023-11-30T17:00:56+09:00">2023-11-30</time>
+      <time title="Modified: 2023-12-28 15:28:31" itemprop="dateModified" datetime="2023-12-28T15:28:31+09:00">2023-12-28</time>
     </span>
 
   
@@ -907,10 +1100,10 @@
 </ul>
 <h2 id="9-Date-Feature"><a href="#9-Date-Feature" class="headerlink" title="9. Date Feature"></a>9. Date Feature</h2><ul>
 <li><p>문자열을 datetime 타입으로 변경</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;일시&#x27;</span>:[<span class="string">&#x27;2020.7.1 19:00&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2020.8.1 20:10&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2021.9.1 21:20&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.10.1 22:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.11.1 23:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.12.1 23:40&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2023.1.1 08:30&#x27;</span>]&#125;)</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">df.info()</span><br><span class="line">df[<span class="string">&#x27;일시&#x27;</span>] = df.일시.apply(pd.to_datetime)</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;일시&#x27;</span>:[<span class="string">&#x27;2020.7.1 19:00&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2020.8.1 20:10&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2021.9.1 21:20&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.10.1 22:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.11.1 23:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.12.1 23:40&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2023.1.1 08:30&#x27;</span>]&#125;)</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line"><span class="comment">#df[&#x27;일시&#x27;] = pd.to_datetime(df[&#x27;일시&#x27;])</span></span><br><span class="line"><span class="comment">#df.info()</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;일시&#x27;</span>] = df.일시.apply(pd.to_datetime)</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>데이터 관련 값 할당하기</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">df = df.assign(</span><br><span class="line">            year=df.일시.dt.year,</span><br><span class="line">            month=df.일시.dt.month,</span><br><span class="line">            day=df.일시.dt.day,</span><br><span class="line">            hour=df.일시.dt.hour,</span><br><span class="line">            minute=df.일시.dt.minute,</span><br><span class="line">    </span><br><span class="line">            quarter=df.일시.dt.quarter,</span><br><span class="line">            weekday=df.일시.dt.weekday,</span><br><span class="line">            weekofyear=df.일시.dt.weekofyear,</span><br><span class="line">    </span><br><span class="line">            month_start=df.일시.dt.is_month_start,</span><br><span class="line">            month_end=df.일시.dt.is_month_end,</span><br><span class="line">            quarter_start=df.일시.dt.is_quarter_start,</span><br><span class="line">            quarter_end=df.일시.dt.is_quarter_end,</span><br><span class="line">    </span><br><span class="line">            daysinmonth=df.일시.dt.daysinmonth</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">df.head(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">df = df.assign(</span><br><span class="line">            year=df.일시.dt.year,</span><br><span class="line">            month=df.일시.dt.month,</span><br><span class="line">            day=df.일시.dt.day,</span><br><span class="line">            hour=df.일시.dt.hour,</span><br><span class="line">            minute=df.일시.dt.minute,</span><br><span class="line">    </span><br><span class="line">            quarter=df.일시.dt.quarter,</span><br><span class="line">            weekday=df.일시.dt.weekday,</span><br><span class="line">            <span class="comment">#weekofyear=df.일시.dt.weekofyear,</span></span><br><span class="line">            weekofyear=df.일시.dt.isocalendar().week,</span><br><span class="line">    </span><br><span class="line">            month_start=df.일시.dt.is_month_start,</span><br><span class="line">            month_end=df.일시.dt.is_month_end,</span><br><span class="line">            quarter_start=df.일시.dt.is_quarter_start,</span><br><span class="line">            quarter_end=df.일시.dt.is_quarter_end,</span><br><span class="line">    </span><br><span class="line">            daysinmonth=df.일시.dt.daysinmonth</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">df.head(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>datetime 타입에서 년, 월, 일, 시간 추출</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;year&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.year)</span><br><span class="line">df[<span class="string">&#x27;month&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.month)</span><br><span class="line">df[<span class="string">&#x27;day&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.day)</span><br><span class="line">df[<span class="string">&#x27;hour&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x: x.hour)</span><br><span class="line">df[<span class="string">&#x27;minute&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x: x.minute)</span><br></pre></td></tr></table></figure>

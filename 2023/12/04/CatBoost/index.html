@@ -19,29 +19,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="LightGBM Hyperparameter 설정 가이드입니다.sklearn API 기준입니다. 1. 데이타 프레임 조건 row 수 : 10,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)  feature 수 : 200개 이상   2. Hyperparameter 설정 num_leaves : num_leaves를 잘 사용하는 것이">
+    <meta name="description" content="CatBoost Hyperparameter 설정 가이드입니다.sklearn API 기준입니다.  GBDT가 Categorical feature에 대해서 학습이 잘되도록 설계되어 있음 default parameter설계가 잘 되어있어, parameter tuning이 쉬움 categorical feature가 30%이상일 경우 좋음 gpu 사용이 쉬움  1.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LightGBM">
-<meta property="og:url" content="https://axa123-moon.github.io/2023/11/30/LightGBM/index.html">
+<meta property="og:title" content="CatBoost">
+<meta property="og:url" content="https://axa123-moon.github.io/2023/12/04/CatBoost/index.html">
 <meta property="og:site_name" content="AI Beginner&#39;s Blog">
-<meta property="og:description" content="LightGBM Hyperparameter 설정 가이드입니다.sklearn API 기준입니다. 1. 데이타 프레임 조건 row 수 : 10,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)  feature 수 : 200개 이상   2. Hyperparameter 설정 num_leaves : num_leaves를 잘 사용하는 것이">
+<meta property="og:description" content="CatBoost Hyperparameter 설정 가이드입니다.sklearn API 기준입니다.  GBDT가 Categorical feature에 대해서 학습이 잘되도록 설계되어 있음 default parameter설계가 잘 되어있어, parameter tuning이 쉬움 categorical feature가 30%이상일 경우 좋음 gpu 사용이 쉬움  1.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-30T06:35:47.000Z">
-<meta property="article:modified_time" content="2023-12-04T01:45:04.323Z">
+<meta property="article:published_time" content="2023-12-04T01:39:23.000Z">
+<meta property="article:modified_time" content="2023-12-04T01:57:41.851Z">
 <meta property="article:author" content="axa123">
+<meta property="article:tag" content="CatBoost">
 <meta property="article:tag" content="Hyperparameter">
-<meta property="article:tag" content="LightGBM">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://axa123-moon.github.io/2023/11/30/LightGBM/">
+<link rel="canonical" href="https://axa123-moon.github.io/2023/12/04/CatBoost/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2023/11/30/LightGBM/","path":"2023/11/30/LightGBM/","title":"LightGBM"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2023/12/04/CatBoost/","path":"2023/12/04/CatBoost/","title":"CatBoost"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LightGBM | AI Beginner's Blog</title>
+<title>CatBoost | AI Beginner's Blog</title>
   
 
 
@@ -151,7 +151,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/30/LightGBM/">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/12/04/CatBoost/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -164,12 +164,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="LightGBM | AI Beginner's Blog">
+      <meta itemprop="name" content="CatBoost | AI Beginner's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LightGBM
+          CatBoost
         </h1>
 
         <div class="post-meta-container">
@@ -179,15 +179,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2023-11-30 15:35:47" itemprop="dateCreated datePublished" datetime="2023-11-30T15:35:47+09:00">2023-11-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-12-04 10:45:04" itemprop="dateModified" datetime="2023-12-04T10:45:04+09:00">2023-12-04</time>
+      <time title="Created: 2023-12-04 10:39:23 / Modified: 10:57:41" itemprop="dateCreated datePublished" datetime="2023-12-04T10:39:23+09:00">2023-12-04</time>
     </span>
 
   
@@ -199,48 +193,49 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>LightGBM Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
+    <div class="post-body" itemprop="articleBody"><p>CatBoost Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
+<ul>
+<li>GBDT가 Categorical feature에 대해서 학습이 잘되도록 설계되어 있음</li>
+<li>default parameter설계가 잘 되어있어, parameter tuning이 쉬움</li>
+<li>categorical feature가 30%이상일 경우 좋음</li>
+<li>gpu 사용이 쉬움</li>
+</ul>
 <h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
-<li><p>row 수 : 10,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)</p>
+<li><p>row 수 : 1,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)</p>
 </li>
-<li><p>feature 수 : 200개 이상</p>
+<li><p>feature 수 : 200개 이하</p>
 </li>
 </ul>
 <h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
-<li><p>num_leaves : num_leaves를 잘 사용하는 것이 좋음 (2의 max_depth를 제곱해줌. 2의 max_depth 제곱 이하로 해주어야 함.)</p>
+<li><p>max_leaves : max_leaves를 잘 사용하는 것이 좋음 (2의 depth를 제곱해줌. 2의 depth 제곱 이하로 해주어야 함.)</p>
 <pre><code>  63, 127, 255, 511, 1023, 2047
 </code></pre>
 </li>
-<li><p>max_depth : tree의 최대 깊이 (row가 많을수록 크게 해주어야 함)</p>
-<pre><code>  10 ~ 25
+<li><p>iterations : tree 갯수 (tree 갯수, 2억개일 경우 20,000개. 20,000개 이상은 의미가 없음) </p>
+<pre><code>  50 ~ 20000 
 </code></pre>
 </li>
-<li><p>learning_rate : shrinkage factor (n_estimators가 100이면 0.1, 20000이면 0.001을 사용함)</p>
-<pre><code>  0.1 ~ 0.001 
+<li><p>depth : tree의 최대 깊이 (row가 많을수록 크게 해주어야 함)</p>
+<pre><code>  5 ~ 25
 </code></pre>
 </li>
-<li><p>n_estimators : tree 갯수 (데이터가 많을수록 많이 사용함)</p>
-<pre><code>  100 ~ 20000 
-</code></pre>
-</li>
-<li><p>min_child_samples : leaf에 포함되는 최소 갯수 (오버피팅을 방지하기 위함. 적을수록 오버피팅됨)</p>
-<pre><code>  5 ~ 50
+<li><p>learning_rate : shrinkage factor (iterations가 50이면 0.3, 20,000이면 0.001을 사용함)</p>
+<pre><code>  0.3 ~ 0.001 
 </code></pre>
 </li>
 <li><p>reg_lambda : regularization (loss를 크게 해주면, 오버피팅을 줄여줌)</p>
-<pre><code>  0.5 ~ 200
+<pre><code>  0.5 ~ 50
 </code></pre>
 </li>
-<li><p>colsample_bytree : 대부분 0.5이며, 피처가 적으면 0.8을 사용함</p>
-<pre><code>  0.5 ~ 0.8
+<li><p>min_data_in_leaf : leaf에 포함되는 최소 갯수 (오버피팅을 방지하기 위함. 적을수록 오버피팅됨)</p>
+<pre><code>  5 ~ 50
 </code></pre>
 </li>
-<li><p>random_state : reproducibility</p>
-<pre><code>  42 (아무 숫자나 관계 없음)
-</code></pre>
+<li><p>rsm : 0.5 ~ 0.8 (xgboost의 colsample_bynode와 같음[컬럼 갯수 비율]. random subspace method)</p>
 </li>
 </ul>
-<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> lightgbm.sklearn <span class="keyword">import</span> LGBMRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line">model = LGBMRegressor(num_leaves=<span class="number">1023</span>, <span class="comment"># [2**10-1, 2**11-1, 2**12-1]</span></span><br><span class="line">                        max_depth=<span class="number">13</span>, <span class="comment"># num_leaves의 2의 n 제곱으로 계산</span></span><br><span class="line">                        learning_rate=<span class="number">0.01</span>,</span><br><span class="line">                        n_estimators=<span class="number">200</span>,</span><br><span class="line">                        min_child_samples=<span class="number">10</span>,</span><br><span class="line">                        reg_lambda=<span class="number">5.0</span>,</span><br><span class="line">                        colsample_bytree=<span class="number">0.5</span>, <span class="comment"># 피쳐 갯수 * colsample_bytree</span></span><br><span class="line">                        random_state=<span class="number">42</span>,</span><br><span class="line">                        verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                        )</span><br><span class="line">    </span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
+<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line"> model = CatBoostRegressor(max_leaves=<span class="number">511</span></span><br><span class="line">                        iterations=<span class="number">1000</span>,</span><br><span class="line">                        depth=<span class="number">5</span>,</span><br><span class="line">                        learning_rate=<span class="number">0.3</span>,</span><br><span class="line">                        reg_lambda=<span class="number">0.5</span>,</span><br><span class="line">                        min_data_in_leaf=<span class="number">5</span>,</span><br><span class="line">                        rsm=<span class="number">0.5</span>,</span><br><span class="line">                        random_seed=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -250,21 +245,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/CatBoost/" rel="tag"># CatBoost</a>
               <a href="/tags/Hyperparameter/" rel="tag"># Hyperparameter</a>
-              <a href="/tags/LightGBM/" rel="tag"># LightGBM</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/11/30/XGBoost/" rel="prev" title="XGBoost">
-                  <i class="fa fa-angle-left"></i> XGBoost
+                <a href="/2023/11/30/LightGBM/" rel="prev" title="LightGBM">
+                  <i class="fa fa-angle-left"></i> LightGBM
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/12/04/CatBoost/" rel="next" title="CatBoost">
-                  CatBoost <i class="fa fa-angle-right"></i>
+                <a href="/2023/12/28/Conda-Jupyter-Notebook/" rel="next" title="Conda환경에서 Jupyter Notebook 실행하기">
+                  Conda환경에서 Jupyter Notebook 실행하기 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

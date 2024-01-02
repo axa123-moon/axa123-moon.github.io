@@ -27,11 +27,11 @@
 <meta property="og:description" content="안녕하세요?EDA 진행관련 자주 사용하는 python code를 기록하였습니다. 1. 데이터의 기본 정보 보기 데이터 읽어 오기 1df &#x3D; pd.read_csv(path_house)  DataFrame 데이터 보기 1df.head()  DataFrame의 info 보기 1df.info()  DataFrame의 description 보기 12df.descri">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-21T01:49:17.000Z">
-<meta property="article:modified_time" content="2023-11-30T08:00:56.252Z">
+<meta property="article:modified_time" content="2023-12-28T06:28:31.966Z">
 <meta property="article:author" content="axa123">
+<meta property="article:tag" content="EDA">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Pandas">
-<meta property="article:tag" content="EDA">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,12 +120,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -188,7 +188,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-11-30 17:00:56" itemprop="dateModified" datetime="2023-11-30T17:00:56+09:00">2023-11-30</time>
+      <time title="Modified: 2023-12-28 15:28:31" itemprop="dateModified" datetime="2023-12-28T15:28:31+09:00">2023-12-28</time>
     </span>
 
   
@@ -352,10 +352,10 @@
 </ul>
 <h2 id="9-Date-Feature"><a href="#9-Date-Feature" class="headerlink" title="9. Date Feature"></a>9. Date Feature</h2><ul>
 <li><p>문자열을 datetime 타입으로 변경</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;일시&#x27;</span>:[<span class="string">&#x27;2020.7.1 19:00&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2020.8.1 20:10&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2021.9.1 21:20&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.10.1 22:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.11.1 23:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.12.1 23:40&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2023.1.1 08:30&#x27;</span>]&#125;)</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line">df.info()</span><br><span class="line">df[<span class="string">&#x27;일시&#x27;</span>] = df.일시.apply(pd.to_datetime)</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;일시&#x27;</span>:[<span class="string">&#x27;2020.7.1 19:00&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2020.8.1 20:10&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2021.9.1 21:20&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.10.1 22:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.11.1 23:30&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2022.12.1 23:40&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;2023.1.1 08:30&#x27;</span>]&#125;)</span><br><span class="line">df</span><br><span class="line"></span><br><span class="line"><span class="comment">#df[&#x27;일시&#x27;] = pd.to_datetime(df[&#x27;일시&#x27;])</span></span><br><span class="line"><span class="comment">#df.info()</span></span><br><span class="line"></span><br><span class="line">df[<span class="string">&#x27;일시&#x27;</span>] = df.일시.apply(pd.to_datetime)</span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>데이터 관련 값 할당하기</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">df = df.assign(</span><br><span class="line">            year=df.일시.dt.year,</span><br><span class="line">            month=df.일시.dt.month,</span><br><span class="line">            day=df.일시.dt.day,</span><br><span class="line">            hour=df.일시.dt.hour,</span><br><span class="line">            minute=df.일시.dt.minute,</span><br><span class="line">    </span><br><span class="line">            quarter=df.일시.dt.quarter,</span><br><span class="line">            weekday=df.일시.dt.weekday,</span><br><span class="line">            weekofyear=df.일시.dt.weekofyear,</span><br><span class="line">    </span><br><span class="line">            month_start=df.일시.dt.is_month_start,</span><br><span class="line">            month_end=df.일시.dt.is_month_end,</span><br><span class="line">            quarter_start=df.일시.dt.is_quarter_start,</span><br><span class="line">            quarter_end=df.일시.dt.is_quarter_end,</span><br><span class="line">    </span><br><span class="line">            daysinmonth=df.일시.dt.daysinmonth</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">df.head(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">df = df.assign(</span><br><span class="line">            year=df.일시.dt.year,</span><br><span class="line">            month=df.일시.dt.month,</span><br><span class="line">            day=df.일시.dt.day,</span><br><span class="line">            hour=df.일시.dt.hour,</span><br><span class="line">            minute=df.일시.dt.minute,</span><br><span class="line">    </span><br><span class="line">            quarter=df.일시.dt.quarter,</span><br><span class="line">            weekday=df.일시.dt.weekday,</span><br><span class="line">            <span class="comment">#weekofyear=df.일시.dt.weekofyear,</span></span><br><span class="line">            weekofyear=df.일시.dt.isocalendar().week,</span><br><span class="line">    </span><br><span class="line">            month_start=df.일시.dt.is_month_start,</span><br><span class="line">            month_end=df.일시.dt.is_month_end,</span><br><span class="line">            quarter_start=df.일시.dt.is_quarter_start,</span><br><span class="line">            quarter_end=df.일시.dt.is_quarter_end,</span><br><span class="line">    </span><br><span class="line">            daysinmonth=df.일시.dt.daysinmonth</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">df.head(<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>datetime 타입에서 년, 월, 일, 시간 추출</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;year&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.year)</span><br><span class="line">df[<span class="string">&#x27;month&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.month)</span><br><span class="line">df[<span class="string">&#x27;day&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x : x.day)</span><br><span class="line">df[<span class="string">&#x27;hour&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x: x.hour)</span><br><span class="line">df[<span class="string">&#x27;minute&#x27;</span>] = df.일시.apply(<span class="keyword">lambda</span> x: x.minute)</span><br></pre></td></tr></table></figure>
@@ -432,9 +432,9 @@
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/EDA/" rel="tag"># EDA</a>
               <a href="/tags/Python/" rel="tag"># Python</a>
               <a href="/tags/Pandas/" rel="tag"># Pandas</a>
-              <a href="/tags/EDA/" rel="tag"># EDA</a>
           </div>
 
         
