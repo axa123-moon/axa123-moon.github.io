@@ -19,32 +19,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="상관관계 그래프 보기 1. 필요 라이브러리12345import pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snsfrom sklearn.datasets import load_diabetes  2. 데이터 로드123456# 당뇨병 데이터셋을 로드diabetes &#x3D;">
+    <meta name="description" content="Target과 Feature들 간의 상관관계 hist 그래프 보기 1. 필요 라이브러리12345import pandas as pdimport numpy as npimport matplotlib.pyplot as pltfrom sklearn.datasets import load_breast_cancer  2. 데이터 로드12345678910# 데이터셋을 로드">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Correlation">
-<meta property="og:url" content="https://axa123-moon.github.io/2024/01/17/Correlation/index.html">
+<meta property="og:title" content="EDA_Binary_Classification_01">
+<meta property="og:url" content="https://axa123-moon.github.io/2024/01/17/EDA-Binary-Classification-01/index.html">
 <meta property="og:site_name" content="AI Beginner&#39;s Blog">
-<meta property="og:description" content="상관관계 그래프 보기 1. 필요 라이브러리12345import pandas as pdimport numpy as npimport matplotlib.pyplot as pltimport seaborn as snsfrom sklearn.datasets import load_diabetes  2. 데이터 로드123456# 당뇨병 데이터셋을 로드diabetes &#x3D;">
+<meta property="og:description" content="Target과 Feature들 간의 상관관계 hist 그래프 보기 1. 필요 라이브러리12345import pandas as pdimport numpy as npimport matplotlib.pyplot as pltfrom sklearn.datasets import load_breast_cancer  2. 데이터 로드12345678910# 데이터셋을 로드">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://axa123-moon.github.io/images/Correlation/01.PNG">
-<meta property="article:published_time" content="2024-01-17T02:33:15.000Z">
-<meta property="article:modified_time" content="2024-01-17T03:33:06.155Z">
+<meta property="og:image" content="https://axa123-moon.github.io/images/EDA-Binary-Classification-01/01.PNG">
+<meta property="article:published_time" content="2024-01-17T03:53:58.000Z">
+<meta property="article:modified_time" content="2024-01-17T04:01:24.716Z">
 <meta property="article:author" content="axa123">
 <meta property="article:tag" content="Correlation">
-<meta property="article:tag" content="coefficients">
-<meta property="article:tag" content="heatmap">
+<meta property="article:tag" content="EDA">
+<meta property="article:tag" content="Binary Classification">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://axa123-moon.github.io/images/Correlation/01.PNG">
+<meta name="twitter:image" content="https://axa123-moon.github.io/images/EDA-Binary-Classification-01/01.PNG">
 
 
-<link rel="canonical" href="https://axa123-moon.github.io/2024/01/17/Correlation/">
+<link rel="canonical" href="https://axa123-moon.github.io/2024/01/17/EDA-Binary-Classification-01/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/01/17/Correlation/","path":"2024/01/17/Correlation/","title":"Correlation"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/01/17/EDA-Binary-Classification-01/","path":"2024/01/17/EDA-Binary-Classification-01/","title":"EDA_Binary_Classification_01"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Correlation | AI Beginner's Blog</title>
+<title>EDA_Binary_Classification_01 | AI Beginner's Blog</title>
   
 
 
@@ -154,7 +154,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/01/17/Correlation/">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/01/17/EDA-Binary-Classification-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,12 +167,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Correlation | AI Beginner's Blog">
+      <meta itemprop="name" content="EDA_Binary_Classification_01 | AI Beginner's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Correlation
+          EDA_Binary_Classification_01
         </h1>
 
         <div class="post-meta-container">
@@ -184,7 +184,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-01-17 11:33:15 / Modified: 12:33:06" itemprop="dateCreated datePublished" datetime="2024-01-17T11:33:15+09:00">2024-01-17</time>
+      <time title="Created: 2024-01-17 12:53:58 / Modified: 13:01:24" itemprop="dateCreated datePublished" datetime="2024-01-17T12:53:58+09:00">2024-01-17</time>
     </span>
 
   
@@ -196,14 +196,14 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>상관관계 그래프 보기</p>
-<h2 id="1-필요-라이브러리"><a href="#1-필요-라이브러리" class="headerlink" title="1. 필요 라이브러리"></a>1. 필요 라이브러리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_diabetes</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><p>Target과 Feature들 간의 상관관계 hist 그래프 보기</p>
+<h2 id="1-필요-라이브러리"><a href="#1-필요-라이브러리" class="headerlink" title="1. 필요 라이브러리"></a>1. 필요 라이브러리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-데이터-로드"><a href="#2-데이터-로드" class="headerlink" title="2. 데이터 로드"></a>2. 데이터 로드</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 당뇨병 데이터셋을 로드</span></span><br><span class="line">diabetes = load_diabetes(scaled=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 분석에 필요한 정보만 가져온 후, pandas 데이터프레임으로 변환</span></span><br><span class="line">data = diabetes[<span class="string">&quot;data&quot;</span>]</span><br><span class="line">data = pd.DataFrame(data, columns=diabetes[<span class="string">&quot;feature_names&quot;</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="2-데이터-로드"><a href="#2-데이터-로드" class="headerlink" title="2. 데이터 로드"></a>2. 데이터 로드</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터셋을 로드</span></span><br><span class="line">cancer = load_breast_cancer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># data와 target 로드</span></span><br><span class="line">data = cancer[<span class="string">&quot;data&quot;</span>]</span><br><span class="line">target = cancer[<span class="string">&quot;target&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 음성(malignant)과 양성(benign) 데이터 분리</span></span><br><span class="line">malignant = data[target == <span class="number">0</span>]</span><br><span class="line">benign = data[target == <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-상관관계-그래프-보기"><a href="#3-상관관계-그래프-보기" class="headerlink" title="3. 상관관계 그래프 보기"></a>3. 상관관계 그래프 보기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터의 상관계수 행렬을 생성</span></span><br><span class="line">corr = data.corr(numeric_only=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># figure에서 생략될 부분을 지정하는 mask 행렬을 생성</span></span><br><span class="line">mask = np.ones_like(corr, dtype=<span class="built_in">bool</span>)</span><br><span class="line">mask = np.triu(mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 시각화될 그림의 크기를 지정</span></span><br><span class="line"><span class="comment"># 히트맵 형태로 상관행렬 시각화하기</span></span><br><span class="line">plt.figure(figsize=(<span class="number">13</span>,<span class="number">10</span>))</span><br><span class="line">sns.heatmap(data=corr, annot=<span class="literal">True</span>, fmt=<span class="string">&#x27;.2f&#x27;</span>, mask=mask, linewidths=<span class="number">.5</span>, cmap=<span class="string">&#x27;RdYlBu_r&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Correlation Matrix&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="3-상관관계-그래프-보기"><a href="#3-상관관계-그래프-보기" class="headerlink" title="3. 상관관계 그래프 보기"></a>3. 상관관계 그래프 보기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 시각화를 진행하여 어떤 Feature와 Target이 분리가 잘되어 있는지 확인</span></span><br><span class="line">plt.figure(figsize=[<span class="number">20</span>,<span class="number">30</span>])</span><br><span class="line"><span class="keyword">for</span> feature_idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">30</span>):</span><br><span class="line">    plt.subplot(<span class="number">10</span>, <span class="number">3</span>, feature_idx + <span class="number">1</span>)</span><br><span class="line">    plt.hist(malignant[:, feature_idx], bins=<span class="number">20</span>, alpha=<span class="number">0.3</span>)</span><br><span class="line">    plt.hist(benign[:, feature_idx], bins=<span class="number">20</span>, alpha=<span class="number">0.3</span>)</span><br><span class="line">    plt.title(cancer[<span class="string">&quot;feature_names&quot;</span>][feature_idx])</span><br><span class="line">    plt.legend(cancer[<span class="string">&quot;target_names&quot;</span>])</span><br><span class="line">    plt.xticks([])</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/Correlation/01.PNG"></p>
+<p><img src="/images/EDA-Binary-Classification-01/01.PNG"></p>
 
     </div>
 
@@ -214,22 +214,19 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/Correlation/" rel="tag"># Correlation</a>
-              <a href="/tags/coefficients/" rel="tag"># coefficients</a>
-              <a href="/tags/heatmap/" rel="tag"># heatmap</a>
+              <a href="/tags/EDA/" rel="tag"># EDA</a>
+              <a href="/tags/Binary-Classification/" rel="tag"># Binary Classification</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/01/03/Optuna/" rel="prev" title="Optuna 사용하기">
-                  <i class="fa fa-angle-left"></i> Optuna 사용하기
+                <a href="/2024/01/17/Correlation/" rel="prev" title="Correlation">
+                  <i class="fa fa-angle-left"></i> Correlation
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/01/17/EDA-Binary-Classification-01/" rel="next" title="EDA_Binary_Classification_01">
-                  EDA_Binary_Classification_01 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
