@@ -19,38 +19,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="안녕하세요. 저의 블로그에 오신것을 환영합니다. 블로그 제작 관련 내용입니다. 설치관련 순서는 아래와 같습니다.  nodejs 설치  hexo  설치  hexo로 블로그 작성 및 생성hexo new post “My first post”hexo clean &amp;&amp; hexo generate  github repository 생성  hexo 환경설정_">
+    <meta name="description" content="Jupyter notebook에서 Url을 이용하여 다운로드하는 코드입니다. 123456789101112131415161718192021222324252627282930import requestsimport pathlibpathlib.Path(&quot;coco_imgs&quot;).mkdir(parents&#x3D;True, exist_ok&#x3D;True)urls &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="블로그 제작하기 위한 환경 설정">
-<meta property="og:url" content="https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/index.html">
+<meta property="og:title" content="DownloadFromUrl">
+<meta property="og:url" content="https://axa123-moon.github.io/2024/01/30/DownloadFromUrl/index.html">
 <meta property="og:site_name" content="AI Beginner&#39;s Blog">
-<meta property="og:description" content="안녕하세요. 저의 블로그에 오신것을 환영합니다. 블로그 제작 관련 내용입니다. 설치관련 순서는 아래와 같습니다.  nodejs 설치  hexo  설치  hexo로 블로그 작성 및 생성hexo new post “My first post”hexo clean &amp;&amp; hexo generate  github repository 생성  hexo 환경설정_">
+<meta property="og:description" content="Jupyter notebook에서 Url을 이용하여 다운로드하는 코드입니다. 123456789101112131415161718192021222324252627282930import requestsimport pathlibpathlib.Path(&quot;coco_imgs&quot;).mkdir(parents&#x3D;True, exist_ok&#x3D;True)urls &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-21T00:27:53.000Z">
-<meta property="article:modified_time" content="2024-01-02T06:53:13.592Z">
+<meta property="article:published_time" content="2024-01-30T06:33:18.000Z">
+<meta property="article:modified_time" content="2024-01-30T06:36:41.526Z">
 <meta property="article:author" content="axa123">
-<meta property="article:tag" content="패스트캠퍼스">
-<meta property="article:tag" content="UpstageAILab">
-<meta property="article:tag" content="Upstage">
-<meta property="article:tag" content="부트캠프">
-<meta property="article:tag" content="AI">
-<meta property="article:tag" content="데이터사이언스">
-<meta property="article:tag" content="무료교육">
-<meta property="article:tag" content="국비지원">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="git">
+<meta property="article:tag" content="download from url">
+<meta property="article:tag" content="jupyter notebook">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/">
+<link rel="canonical" href="https://axa123-moon.github.io/2024/01/30/DownloadFromUrl/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/","path":"2023/11/21/Blog_Setting_Deploy/","title":"블로그 제작하기 위한 환경 설정"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/01/30/DownloadFromUrl/","path":"2024/01/30/DownloadFromUrl/","title":"DownloadFromUrl"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>블로그 제작하기 위한 환경 설정 | AI Beginner's Blog</title>
+<title>DownloadFromUrl | AI Beginner's Blog</title>
   
 
 
@@ -102,7 +93,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -115,7 +106,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">1.</span> <span class="nav-text">reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -160,7 +150,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/21/Blog_Setting_Deploy/">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/01/30/DownloadFromUrl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -173,12 +163,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="블로그 제작하기 위한 환경 설정 | AI Beginner's Blog">
+      <meta itemprop="name" content="DownloadFromUrl | AI Beginner's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          블로그 제작하기 위한 환경 설정
+          DownloadFromUrl
         </h1>
 
         <div class="post-meta-container">
@@ -188,15 +178,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2023-11-21 09:27:53" itemprop="dateCreated datePublished" datetime="2023-11-21T09:27:53+09:00">2023-11-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-02 15:53:13" itemprop="dateModified" datetime="2024-01-02T15:53:13+09:00">2024-01-02</time>
+      <time title="Created: 2024-01-30 15:33:18 / Modified: 15:36:41" itemprop="dateCreated datePublished" datetime="2024-01-30T15:33:18+09:00">2024-01-30</time>
     </span>
 
   
@@ -208,32 +192,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>안녕하세요. 저의 블로그에 오신것을 환영합니다.</p>
-<p>블로그 제작 관련 내용입니다.</p>
-<p>설치관련 순서는 아래와 같습니다.</p>
-<ol>
-<li><p>nodejs 설치</p>
-</li>
-<li><p>hexo  설치</p>
-</li>
-<li><p>hexo로 블로그 작성 및 생성<br>hexo new post “My first post”<br>hexo clean &amp;&amp; hexo generate</p>
-</li>
-<li><p>github repository 생성</p>
-</li>
-<li><p>hexo 환경설정<br>_config.yml 파일 수정 및 저장</p>
-</li>
-<li><p>local서버에서 배포 후 확인<br>hexo server</p>
-</li>
-<li><p>github 배포<br>hexo deploy</p>
-</li>
-<li><p>theme 교체</p>
-</li>
-<li><p>github 재배포</p>
-</li>
-</ol>
-<p>hexo를 사용하여 제작한 blog를 github에 배포하는 동영상 정보를 공유합니다.</p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=lATUeAYJygc">https://www.youtube.com/watch?v=lATUeAYJygc</a></p>
-<p>감사합니다.</p>
+    <div class="post-body" itemprop="articleBody"><p>Jupyter notebook에서 Url을 이용하여 다운로드하는 코드입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pathlib</span><br><span class="line"></span><br><span class="line">pathlib.Path(<span class="string">&quot;coco_imgs&quot;</span>).mkdir(parents=<span class="literal">True</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">urls = [</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000000073.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000000285.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000000397.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000000827.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000001448.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000002753.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000006211.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000018893.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000038355.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000041276.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000050124.jpg&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;http://images.cocodataset.org/val2014/COCO_val2014_000000053503.jpg&#x27;</span>    </span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line"></span><br><span class="line">    filename = <span class="string">&#x27;./coco_imgs/&#x27;</span> + url.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">    file = pathlib.Path(filename)</span><br><span class="line">    <span class="keyword">if</span> file.exists ():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;filename&#125;</span> is existed!&#x27;</span>)   </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        r = requests.get(url, allow_redirects=<span class="literal">True</span>)</span><br><span class="line">        <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>).write(r.content)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;filename&#125;</span> is downloaded!&#x27;</span>)   </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Download is completed!!!&#x27;</span>)    </span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -243,28 +203,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/" rel="tag"># 패스트캠퍼스</a>
-              <a href="/tags/UpstageAILab/" rel="tag"># UpstageAILab</a>
-              <a href="/tags/Upstage/" rel="tag"># Upstage</a>
-              <a href="/tags/%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/" rel="tag"># 부트캠프</a>
-              <a href="/tags/AI/" rel="tag"># AI</a>
-              <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/" rel="tag"># 데이터사이언스</a>
-              <a href="/tags/%EB%AC%B4%EB%A3%8C%EA%B5%90%EC%9C%A1/" rel="tag"># 무료교육</a>
-              <a href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90/" rel="tag"># 국비지원</a>
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
-              <a href="/tags/blog/" rel="tag"># blog</a>
-              <a href="/tags/git/" rel="tag"># git</a>
+              <a href="/tags/download-from-url/" rel="tag"># download from url</a>
+              <a href="/tags/jupyter-notebook/" rel="tag"># jupyter notebook</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2024/01/17/EDA-Binary-Classification-01/" rel="prev" title="EDA_Binary_Classification_01">
+                  <i class="fa fa-angle-left"></i> EDA_Binary_Classification_01
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/11/21/EDA-Processing/" rel="next" title="EDA Processing">
-                  EDA Processing <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
