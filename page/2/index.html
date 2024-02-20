@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,118 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/27/RandomForest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/27/RandomForest/" class="post-title-link" itemprop="url">RandomForest</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-11-27 10:12:31" itemprop="dateCreated datePublished" datetime="2023-11-27T10:12:31+09:00">2023-11-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-01-02 15:53:44" itemprop="dateModified" datetime="2024-01-02T15:53:44+09:00">2024-01-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>RandomForest Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
+<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
+<li><p>row 수 : 10,000개 이하</p>
+</li>
+<li><p>feature 수 : 100개 이하</p>
+</li>
+</ul>
+<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
+<li><p>max_depth : tree의 최대 깊이</p>
+<pre><code>  3 ~ 15
+</code></pre>
+</li>
+<li><p>max_features : feature sampling rate</p>
+<pre><code>  0.5 ~ 0.8 (피처가 20개 미만일 경우 0.8사용)
+</code></pre>
+</li>
+<li><p>criterion : 회귀일때 사용<br>  1. squared_error<br>  2. absolute_error</p>
+</li>
+<li><p>min_samples_split : 분할할 최소 갯수</p>
+<pre><code>  2 ~ 50
+</code></pre>
+</li>
+<li><p>min_samples_leaf : 마지막 leaf에 갯수</p>
+<pre><code>  1 ~ 50
+</code></pre>
+</li>
+<li><p>n_estimators : number of tree</p>
+<pre><code>  50 ~ 200
+</code></pre>
+</li>
+<li><p>random_state : reproducibility</p>
+<pre><code>  42 (아무 숫자나 관계 없음)
+</code></pre>
+</li>
+<li><p>n_jobs : number of cpu cores<br>  1. n : 최대 core수 - 2개 (개인 컴퓨터의 경우)<br>  2. -1 : 전체 core (개인 컴퓨터의 경우 사용하지 말 것)</p>
+</li>
+</ul>
+<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line">model = RandomForestRegressor(n_estimators=<span class="number">200</span>,</span><br><span class="line">                               max_depth=<span class="number">15</span>,</span><br><span class="line">                               max_features=<span class="number">0.7</span>,</span><br><span class="line">                               min_samples_split=<span class="number">10</span>,</span><br><span class="line">                               min_samples_leaf=<span class="number">5</span>,</span><br><span class="line">                               random_state=<span class="number">42</span>,</span><br><span class="line">                               n_jobs=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
