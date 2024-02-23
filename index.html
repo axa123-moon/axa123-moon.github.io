@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,109 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/02/23/CNN-layer-visualization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/23/CNN-layer-visualization/" class="post-title-link" itemprop="url">CNN layer visualization</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-23 16:38:47 / Modified: 17:37:25" itemprop="dateCreated datePublished" datetime="2024-02-23T16:38:47+09:00">2024-02-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="CNN-Layer별-시각화"><a href="#CNN-Layer별-시각화" class="headerlink" title="CNN Layer별 시각화"></a>CNN Layer별 시각화</h1><ul>
+<li>CNN 각각의 레이어에서 Feature Map 내용 시각화 보기</li>
+</ul>
+<h3 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h3><ul>
+<li>Library Import</li>
+<li>Model Load</li>
+<li>Image Load</li>
+<li>Save Layer </li>
+<li>Layer Visualization</li>
+</ul>
+<h2 id="1-Library-Import"><a href="#1-Library-Import" class="headerlink" title="1. Library Import"></a>1. Library Import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> PIL </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> T</span><br><span class="line"></span><br><span class="line"><span class="comment"># seed 고정</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> torch.backends.cudnn <span class="keyword">as</span> cudnn</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">random_seed</span>(<span class="params">seed_num</span>):</span><br><span class="line">    torch.manual_seed(seed_num)</span><br><span class="line">    torch.cuda.manual_seed(seed_num)</span><br><span class="line">    torch.cuda.manual_seed_all(seed_num)</span><br><span class="line">    cudnn.benchmark = <span class="literal">False</span></span><br><span class="line">    cudnn.deterministic = <span class="literal">True</span></span><br><span class="line">    random.seed(seed_num)</span><br><span class="line"></span><br><span class="line">random_seed(<span class="number">2024</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Model-Load"><a href="#2-Model-Load" class="headerlink" title="2. Model Load"></a>2. Model Load</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 원하는 모델을 torch.hub에서 불러옵니다</span></span><br><span class="line">model = torch.hub.load(<span class="string">&#x27;pytorch/vision&#x27;</span>, <span class="string">&#x27;resnet18&#x27;</span>, pretrained=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 가속 환경을 설정해 줍니다</span></span><br><span class="line">device = <span class="string">&#x27;cpu&#x27;</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = <span class="string">&#x27;cuda&#x27;</span></span><br><span class="line">model = model.to(device)</span><br><span class="line"></span><br><span class="line"><span class="comment">#모델을 evaluation mode로 설정해 줍니다</span></span><br><span class="line">model.<span class="built_in">eval</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Image-Load"><a href="#3-Image-Load" class="headerlink" title="3. Image Load"></a>3. Image Load</h2><ul>
+<li>참고할만한 자료:</li>
+</ul>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA 사이트</a></li>
+<li><a target="_blank" rel="noopener" href="https://kr.freepik.com/free-photo/smiling-asian-young-woman-face-portrait_19009019.htm#query=%EC%82%AC%EB%9E%8C%20%EC%96%BC%EA%B5%B4&position=0&from_view=keyword&track=ais&uuid=4aa8a80d-cb2f-4cb1-8630-cc8bdbac6740%22%3E">출처 Freepik 작가 rawpixel.com</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">im = Image.<span class="built_in">open</span>(<span class="string">&quot;face3.jpg&quot;</span>)</span><br><span class="line">plt.imshow(im)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CNNlLayerVisualization/01.PNG"></p>
+<h2 id="4-Save-Layer"><a href="#4-Save-Layer" class="headerlink" title="4. Save Layer"></a>4. Save Layer</h2><ul>
+<li>입력 이미지가 각 convolution layer를 거친 후의 output shape를 확인<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">preprocess = torchvision.transforms.Compose([</span><br><span class="line">    torchvision.transforms.Resize(<span class="number">256</span>),</span><br><span class="line">    torchvision.transforms.CenterCrop(<span class="number">224</span>),</span><br><span class="line">    torchvision.transforms.ToTensor(),</span><br><span class="line">    torchvision.transforms.Normalize(mean=[<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>], std=[<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>]),</span><br><span class="line">])</span><br><span class="line">im_tensor = preprocess(im)</span><br><span class="line">im_tensor = im_tensor.unsqueeze(<span class="number">0</span>).to(device) <span class="comment"># 이미지를 batch 형태로 바꾸어 줌</span></span><br><span class="line"><span class="comment">#print(im.size, im_tensor.shape)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 저장할 Convolution Layer를 list에 저장</span></span><br><span class="line">conv_layers = []</span><br><span class="line"></span><br><span class="line">model_children = <span class="built_in">list</span>(model.children())</span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델을 구성하는 Layer들 중 nn.Conv2d 레이어들의 이름 저장</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(model_children)):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">type</span>(model_children[i]) == nn.Conv2d:</span><br><span class="line">        counter+=<span class="number">1</span></span><br><span class="line">        conv_layers.append(model_children[i])</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">type</span>(model_children[i]) == nn.Sequential:</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(model_children[i])):</span><br><span class="line">            <span class="keyword">for</span> child <span class="keyword">in</span> model_children[i][j].children():</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">type</span>(child) == nn.Conv2d:</span><br><span class="line">                    counter+=<span class="number">1</span></span><br><span class="line">                    conv_layers.append(child)</span><br><span class="line"><span class="comment">#print(f&quot;Total convolution layers: &#123;counter&#125;&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># conv_layer에 저장된 convolution layer를 거친 후의 결과를 outputs에 저장</span></span><br><span class="line"><span class="comment"># outputs에 저장된 결과는 해당 레이어를 거치고 난 다음의 Feature Map을 의미</span></span><br><span class="line">outputs = []</span><br><span class="line">names = []</span><br><span class="line">im_tensor_ = im_tensor</span><br><span class="line"><span class="keyword">for</span> i, layer <span class="keyword">in</span> <span class="built_in">enumerate</span>(conv_layers):</span><br><span class="line">    im_tensor_ = layer(im_tensor_)</span><br><span class="line">    outputs.append(im_tensor_)</span><br><span class="line">    names.append(<span class="built_in">str</span>(layer))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Convolution Layer들을 거치면서 Feature Map의 Shape이 어떻게 달라지는지 확인</span></span><br><span class="line"><span class="comment"># 4개의 conv layer마다 output의 channel 수는 2배가 되고 W,H는 각각 1/2이 됨</span></span><br><span class="line"><span class="keyword">for</span> i, feature_map <span class="keyword">in</span> <span class="built_in">enumerate</span>(outputs):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Output shape of conv-[<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>] layer: <span class="subst">&#123;<span class="built_in">tuple</span>(feature_map.shape)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="/images/CNNlLayerVisualization/02.PNG"></p>
+<h2 id="5-Layer-Visualization"><a href="#5-Layer-Visualization" class="headerlink" title="5. Layer Visualization"></a>5. Layer Visualization</h2><ul>
+<li>convolution layer를 거친 output을 시각화하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 저장한 Feature Map을 시각화하기 위해 전처리</span></span><br><span class="line">processed = []</span><br><span class="line"><span class="keyword">for</span> feature_map <span class="keyword">in</span> outputs:</span><br><span class="line">    feature_map = feature_map.squeeze(<span class="number">0</span>)</span><br><span class="line">    gray_scale = torch.<span class="built_in">sum</span>(feature_map,<span class="number">0</span>) / feature_map.shape[<span class="number">0</span>]</span><br><span class="line">    processed.append(gray_scale.data.cpu().numpy())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 단계별 Feature Map의 결과</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">15</span>, <span class="number">15</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(processed)):</span><br><span class="line">    a = fig.add_subplot(<span class="number">6</span>, <span class="number">6</span>, i+<span class="number">1</span>)</span><br><span class="line">    imgplot = plt.imshow(processed[i], cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">    a.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">    a.set_title(names[i].split(<span class="string">&#x27;(&#x27;</span>)[<span class="number">0</span>]+<span class="string">&#x27;-[&#x27;</span>+<span class="built_in">str</span>(i+<span class="number">1</span>)+<span class="string">&#x27;]&#x27;</span>, fontsize=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CNNlLayerVisualization/03.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -173,7 +276,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-02-20 17:46:21 / Modified: 19:21:33" itemprop="dateCreated datePublished" datetime="2024-02-20T17:46:21+09:00">2024-02-20</time>
+      <time title="Created: 2024-02-20 17:46:21 / Modified: 20:09:32" itemprop="dateCreated datePublished" datetime="2024-02-20T17:46:21+09:00">2024-02-20</time>
     </span>
 
   
@@ -1091,116 +1194,6 @@
 </ul>
 <h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> lightgbm.sklearn <span class="keyword">import</span> LGBMRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line">model = LGBMRegressor(num_leaves=<span class="number">1023</span>, <span class="comment"># [2**10-1, 2**11-1, 2**12-1]</span></span><br><span class="line">                        max_depth=<span class="number">13</span>, <span class="comment"># num_leaves의 2의 n 제곱으로 계산</span></span><br><span class="line">                        learning_rate=<span class="number">0.01</span>,</span><br><span class="line">                        n_estimators=<span class="number">200</span>,</span><br><span class="line">                        min_child_samples=<span class="number">10</span>,</span><br><span class="line">                        reg_lambda=<span class="number">5.0</span>,</span><br><span class="line">                        colsample_bytree=<span class="number">0.5</span>, <span class="comment"># 피쳐 갯수 * colsample_bytree</span></span><br><span class="line">                        random_state=<span class="number">42</span>,</span><br><span class="line">                        verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                        )</span><br><span class="line">    </span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/30/XGBoost/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/30/XGBoost/" class="post-title-link" itemprop="url">XGBoost</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-11-30 15:24:32" itemprop="dateCreated datePublished" datetime="2023-11-30T15:24:32+09:00">2023-11-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-02 15:53:56" itemprop="dateModified" datetime="2024-01-02T15:53:56+09:00">2024-01-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>XGBoost Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
-<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
-<li><p>row 수 : 1000 &lt; N &lt; 30,000</p>
-</li>
-<li><p>feature 수 : 200개 이하</p>
-</li>
-</ul>
-<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
-<li><p>max_depth : tree의 최대 깊이</p>
-<pre><code>  5 ~ 15
-</code></pre>
-</li>
-<li><p>colsample_bynode : sampling in each split</p>
-<pre><code>  0.5 ~ 0.8  (피처가 20개 미만일 경우 0.8사용) 
-</code></pre>
-</li>
-<li><p>reg_lambda : regularization (loss를 크게 해주면, 오버피팅을 줄여줌)</p>
-<pre><code>  0.5 ~ 20
-</code></pre>
-</li>
-<li><p>n_estimators : tree 갯수 (tree를 많이 사용하면 오버피팅이 되는 경향이 있음)</p>
-<pre><code>  50 ~ 2000 
-</code></pre>
-</li>
-<li><p>learning_rate : shrinkage factor (n_estimators가 50이면 0.3, 2000이면 0.01을 사용함) </p>
-<pre><code>  0.3 ~ 0.01 
-</code></pre>
-</li>
-<li><p>tree_method :<br>  1. exact - 모든 데이터를 사용 (default)<br>  2. hist - 히스토그램 단위로 사용 (데이터가 많으면 hist 사용)<br>  3. gpu_hist - gpu 사용</p>
-</li>
-<li><p>colsample_bytree : sampling in each tree (잘 사용하지 않음)</p>
-</li>
-<li><p>colsample_bylevel : sampling in each level (잘 사용하지 않음)</p>
-</li>
-</ul>
-<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> xgboost.sklearn <span class="keyword">import</span> XGBRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line">model = XGBRegressor(max_depth=<span class="number">13</span>, <span class="comment"># num_leaves의 2의 n 제곱으로 계산</span></span><br><span class="line">                        colsample_bynode = <span class="number">0.8</span>,</span><br><span class="line">                        reg_lambda=<span class="number">5.0</span>,</span><br><span class="line">                        n_estimators=<span class="number">200</span>,</span><br><span class="line">                        learning_rate=<span class="number">0.3</span>,</span><br><span class="line">                        random_state=<span class="number">42</span>,</span><br><span class="line">                        verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                        )</span><br><span class="line">    </span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
