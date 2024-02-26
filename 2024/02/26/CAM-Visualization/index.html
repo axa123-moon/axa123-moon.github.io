@@ -29,10 +29,8 @@
 <meta property="og:image" content="https://axa123-moon.github.io/images/CAMVisualization/01.PNG">
 <meta property="og:image" content="https://axa123-moon.github.io/images/CAMVisualization/02.PNG">
 <meta property="article:published_time" content="2024-02-26T03:58:15.000Z">
-<meta property="article:modified_time" content="2024-02-26T06:24:32.989Z">
+<meta property="article:modified_time" content="2024-02-26T07:30:06.940Z">
 <meta property="article:author" content="axa123">
-<meta property="article:tag" content="CNN">
-<meta property="article:tag" content="grad cam">
 <meta property="article:tag" content="패스트캠퍼스">
 <meta property="article:tag" content="UpstageAILab">
 <meta property="article:tag" content="Upstage">
@@ -41,6 +39,8 @@
 <meta property="article:tag" content="데이터사이언스">
 <meta property="article:tag" content="무료교육">
 <meta property="article:tag" content="국비지원">
+<meta property="article:tag" content="CNN">
+<meta property="article:tag" content="grad cam">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://axa123-moon.github.io/images/CAMVisualization/01.PNG">
 
@@ -192,7 +192,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-02-26 12:58:15 / Modified: 15:24:32" itemprop="dateCreated datePublished" datetime="2024-02-26T12:58:15+09:00">2024-02-26</time>
+      <time title="Created: 2024-02-26 12:58:15 / Modified: 16:30:06" itemprop="dateCreated datePublished" datetime="2024-02-26T12:58:15+09:00">2024-02-26</time>
     </span>
 
   
@@ -224,7 +224,7 @@
 <h2 id="4-CAM-Visualization"><a href="#4-CAM-Visualization" class="headerlink" title="4.  CAM Visualization"></a>4.  CAM Visualization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pytorch_grad_cam <span class="keyword">import</span> GradCAM</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SemanticSegmentationTarget</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, category, mask</span>):</span><br><span class="line">        self.category = category</span><br><span class="line">        self.mask = torch.from_numpy(mask)</span><br><span class="line">        <span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">            self.mask = self.mask.cuda()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, model_output</span>):</span><br><span class="line">        <span class="keyword">return</span> (model_output[self.category, :, : ] * self.mask).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">target_layers = [model.model.backbone.layer4]</span><br><span class="line">targets = [SemanticSegmentationTarget(car_category, car_mask_float)]</span><br><span class="line"><span class="keyword">with</span> GradCAM(model=model,</span><br><span class="line">             target_layers=target_layers) <span class="keyword">as</span> cam:</span><br><span class="line">    grayscale_cam = cam(input_tensor=input_tensor,</span><br><span class="line">                        targets=targets)[<span class="number">0</span>, :]</span><br><span class="line">    cam_image = show_cam_on_image(rgb_img, grayscale_cam, use_rgb=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">Image.fromarray(cam_image)</span><br></pre></td></tr></table></figure>
 <p><img src="/images/CAMVisualization/02.PNG"></p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://jacobgil.github.io/">https://jacobgil.github.io/</a></li>
+<li><a target="_blank" rel="noopener" href="https://jacobgil.github.io/pytorch-gradcam-book/introduction.html">https://jacobgil.github.io/pytorch-gradcam-book/introduction.html</a></li>
 <li><a target="_blank" rel="noopener" href="https://csm-kr.tistory.com/74">https://csm-kr.tistory.com/74</a></li>
 </ul>
 
@@ -236,8 +236,6 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CNN/" rel="tag"># CNN</a>
-              <a href="/tags/grad-cam/" rel="tag"># grad cam</a>
               <a href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/" rel="tag"># 패스트캠퍼스</a>
               <a href="/tags/UpstageAILab/" rel="tag"># UpstageAILab</a>
               <a href="/tags/Upstage/" rel="tag"># Upstage</a>
@@ -246,6 +244,8 @@
               <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/" rel="tag"># 데이터사이언스</a>
               <a href="/tags/%EB%AC%B4%EB%A3%8C%EA%B5%90%EC%9C%A1/" rel="tag"># 무료교육</a>
               <a href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90/" rel="tag"># 국비지원</a>
+              <a href="/tags/CNN/" rel="tag"># CNN</a>
+              <a href="/tags/grad-cam/" rel="tag"># grad cam</a>
           </div>
 
         
