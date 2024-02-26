@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,123 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/30/LightGBM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/30/LightGBM/" class="post-title-link" itemprop="url">LightGBM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-11-30 15:35:47" itemprop="dateCreated datePublished" datetime="2023-11-30T15:35:47+09:00">2023-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-01-02 15:53:40" itemprop="dateModified" datetime="2024-01-02T15:53:40+09:00">2024-01-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>LightGBM Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
+<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
+<li><p>row 수 : 10,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)</p>
+</li>
+<li><p>feature 수 : 200개 이상</p>
+</li>
+</ul>
+<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
+<li><p>num_leaves : num_leaves를 잘 사용하는 것이 좋음 (2의 max_depth를 제곱해줌. 2의 max_depth 제곱 이하로 해주어야 함.)</p>
+<pre><code>  63, 127, 255, 511, 1023, 2047
+</code></pre>
+</li>
+<li><p>max_depth : tree의 최대 깊이 (row가 많을수록 크게 해주어야 함)</p>
+<pre><code>  10 ~ 25
+</code></pre>
+</li>
+<li><p>learning_rate : shrinkage factor (n_estimators가 100이면 0.1, 20000이면 0.001을 사용함)</p>
+<pre><code>  0.1 ~ 0.001 
+</code></pre>
+</li>
+<li><p>n_estimators : tree 갯수 (데이터가 많을수록 많이 사용함)</p>
+<pre><code>  100 ~ 20000 
+</code></pre>
+</li>
+<li><p>min_child_samples : leaf에 포함되는 최소 갯수 (오버피팅을 방지하기 위함. 적을수록 오버피팅됨)</p>
+<pre><code>  5 ~ 50
+</code></pre>
+</li>
+<li><p>reg_lambda : regularization (loss를 크게 해주면, 오버피팅을 줄여줌)</p>
+<pre><code>  0.5 ~ 200
+</code></pre>
+</li>
+<li><p>colsample_bytree : 대부분 0.5이며, 피처가 적으면 0.8을 사용함</p>
+<pre><code>  0.5 ~ 0.8
+</code></pre>
+</li>
+<li><p>random_state : reproducibility</p>
+<pre><code>  42 (아무 숫자나 관계 없음)
+</code></pre>
+</li>
+</ul>
+<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> lightgbm.sklearn <span class="keyword">import</span> LGBMRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line">model = LGBMRegressor(num_leaves=<span class="number">1023</span>, <span class="comment"># [2**10-1, 2**11-1, 2**12-1]</span></span><br><span class="line">                        max_depth=<span class="number">13</span>, <span class="comment"># num_leaves의 2의 n 제곱으로 계산</span></span><br><span class="line">                        learning_rate=<span class="number">0.01</span>,</span><br><span class="line">                        n_estimators=<span class="number">200</span>,</span><br><span class="line">                        min_child_samples=<span class="number">10</span>,</span><br><span class="line">                        reg_lambda=<span class="number">5.0</span>,</span><br><span class="line">                        colsample_bytree=<span class="number">0.5</span>, <span class="comment"># 피쳐 갯수 * colsample_bytree</span></span><br><span class="line">                        random_state=<span class="number">42</span>,</span><br><span class="line">                        verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                        )</span><br><span class="line">    </span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

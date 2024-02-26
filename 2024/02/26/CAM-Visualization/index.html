@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="모델별 시각화 모델들에 대한 시각화하기 grad-cam 라이브러리를 이용한 CAM 시각화  Contents Library Import Model 및 Image Load Image Visualization CAM Visualization  1. Library Import1234567891011import warningswarnings.filterwarning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CAM Visualization">
+<meta property="og:url" content="https://axa123-moon.github.io/2024/02/26/CAM-Visualization/index.html">
+<meta property="og:site_name" content="AI Beginner&#39;s Blog">
+<meta property="og:description" content="모델별 시각화 모델들에 대한 시각화하기 grad-cam 라이브러리를 이용한 CAM 시각화  Contents Library Import Model 및 Image Load Image Visualization CAM Visualization  1. Library Import1234567891011import warningswarnings.filterwarning">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://axa123-moon.github.io/images/CAMVisualization/01.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/CAMVisualization/02.PNG">
+<meta property="article:published_time" content="2024-02-26T03:58:15.000Z">
+<meta property="article:modified_time" content="2024-02-26T04:14:34.160Z">
+<meta property="article:author" content="axa123">
+<meta property="article:tag" content="패스트캠퍼스">
+<meta property="article:tag" content="UpstageAILab">
+<meta property="article:tag" content="Upstage">
+<meta property="article:tag" content="부트캠프">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="데이터사이언스">
+<meta property="article:tag" content="무료교육">
+<meta property="article:tag" content="국비지원">
+<meta property="article:tag" content="CNN">
+<meta property="article:tag" content="grad cam">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://axa123-moon.github.io/images/CAMVisualization/01.PNG">
+
+
+<link rel="canonical" href="https://axa123-moon.github.io/2024/02/26/CAM-Visualization/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/02/26/CAM-Visualization/","path":"2024/02/26/CAM-Visualization/","title":"CAM Visualization"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CAM Visualization | AI Beginner's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AI Beginner's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EB%AA%A8%EB%8D%B8%EB%B3%84-%EC%8B%9C%EA%B0%81%ED%99%94"><span class="nav-number">1.</span> <span class="nav-text">모델별 시각화</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Contents"><span class="nav-number">1.0.1.</span> <span class="nav-text">Contents</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Library-Import"><span class="nav-number">1.1.</span> <span class="nav-text">1. Library Import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Model-%EB%B0%8F-image-Load"><span class="nav-number">1.2.</span> <span class="nav-text">2. Model 및 image Load</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Image-Visualization"><span class="nav-number">1.3.</span> <span class="nav-text">3.  Image Visualization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-CAM-Visualization"><span class="nav-number">1.4.</span> <span class="nav-text">4.  CAM Visualization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.5.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">axa123</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/02/26/CAM-Visualization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CAM Visualization | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CAM Visualization
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-26 12:58:15 / Modified: 13:14:34" itemprop="dateCreated datePublished" datetime="2024-02-26T12:58:15+09:00">2024-02-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="모델별-시각화"><a href="#모델별-시각화" class="headerlink" title="모델별 시각화"></a>모델별 시각화</h1><ul>
+<li>모델들에 대한 시각화하기</li>
+<li>grad-cam 라이브러리를 이용한 CAM 시각화</li>
+</ul>
+<h3 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h3><ul>
+<li>Library Import</li>
+<li>Model 및 Image Load</li>
+<li>Image Visualization</li>
+<li>CAM Visualization</li>
+</ul>
+<h2 id="1-Library-Import"><a href="#1-Library-Import" class="headerlink" title="1. Library Import"></a>1. Library Import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">warnings.simplefilter(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> torchvision.models.segmentation <span class="keyword">import</span> deeplabv3_resnet50</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pytorch_grad_cam.utils.image <span class="keyword">import</span> show_cam_on_image, preprocess_image</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Model-및-image-Load"><a href="#2-Model-및-image-Load" class="headerlink" title="2. Model 및 image Load"></a>2. Model 및 image Load</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">image_url = <span class="string">&quot;https://farm1.staticflickr.com/6/9606553_ccc7518589_z.jpg&quot;</span></span><br><span class="line">image = np.array(Image.<span class="built_in">open</span>(requests.get(image_url, stream=<span class="literal">True</span>).raw))</span><br><span class="line">rgb_img = np.float32(image) / <span class="number">255</span></span><br><span class="line">input_tensor = preprocess_image(rgb_img,</span><br><span class="line">                                mean=[<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>],</span><br><span class="line">                                std=[<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line"><span class="comment"># Taken from the torchvision tutorial</span></span><br><span class="line"><span class="comment"># https://pytorch.org/vision/stable/auto_examples/plot_visualization_utils.html</span></span><br><span class="line">model = deeplabv3_resnet50(pretrained=<span class="literal">True</span>, progress=<span class="literal">False</span>)</span><br><span class="line">model = model.<span class="built_in">eval</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    model = model.cuda()</span><br><span class="line">    input_tensor = input_tensor.cuda()</span><br><span class="line"></span><br><span class="line">output = model(input_tensor)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(output), output.keys())</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SegmentationModelOutputWrapper</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, model</span>): </span><br><span class="line">        <span class="built_in">super</span>(SegmentationModelOutputWrapper, self).__init__()</span><br><span class="line">        self.model = model</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="keyword">return</span> self.model(x)[<span class="string">&quot;out&quot;</span>]</span><br><span class="line">    </span><br><span class="line">model = SegmentationModelOutputWrapper(model)</span><br><span class="line">output = model(input_tensor)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Image-Visualization"><a href="#3-Image-Visualization" class="headerlink" title="3.  Image Visualization"></a>3.  Image Visualization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">normalized_masks = torch.nn.functional.softmax(output, dim=<span class="number">1</span>).cpu()</span><br><span class="line">sem_classes = [</span><br><span class="line">    <span class="string">&#x27;__background__&#x27;</span>, <span class="string">&#x27;aeroplane&#x27;</span>, <span class="string">&#x27;bicycle&#x27;</span>, <span class="string">&#x27;bird&#x27;</span>, <span class="string">&#x27;boat&#x27;</span>, <span class="string">&#x27;bottle&#x27;</span>, <span class="string">&#x27;bus&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;car&#x27;</span>, <span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;chair&#x27;</span>, <span class="string">&#x27;cow&#x27;</span>, <span class="string">&#x27;diningtable&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>, <span class="string">&#x27;horse&#x27;</span>, <span class="string">&#x27;motorbike&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;person&#x27;</span>, <span class="string">&#x27;pottedplant&#x27;</span>, <span class="string">&#x27;sheep&#x27;</span>, <span class="string">&#x27;sofa&#x27;</span>, <span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;tvmonitor&#x27;</span></span><br><span class="line">]</span><br><span class="line">sem_class_to_idx = &#123;cls: idx <span class="keyword">for</span> (idx, cls) <span class="keyword">in</span> <span class="built_in">enumerate</span>(sem_classes)&#125;</span><br><span class="line"></span><br><span class="line">car_category = sem_class_to_idx[<span class="string">&quot;car&quot;</span>]</span><br><span class="line">car_mask = normalized_masks[<span class="number">0</span>, :, :, :].argmax(axis=<span class="number">0</span>).detach().cpu().numpy()</span><br><span class="line">car_mask_uint8 = <span class="number">255</span> * np.uint8(car_mask == car_category)</span><br><span class="line">car_mask_float = np.float32(car_mask == car_category)</span><br><span class="line"></span><br><span class="line">both_images = np.hstack((image, np.repeat(car_mask_uint8[:, :, <span class="literal">None</span>], <span class="number">3</span>, axis=-<span class="number">1</span>)))</span><br><span class="line">Image.fromarray(both_images)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CAMVisualization/01.PNG"></p>
+<h2 id="4-CAM-Visualization"><a href="#4-CAM-Visualization" class="headerlink" title="4.  CAM Visualization"></a>4.  CAM Visualization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pytorch_grad_cam <span class="keyword">import</span> GradCAM</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SemanticSegmentationTarget</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, category, mask</span>):</span><br><span class="line">        self.category = category</span><br><span class="line">        self.mask = torch.from_numpy(mask)</span><br><span class="line">        <span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">            self.mask = self.mask.cuda()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, model_output</span>):</span><br><span class="line">        <span class="keyword">return</span> (model_output[self.category, :, : ] * self.mask).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">target_layers = [model.model.backbone.layer4]</span><br><span class="line">targets = [SemanticSegmentationTarget(car_category, car_mask_float)]</span><br><span class="line"><span class="keyword">with</span> GradCAM(model=model,</span><br><span class="line">             target_layers=target_layers) <span class="keyword">as</span> cam:</span><br><span class="line">    grayscale_cam = cam(input_tensor=input_tensor,</span><br><span class="line">                        targets=targets)[<span class="number">0</span>, :]</span><br><span class="line">    cam_image = show_cam_on_image(rgb_img, grayscale_cam, use_rgb=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">Image.fromarray(cam_image)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/CAMVisualization/02.PNG"></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://jacobgil.github.io/">https://jacobgil.github.io/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/" rel="tag"># 패스트캠퍼스</a>
+              <a href="/tags/UpstageAILab/" rel="tag"># UpstageAILab</a>
+              <a href="/tags/Upstage/" rel="tag"># Upstage</a>
+              <a href="/tags/%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/" rel="tag"># 부트캠프</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/" rel="tag"># 데이터사이언스</a>
+              <a href="/tags/%EB%AC%B4%EB%A3%8C%EA%B5%90%EC%9C%A1/" rel="tag"># 무료교육</a>
+              <a href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90/" rel="tag"># 국비지원</a>
+              <a href="/tags/CNN/" rel="tag"># CNN</a>
+              <a href="/tags/grad-cam/" rel="tag"># grad cam</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/02/23/CNN-layer-visualization/" rel="prev" title="CNN layer visualization">
+                  <i class="fa fa-angle-left"></i> CNN layer visualization
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">axa123</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

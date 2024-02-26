@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,97 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/02/26/CAM-Visualization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/26/CAM-Visualization/" class="post-title-link" itemprop="url">CAM Visualization</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-26 12:58:15 / Modified: 13:14:34" itemprop="dateCreated datePublished" datetime="2024-02-26T12:58:15+09:00">2024-02-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="모델별-시각화"><a href="#모델별-시각화" class="headerlink" title="모델별 시각화"></a>모델별 시각화</h1><ul>
+<li>모델들에 대한 시각화하기</li>
+<li>grad-cam 라이브러리를 이용한 CAM 시각화</li>
+</ul>
+<h3 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h3><ul>
+<li>Library Import</li>
+<li>Model 및 Image Load</li>
+<li>Image Visualization</li>
+<li>CAM Visualization</li>
+</ul>
+<h2 id="1-Library-Import"><a href="#1-Library-Import" class="headerlink" title="1. Library Import"></a>1. Library Import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">warnings.simplefilter(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> torchvision.models.segmentation <span class="keyword">import</span> deeplabv3_resnet50</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pytorch_grad_cam.utils.image <span class="keyword">import</span> show_cam_on_image, preprocess_image</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Model-및-image-Load"><a href="#2-Model-및-image-Load" class="headerlink" title="2. Model 및 image Load"></a>2. Model 및 image Load</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">image_url = <span class="string">&quot;https://farm1.staticflickr.com/6/9606553_ccc7518589_z.jpg&quot;</span></span><br><span class="line">image = np.array(Image.<span class="built_in">open</span>(requests.get(image_url, stream=<span class="literal">True</span>).raw))</span><br><span class="line">rgb_img = np.float32(image) / <span class="number">255</span></span><br><span class="line">input_tensor = preprocess_image(rgb_img,</span><br><span class="line">                                mean=[<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>],</span><br><span class="line">                                std=[<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line"><span class="comment"># Taken from the torchvision tutorial</span></span><br><span class="line"><span class="comment"># https://pytorch.org/vision/stable/auto_examples/plot_visualization_utils.html</span></span><br><span class="line">model = deeplabv3_resnet50(pretrained=<span class="literal">True</span>, progress=<span class="literal">False</span>)</span><br><span class="line">model = model.<span class="built_in">eval</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    model = model.cuda()</span><br><span class="line">    input_tensor = input_tensor.cuda()</span><br><span class="line"></span><br><span class="line">output = model(input_tensor)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(output), output.keys())</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SegmentationModelOutputWrapper</span>(torch.nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, model</span>): </span><br><span class="line">        <span class="built_in">super</span>(SegmentationModelOutputWrapper, self).__init__()</span><br><span class="line">        self.model = model</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="keyword">return</span> self.model(x)[<span class="string">&quot;out&quot;</span>]</span><br><span class="line">    </span><br><span class="line">model = SegmentationModelOutputWrapper(model)</span><br><span class="line">output = model(input_tensor)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Image-Visualization"><a href="#3-Image-Visualization" class="headerlink" title="3.  Image Visualization"></a>3.  Image Visualization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">normalized_masks = torch.nn.functional.softmax(output, dim=<span class="number">1</span>).cpu()</span><br><span class="line">sem_classes = [</span><br><span class="line">    <span class="string">&#x27;__background__&#x27;</span>, <span class="string">&#x27;aeroplane&#x27;</span>, <span class="string">&#x27;bicycle&#x27;</span>, <span class="string">&#x27;bird&#x27;</span>, <span class="string">&#x27;boat&#x27;</span>, <span class="string">&#x27;bottle&#x27;</span>, <span class="string">&#x27;bus&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;car&#x27;</span>, <span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;chair&#x27;</span>, <span class="string">&#x27;cow&#x27;</span>, <span class="string">&#x27;diningtable&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>, <span class="string">&#x27;horse&#x27;</span>, <span class="string">&#x27;motorbike&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;person&#x27;</span>, <span class="string">&#x27;pottedplant&#x27;</span>, <span class="string">&#x27;sheep&#x27;</span>, <span class="string">&#x27;sofa&#x27;</span>, <span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;tvmonitor&#x27;</span></span><br><span class="line">]</span><br><span class="line">sem_class_to_idx = &#123;cls: idx <span class="keyword">for</span> (idx, cls) <span class="keyword">in</span> <span class="built_in">enumerate</span>(sem_classes)&#125;</span><br><span class="line"></span><br><span class="line">car_category = sem_class_to_idx[<span class="string">&quot;car&quot;</span>]</span><br><span class="line">car_mask = normalized_masks[<span class="number">0</span>, :, :, :].argmax(axis=<span class="number">0</span>).detach().cpu().numpy()</span><br><span class="line">car_mask_uint8 = <span class="number">255</span> * np.uint8(car_mask == car_category)</span><br><span class="line">car_mask_float = np.float32(car_mask == car_category)</span><br><span class="line"></span><br><span class="line">both_images = np.hstack((image, np.repeat(car_mask_uint8[:, :, <span class="literal">None</span>], <span class="number">3</span>, axis=-<span class="number">1</span>)))</span><br><span class="line">Image.fromarray(both_images)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/CAMVisualization/01.PNG"></p>
+<h2 id="4-CAM-Visualization"><a href="#4-CAM-Visualization" class="headerlink" title="4.  CAM Visualization"></a>4.  CAM Visualization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pytorch_grad_cam <span class="keyword">import</span> GradCAM</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SemanticSegmentationTarget</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, category, mask</span>):</span><br><span class="line">        self.category = category</span><br><span class="line">        self.mask = torch.from_numpy(mask)</span><br><span class="line">        <span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">            self.mask = self.mask.cuda()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, model_output</span>):</span><br><span class="line">        <span class="keyword">return</span> (model_output[self.category, :, : ] * self.mask).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">target_layers = [model.model.backbone.layer4]</span><br><span class="line">targets = [SemanticSegmentationTarget(car_category, car_mask_float)]</span><br><span class="line"><span class="keyword">with</span> GradCAM(model=model,</span><br><span class="line">             target_layers=target_layers) <span class="keyword">as</span> cam:</span><br><span class="line">    grayscale_cam = cam(input_tensor=input_tensor,</span><br><span class="line">                        targets=targets)[<span class="number">0</span>, :]</span><br><span class="line">    cam_image = show_cam_on_image(rgb_img, grayscale_cam, use_rgb=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">Image.fromarray(cam_image)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/CAMVisualization/02.PNG"></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://jacobgil.github.io/">https://jacobgil.github.io/</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1076,123 +1167,6 @@
 </ul>
 <h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line"> model = CatBoostRegressor(max_leaves=<span class="number">511</span></span><br><span class="line">                        iterations=<span class="number">1000</span>,</span><br><span class="line">                        depth=<span class="number">5</span>,</span><br><span class="line">                        learning_rate=<span class="number">0.3</span>,</span><br><span class="line">                        reg_lambda=<span class="number">0.5</span>,</span><br><span class="line">                        min_data_in_leaf=<span class="number">5</span>,</span><br><span class="line">                        rsm=<span class="number">0.5</span>,</span><br><span class="line">                        random_seed=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/30/LightGBM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/30/LightGBM/" class="post-title-link" itemprop="url">LightGBM</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-11-30 15:35:47" itemprop="dateCreated datePublished" datetime="2023-11-30T15:35:47+09:00">2023-11-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-02 15:53:40" itemprop="dateModified" datetime="2024-01-02T15:53:40+09:00">2024-01-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>LightGBM Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
-<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
-<li><p>row 수 : 10,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)</p>
-</li>
-<li><p>feature 수 : 200개 이상</p>
-</li>
-</ul>
-<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
-<li><p>num_leaves : num_leaves를 잘 사용하는 것이 좋음 (2의 max_depth를 제곱해줌. 2의 max_depth 제곱 이하로 해주어야 함.)</p>
-<pre><code>  63, 127, 255, 511, 1023, 2047
-</code></pre>
-</li>
-<li><p>max_depth : tree의 최대 깊이 (row가 많을수록 크게 해주어야 함)</p>
-<pre><code>  10 ~ 25
-</code></pre>
-</li>
-<li><p>learning_rate : shrinkage factor (n_estimators가 100이면 0.1, 20000이면 0.001을 사용함)</p>
-<pre><code>  0.1 ~ 0.001 
-</code></pre>
-</li>
-<li><p>n_estimators : tree 갯수 (데이터가 많을수록 많이 사용함)</p>
-<pre><code>  100 ~ 20000 
-</code></pre>
-</li>
-<li><p>min_child_samples : leaf에 포함되는 최소 갯수 (오버피팅을 방지하기 위함. 적을수록 오버피팅됨)</p>
-<pre><code>  5 ~ 50
-</code></pre>
-</li>
-<li><p>reg_lambda : regularization (loss를 크게 해주면, 오버피팅을 줄여줌)</p>
-<pre><code>  0.5 ~ 200
-</code></pre>
-</li>
-<li><p>colsample_bytree : 대부분 0.5이며, 피처가 적으면 0.8을 사용함</p>
-<pre><code>  0.5 ~ 0.8
-</code></pre>
-</li>
-<li><p>random_state : reproducibility</p>
-<pre><code>  42 (아무 숫자나 관계 없음)
-</code></pre>
-</li>
-</ul>
-<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> lightgbm.sklearn <span class="keyword">import</span> LGBMRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line">model = LGBMRegressor(num_leaves=<span class="number">1023</span>, <span class="comment"># [2**10-1, 2**11-1, 2**12-1]</span></span><br><span class="line">                        max_depth=<span class="number">13</span>, <span class="comment"># num_leaves의 2의 n 제곱으로 계산</span></span><br><span class="line">                        learning_rate=<span class="number">0.01</span>,</span><br><span class="line">                        n_estimators=<span class="number">200</span>,</span><br><span class="line">                        min_child_samples=<span class="number">10</span>,</span><br><span class="line">                        reg_lambda=<span class="number">5.0</span>,</span><br><span class="line">                        colsample_bytree=<span class="number">0.5</span>, <span class="comment"># 피쳐 갯수 * colsample_bytree</span></span><br><span class="line">                        random_state=<span class="number">42</span>,</span><br><span class="line">                        verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                        )</span><br><span class="line">    </span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
 
       
     </div>
