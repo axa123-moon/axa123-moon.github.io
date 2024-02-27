@@ -1031,7 +1031,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-02 15:53:18" itemprop="dateModified" datetime="2024-01-02T15:53:18+09:00">2024-01-02</time>
+      <time title="Modified: 2024-02-27 14:25:19" itemprop="dateModified" datetime="2024-02-27T14:25:19+09:00">2024-02-27</time>
     </span>
 
   
@@ -1045,11 +1045,16 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>Conda환경에서 Jupyter Notebook 실행하기</p>
-<h1 id="1-Conda-환경으로-이동"><a href="#1-Conda-환경으로-이동" class="headerlink" title="1. Conda 환경으로 이동"></a>1. Conda 환경으로 이동</h1><p>conda activate pytorch_gpu_cuda11</p>
-<h1 id="2-주피터-노트북-설치"><a href="#2-주피터-노트북-설치" class="headerlink" title="2. 주피터 노트북 설치"></a>2. 주피터 노트북 설치</h1><p>pip install jupyter notebook</p>
-<h1 id="3-가상환경에-kernel을-연결"><a href="#3-가상환경에-kernel을-연결" class="headerlink" title="3. 가상환경에 kernel을 연결"></a>3. 가상환경에 kernel을 연결</h1><p>python -m ipykernel install –user –name pytorch_gpu_cuda11</p>
-<p> –display-name pytorch_gpu_cuda11 추가해도 됨</p>
-<h1 id="4-주피터-노트북-실행"><a href="#4-주피터-노트북-실행" class="headerlink" title="4. 주피터 노트북 실행"></a>4. 주피터 노트북 실행</h1><p>jupyter notebook</p>
+<h1 id="1-Conda-환경으로-이동"><a href="#1-Conda-환경으로-이동" class="headerlink" title="1. Conda 환경으로 이동"></a>1. Conda 환경으로 이동</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate pytorch_gpu_cuda11</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-주피터-노트북-설치"><a href="#2-주피터-노트북-설치" class="headerlink" title="2. 주피터 노트북 설치"></a>2. 주피터 노트북 설치</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-가상환경에-kernel을-연결"><a href="#3-가상환경에-kernel을-연결" class="headerlink" title="3. 가상환경에 kernel을 연결"></a>3. 가상환경에 kernel을 연결</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -m ipykernel install --user --name pytorch_gpu_cuda11</span><br><span class="line"></span><br><span class="line">--display-name pytorch_gpu_cuda11 추가해도 됨</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-주피터-노트북-실행"><a href="#4-주피터-노트북-실행" class="headerlink" title="4. 주피터 노트북 실행"></a>4. 주피터 노트북 실행</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-kernel-제거하기"><a href="#5-kernel-제거하기" class="headerlink" title="5. kernel 제거하기"></a>5. kernel 제거하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter kernelspec uninstall pytorch_gpu_cuda11</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
