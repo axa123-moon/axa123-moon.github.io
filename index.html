@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/03/04/Confusion-matrix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/04/Confusion-matrix/" class="post-title-link" itemprop="url">Confusion matrix</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-04 17:07:29 / Modified: 17:54:59" itemprop="dateCreated datePublished" datetime="2024-03-04T17:07:29+09:00">2024-03-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Confusion-Matrix"><a href="#Confusion-Matrix" class="headerlink" title="Confusion Matrix"></a>Confusion Matrix</h1><ul>
+<li>분류 모델의 성능을 평가하기 위해 실제 값과 모델이 예측한 값을 대조하는 표</li>
+</ul>
+<p><img src="/images/ConfusionMatrix/01.PNG"></p>
+<pre><code>- TP : (모델이) 맞았다고 했는데(실제로) 맞은 것
+- FN : (모델이) 틀렸다고 했는데 (실제로) 맞은 것
+- FP : (모델이) 맞았다고 했는데 (실제로) 틀린 것
+- TN : (모델이) 틀렸다고 했는데 (실제로) 틀린 것
+</code></pre>
+<h3 id="Accuracy-정확도"><a href="#Accuracy-정확도" class="headerlink" title="Accuracy(정확도)"></a>Accuracy(정확도)</h3><ul>
+<li>(모델이) 예측한 것들 중에 (실제와) 일치한 것 비율<ul>
+<li>TP+TN &#x2F; (TP+FP+FN+TN)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Precision-정밀도"><a href="#Precision-정밀도" class="headerlink" title="Precision(정밀도)"></a>Precision(정밀도)</h3><ul>
+<li>긍정으로 예측한 것 중 실제로 맞춘 비율<ul>
+<li>TP &#x2F; (TP+FP)</li>
+</ul>
+</li>
+</ul>
+<h4 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h4><p><img src="/images/ConfusionMatrix/02.PNG"></p>
+<h3 id="Recall-재현율"><a href="#Recall-재현율" class="headerlink" title="Recall(재현율)"></a>Recall(재현율)</h3><ul>
+<li>(실제) 맞는 것들 중에 (모델이) 맞았다고 예측한 비율<ul>
+<li>TP &#x2F; (TP + FN)</li>
+</ul>
+</li>
+</ul>
+<h4 id="예시-1"><a href="#예시-1" class="headerlink" title="예시"></a>예시</h4><p><img src="/images/ConfusionMatrix/03.PNG"></p>
+<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1-score"></a>F1-score</h3><ul>
+<li>Precision과 Recall 의 조화평균으로, 두가지 지표를 모두 고려하는 평가지표</li>
+<li>불균형한 데이터에서 Accuracy 보다 효과적인 평가지표<ul>
+<li>2 * (recall * precision) &#x2F; (recall + precision)</li>
+</ul>
+</li>
+</ul>
+<h4 id="예시-2"><a href="#예시-2" class="headerlink" title="예시"></a>예시</h4><p><img src="/images/ConfusionMatrix/04.PNG"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -366,9 +472,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-02-20 17:46:21 / Modified: 20:09:32" itemprop="dateCreated datePublished" datetime="2024-02-20T17:46:21+09:00">2024-02-20</time>
+      <time title="Created: 2024-02-20 17:46:21" itemprop="dateCreated datePublished" datetime="2024-02-20T17:46:21+09:00">2024-02-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-02-27 15:28:51" itemprop="dateModified" datetime="2024-02-27T15:28:51+09:00">2024-02-27</time>
     </span>
 
   
@@ -449,7 +561,7 @@
 </ul>
 <h2 id="3-2-7-learning-rate-조정"><a href="#3-2-7-learning-rate-조정" class="headerlink" title="3.2.7 learning rate 조정"></a>3.2.7 learning rate 조정</h2><ul>
 <li>1e-4 ~ 1e-6으로 학습을 진행함.</li>
-<li>GradScaler()를 사용하여 학습시 learning rate 값을 조정할 수 있음</li>
+<li>GradScaler()를 사용하여 학습시 동적으로 learning rate 값을 조정할 수 있음</li>
 </ul>
 <h2 id="3-2-8-Early-stopping-조정"><a href="#3-2-8-Early-stopping-조정" class="headerlink" title="3.2.8 Early stopping 조정"></a>3.2.8 Early stopping 조정</h2><ul>
 <li>학습시 patience는 15값 이상이 좋음. 15미만일 경우 성능 향상이 더 진행될 수 있는데 중단되는 경향이 있음</li>
@@ -1054,124 +1166,6 @@
 <h1 id="4-주피터-노트북-실행"><a href="#4-주피터-노트북-실행" class="headerlink" title="4. 주피터 노트북 실행"></a>4. 주피터 노트북 실행</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
 
 <h1 id="5-kernel-제거하기"><a href="#5-kernel-제거하기" class="headerlink" title="5. kernel 제거하기"></a>5. kernel 제거하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter kernelspec uninstall pytorch_gpu_cuda11</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/12/04/CatBoost/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/04/CatBoost/" class="post-title-link" itemprop="url">CatBoost</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-12-04 10:39:23" itemprop="dateCreated datePublished" datetime="2023-12-04T10:39:23+09:00">2023-12-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-02 15:53:10" itemprop="dateModified" datetime="2024-01-02T15:53:10+09:00">2024-01-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>CatBoost Hyperparameter 설정 가이드입니다.<br>sklearn API 기준입니다.</p>
-<ul>
-<li>GBDT가 Categorical feature에 대해서 학습이 잘되도록 설계되어 있음</li>
-<li>default parameter설계가 잘 되어있어, parameter tuning이 쉬움</li>
-<li>categorical feature가 30%이상일 경우 좋음</li>
-<li>gpu 사용이 쉬움</li>
-</ul>
-<h1 id="1-데이타-프레임-조건"><a href="#1-데이타-프레임-조건" class="headerlink" title="1. 데이타 프레임 조건"></a>1. 데이타 프레임 조건</h1><ul>
-<li><p>row 수 : 1,000 개 이상 (10,000이하일 경우 overfitting이 되기 쉬움)</p>
-</li>
-<li><p>feature 수 : 200개 이하</p>
-</li>
-</ul>
-<h1 id="2-Hyperparameter-설정"><a href="#2-Hyperparameter-설정" class="headerlink" title="2. Hyperparameter 설정"></a>2. Hyperparameter 설정</h1><ul>
-<li><p>max_leaves : max_leaves를 잘 사용하는 것이 좋음 (2의 depth를 제곱해줌. 2의 depth 제곱 이하로 해주어야 함.)</p>
-<pre><code>  63, 127, 255, 511, 1023, 2047
-</code></pre>
-</li>
-<li><p>iterations : tree 갯수 (tree 갯수, 2억개일 경우 20,000개. 20,000개 이상은 의미가 없음) </p>
-<pre><code>  50 ~ 20000 
-</code></pre>
-</li>
-<li><p>depth : tree의 최대 깊이 (row가 많을수록 크게 해주어야 함)</p>
-<pre><code>  5 ~ 25
-</code></pre>
-</li>
-<li><p>learning_rate : shrinkage factor (iterations가 50이면 0.3, 20,000이면 0.001을 사용함)</p>
-<pre><code>  0.3 ~ 0.001 
-</code></pre>
-</li>
-<li><p>reg_lambda : regularization (loss를 크게 해주면, 오버피팅을 줄여줌)</p>
-<pre><code>  0.5 ~ 50
-</code></pre>
-</li>
-<li><p>min_data_in_leaf : leaf에 포함되는 최소 갯수 (오버피팅을 방지하기 위함. 적을수록 오버피팅됨)</p>
-<pre><code>  5 ~ 50
-</code></pre>
-</li>
-<li><p>rsm : 0.5 ~ 0.8 (xgboost의 colsample_bynode와 같음[컬럼 갯수 비율]. random subspace method)</p>
-</li>
-</ul>
-<h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> catboost <span class="keyword">import</span> CatBoostRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># rows : 200,000, columns : 20</span></span><br><span class="line"> model = CatBoostRegressor(max_leaves=<span class="number">511</span></span><br><span class="line">                        iterations=<span class="number">1000</span>,</span><br><span class="line">                        depth=<span class="number">5</span>,</span><br><span class="line">                        learning_rate=<span class="number">0.3</span>,</span><br><span class="line">                        reg_lambda=<span class="number">0.5</span>,</span><br><span class="line">                        min_data_in_leaf=<span class="number">5</span>,</span><br><span class="line">                        rsm=<span class="number">0.5</span>,</span><br><span class="line">                        random_seed=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">                               </span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
 
 
       
