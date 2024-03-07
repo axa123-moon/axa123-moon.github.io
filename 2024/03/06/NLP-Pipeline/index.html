@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Huggingface를 이용한 자연어 처리파이프라인 전체 구조 환경설정 라이브러리 설치 및 데이터셋 로드   데이터셋 구축 입력 데이터를 train과 valid로 나누고, 토크나이징 하여 torch dataset class로 변환 모델이 사용할 수 있는 데이터 구조로 변경함   모델 및 tokenizer 가져오기 Huggingface의 사전학습된 (Pre-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP Pipeline">
+<meta property="og:url" content="https://axa123-moon.github.io/2024/03/06/NLP-Pipeline/index.html">
+<meta property="og:site_name" content="AI Beginner&#39;s Blog">
+<meta property="og:description" content="Huggingface를 이용한 자연어 처리파이프라인 전체 구조 환경설정 라이브러리 설치 및 데이터셋 로드   데이터셋 구축 입력 데이터를 train과 valid로 나누고, 토크나이징 하여 torch dataset class로 변환 모델이 사용할 수 있는 데이터 구조로 변경함   모델 및 tokenizer 가져오기 Huggingface의 사전학습된 (Pre-">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-06T09:20:41.000Z">
+<meta property="article:modified_time" content="2024-03-07T04:01:04.210Z">
+<meta property="article:author" content="axa123">
+<meta property="article:tag" content="패스트캠퍼스">
+<meta property="article:tag" content="UpstageAILab">
+<meta property="article:tag" content="Upstage">
+<meta property="article:tag" content="부트캠프">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="데이터사이언스">
+<meta property="article:tag" content="무료교육">
+<meta property="article:tag" content="국비지원">
+<meta property="article:tag" content="NLP Pipeline">
+<meta property="article:tag" content="Huggingface">
+<meta property="article:tag" content="Pre-trained">
+<meta property="article:tag" content="Fine-tuned">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://axa123-moon.github.io/2024/03/06/NLP-Pipeline/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/03/06/NLP-Pipeline/","path":"2024/03/06/NLP-Pipeline/","title":"NLP Pipeline"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>NLP Pipeline | AI Beginner's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AI Beginner's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Huggingface%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC"><span class="nav-number">1.</span> <span class="nav-text">Huggingface를 이용한 자연어 처리</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EC%A0%84%EC%B2%B4-%EA%B5%AC%EC%A1%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">파이프라인 전체 구조</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">axa123</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/03/06/NLP-Pipeline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NLP Pipeline | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NLP Pipeline
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-06 18:20:41" itemprop="dateCreated datePublished" datetime="2024-03-06T18:20:41+09:00">2024-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-07 13:01:04" itemprop="dateModified" datetime="2024-03-07T13:01:04+09:00">2024-03-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Huggingface를-이용한-자연어-처리"><a href="#Huggingface를-이용한-자연어-처리" class="headerlink" title="Huggingface를 이용한 자연어 처리"></a>Huggingface를 이용한 자연어 처리</h1><h3 id="파이프라인-전체-구조"><a href="#파이프라인-전체-구조" class="headerlink" title="파이프라인 전체 구조"></a>파이프라인 전체 구조</h3><ol>
+<li><strong>환경설정</strong><ul>
+<li>라이브러리 설치 및 데이터셋 로드<br><br></li>
+</ul>
+</li>
+<li><strong>데이터셋 구축</strong><ul>
+<li>입력 데이터를 train과 valid로 나누고, 토크나이징 하여 torch dataset class로 변환</li>
+<li>모델이 사용할 수 있는 데이터 구조로 변경함<br><br></li>
+</ul>
+</li>
+<li><strong>모델 및 tokenizer 가져오기</strong><ul>
+<li>Huggingface의 사전학습된 (Pre-trained) 모델 로드</li>
+<li>사전학습된 모델과 tokenizer는 동일한 체크포인트(checkpoing)여야 학습가능함<br><br></li>
+</ul>
+</li>
+<li><strong>모델 학습</strong><ul>
+<li>Huggingface의 TrainingArguments 와 Trainer를 활용하여 학습데이터(train &#x2F; valid)로 모델 학습</li>
+<li>Trainer를 사용하면 배치학습(Batch Learning), 학습 스케줄러(Learning Scheduler), 학습 조기종료(EarlyStopping)들의 기능을 간단히 사용할 수 있음<br><br></li>
+</ul>
+</li>
+<li><strong>추론 및 평가</strong><ul>
+<li>학습된 (Fine-tuned)모델을 통해 Test 데이터 추록 및 평가 진행<br><br></li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/" rel="tag"># 패스트캠퍼스</a>
+              <a href="/tags/UpstageAILab/" rel="tag"># UpstageAILab</a>
+              <a href="/tags/Upstage/" rel="tag"># Upstage</a>
+              <a href="/tags/%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/" rel="tag"># 부트캠프</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/" rel="tag"># 데이터사이언스</a>
+              <a href="/tags/%EB%AC%B4%EB%A3%8C%EA%B5%90%EC%9C%A1/" rel="tag"># 무료교육</a>
+              <a href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90/" rel="tag"># 국비지원</a>
+              <a href="/tags/NLP-Pipeline/" rel="tag"># NLP Pipeline</a>
+              <a href="/tags/Huggingface/" rel="tag"># Huggingface</a>
+              <a href="/tags/Pre-trained/" rel="tag"># Pre-trained</a>
+              <a href="/tags/Fine-tuned/" rel="tag"># Fine-tuned</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/04/Confusion-matrix/" rel="prev" title="Confusion matrix">
+                  <i class="fa fa-angle-left"></i> Confusion matrix
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">axa123</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,106 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/03/06/NLP-Pipeline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/06/NLP-Pipeline/" class="post-title-link" itemprop="url">NLP Pipeline</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-06 18:20:41" itemprop="dateCreated datePublished" datetime="2024-03-06T18:20:41+09:00">2024-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-07 13:01:04" itemprop="dateModified" datetime="2024-03-07T13:01:04+09:00">2024-03-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Huggingface를-이용한-자연어-처리"><a href="#Huggingface를-이용한-자연어-처리" class="headerlink" title="Huggingface를 이용한 자연어 처리"></a>Huggingface를 이용한 자연어 처리</h1><h3 id="파이프라인-전체-구조"><a href="#파이프라인-전체-구조" class="headerlink" title="파이프라인 전체 구조"></a>파이프라인 전체 구조</h3><ol>
+<li><strong>환경설정</strong><ul>
+<li>라이브러리 설치 및 데이터셋 로드<br><br></li>
+</ul>
+</li>
+<li><strong>데이터셋 구축</strong><ul>
+<li>입력 데이터를 train과 valid로 나누고, 토크나이징 하여 torch dataset class로 변환</li>
+<li>모델이 사용할 수 있는 데이터 구조로 변경함<br><br></li>
+</ul>
+</li>
+<li><strong>모델 및 tokenizer 가져오기</strong><ul>
+<li>Huggingface의 사전학습된 (Pre-trained) 모델 로드</li>
+<li>사전학습된 모델과 tokenizer는 동일한 체크포인트(checkpoing)여야 학습가능함<br><br></li>
+</ul>
+</li>
+<li><strong>모델 학습</strong><ul>
+<li>Huggingface의 TrainingArguments 와 Trainer를 활용하여 학습데이터(train &#x2F; valid)로 모델 학습</li>
+<li>Trainer를 사용하면 배치학습(Batch Learning), 학습 스케줄러(Learning Scheduler), 학습 조기종료(EarlyStopping)들의 기능을 간단히 사용할 수 있음<br><br></li>
+</ul>
+</li>
+<li><strong>추론 및 평가</strong><ul>
+<li>학습된 (Fine-tuned)모델을 통해 Test 데이터 추록 및 평가 진행<br><br></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -179,7 +279,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-03-06 07:56:42" itemprop="dateModified" datetime="2024-03-06T07:56:42+09:00">2024-03-06</time>
+      <time title="Modified: 2024-03-06 18:21:17" itemprop="dateModified" datetime="2024-03-06T18:21:17+09:00">2024-03-06</time>
     </span>
 
   
@@ -487,7 +587,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-27 15:28:51" itemprop="dateModified" datetime="2024-02-27T15:28:51+09:00">2024-02-27</time>
+      <time title="Modified: 2024-03-07 17:56:33" itemprop="dateModified" datetime="2024-03-07T17:56:33+09:00">2024-03-07</time>
     </span>
 
   
@@ -511,7 +611,7 @@
 <li>평가 이미지의 경우 실제 현실 세계의 데이터는 노이즈가 굉장히 많음 (구겨진 문서, 물에 젖은 문서, 빛번짐, …)</li>
 </ul>
 <h2 id="2-Process-Competition-Model"><a href="#2-Process-Competition-Model" class="headerlink" title="2. Process : Competition Model"></a>2. Process : Competition Model</h2><ul>
-<li>첫 CV 대회를 참여하기에 가볍고 성능이 좋은 모델을 선택하였음. 타팀의 경우 성능 좋은 모델(MaxViT)을 사용하여서 더 좋은 점수를 얻는 경우를 확인하였음.</li>
+<li>첫 CV 대회를 참여하기에 가볍고 성능이 좋은 모델을 선택하였음. 타팀의 경우 성능 좋은 모델(MaxViT)을 사용하여서 더 좋은 점수를 얻는 경우를 확인하였음.<br>참조 : <a target="_blank" rel="noopener" href="https://paperswithcode.com/sota/image-classification-on-imagenet">https://paperswithcode.com/sota/image-classification-on-imagenet</a></li>
 </ul>
 <h4 id="efficientnet-b5-sw-in12k-ft-in1k"><a href="#efficientnet-b5-sw-in12k-ft-in1k" class="headerlink" title="efficientnet_b5.sw_in12k_ft_in1k"></a>efficientnet_b5.sw_in12k_ft_in1k</h4><ul>
 <li>Model Type: Image classification &#x2F; feature backbone</li>
@@ -1088,92 +1188,6 @@
 <h1 id="6-hyper-parameter들의-중요도"><a href="#6-hyper-parameter들의-중요도" class="headerlink" title="6. hyper-parameter들의 중요도"></a>6. hyper-parameter들의 중요도</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optuna.visualization.plot_param_importances(study)</span><br></pre></td></tr></table></figure>
 
 <h1 id="7-best-params를-확인함"><a href="#7-best-params를-확인함" class="headerlink" title="7.best_params를 확인함"></a>7.best_params를 확인함</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">study.best_params</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/12/28/Conda-Jupyter-Notebook/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/12/28/Conda-Jupyter-Notebook/" class="post-title-link" itemprop="url">Conda환경에서 Jupyter Notebook 실행하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-12-28 15:27:16" itemprop="dateCreated datePublished" datetime="2023-12-28T15:27:16+09:00">2023-12-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-02-27 14:25:19" itemprop="dateModified" datetime="2024-02-27T14:25:19+09:00">2024-02-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Conda환경에서 Jupyter Notebook 실행하기</p>
-<h1 id="1-Conda-환경으로-이동"><a href="#1-Conda-환경으로-이동" class="headerlink" title="1. Conda 환경으로 이동"></a>1. Conda 환경으로 이동</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate pytorch_gpu_cuda11</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-주피터-노트북-설치"><a href="#2-주피터-노트북-설치" class="headerlink" title="2. 주피터 노트북 설치"></a>2. 주피터 노트북 설치</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter notebook</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-가상환경에-kernel을-연결"><a href="#3-가상환경에-kernel을-연결" class="headerlink" title="3. 가상환경에 kernel을 연결"></a>3. 가상환경에 kernel을 연결</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -m ipykernel install --user --name pytorch_gpu_cuda11</span><br><span class="line"></span><br><span class="line">--display-name pytorch_gpu_cuda11 추가해도 됨</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-주피터-노트북-실행"><a href="#4-주피터-노트북-실행" class="headerlink" title="4. 주피터 노트북 실행"></a>4. 주피터 노트북 실행</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
-
-<h1 id="5-kernel-제거하기"><a href="#5-kernel-제거하기" class="headerlink" title="5. kernel 제거하기"></a>5. kernel 제거하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter kernelspec uninstall pytorch_gpu_cuda11</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
