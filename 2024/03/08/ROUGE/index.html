@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ROUGE 평가지표는 ROUGE(Recall-Oriented Understudy for Gisting Evaluation) 사용 텍스트 자동 요약, 기계 번역 등 자연어 생성 모델의 성능을 평가하기 위한 지표이며, 모델이 생성한 요약본 혹은 번역본을 사람이 미리 만들어 놓은 참조본과 대조해 성능 점수를 계산함   Recall과 Precesion ROUGE-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROUGE">
+<meta property="og:url" content="https://axa123-moon.github.io/2024/03/08/ROUGE/index.html">
+<meta property="og:site_name" content="AI Beginner&#39;s Blog">
+<meta property="og:description" content="ROUGE 평가지표는 ROUGE(Recall-Oriented Understudy for Gisting Evaluation) 사용 텍스트 자동 요약, 기계 번역 등 자연어 생성 모델의 성능을 평가하기 위한 지표이며, 모델이 생성한 요약본 혹은 번역본을 사람이 미리 만들어 놓은 참조본과 대조해 성능 점수를 계산함   Recall과 Precesion ROUGE-">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://axa123-moon.github.io/images/Rouge/01.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/Rouge/02.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/Rouge/03.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/Rouge/04.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/Rouge/05.PNG">
+<meta property="article:published_time" content="2024-03-08T00:18:42.000Z">
+<meta property="article:modified_time" content="2024-03-08T00:51:21.383Z">
+<meta property="article:author" content="axa123">
+<meta property="article:tag" content="패스트캠퍼스">
+<meta property="article:tag" content="UpstageAILab">
+<meta property="article:tag" content="Upstage">
+<meta property="article:tag" content="부트캠프">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="데이터사이언스">
+<meta property="article:tag" content="무료교육">
+<meta property="article:tag" content="국비지원">
+<meta property="article:tag" content="ROUGE">
+<meta property="article:tag" content="ROUGE-1">
+<meta property="article:tag" content="ROUGE-2">
+<meta property="article:tag" content="ROUGE-L">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://axa123-moon.github.io/images/Rouge/01.PNG">
+
+
+<link rel="canonical" href="https://axa123-moon.github.io/2024/03/08/ROUGE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/03/08/ROUGE/","path":"2024/03/08/ROUGE/","title":"ROUGE"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ROUGE | AI Beginner's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AI Beginner's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ROUGE"><span class="nav-number">1.</span> <span class="nav-text">ROUGE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recall%EA%B3%BC-Precesion"><span class="nav-number">1.0.1.</span> <span class="nav-text">Recall과 Precesion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROUGE-1"><span class="nav-number">1.0.2.</span> <span class="nav-text">ROUGE-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROUGE-2"><span class="nav-number">1.0.3.</span> <span class="nav-text">ROUGE-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROUGE-L"><span class="nav-number">1.0.4.</span> <span class="nav-text">ROUGE-L</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">1.0.5.</span> <span class="nav-text">References</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">axa123</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/03/08/ROUGE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ROUGE | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ROUGE
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-08 09:18:42 / Modified: 09:51:21" itemprop="dateCreated datePublished" datetime="2024-03-08T09:18:42+09:00">2024-03-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="ROUGE"><a href="#ROUGE" class="headerlink" title="ROUGE"></a>ROUGE</h1><ul>
+<li>평가지표는 ROUGE(Recall-Oriented Understudy for Gisting Evaluation) 사용</li>
+<li>텍스트 자동 요약, 기계 번역 등 자연어 생성 모델의 성능을 평가하기 위한 지표이며, 모델이 생성한 요약본 혹은 번역본을 사람이 미리 만들어 놓은 참조본과 대조해 성능 점수를 계산함</li>
+</ul>
+<p><img src="/images/Rouge/01.PNG"></p>
+<h3 id="Recall과-Precesion"><a href="#Recall과-Precesion" class="headerlink" title="Recall과 Precesion"></a>Recall과 Precesion</h3><p><img src="/images/Rouge/02.PNG"></p>
+<h3 id="ROUGE-1"><a href="#ROUGE-1" class="headerlink" title="ROUGE-1"></a>ROUGE-1</h3><ul>
+<li>한 단어 기준으로 정답과 예측의 결과를 계산함</li>
+</ul>
+<p>정답 : <strong>the cat was under the bed</strong><br>예측 : <strong>the cat was</strong> found <strong>under the bed</strong></p>
+<p><img src="/images/Rouge/03.PNG"></p>
+<h3 id="ROUGE-2"><a href="#ROUGE-2" class="headerlink" title="ROUGE-2"></a>ROUGE-2</h3><ul>
+<li>연속 두단어 기준으로 정답과 예측의 결과를 계산함</li>
+</ul>
+<p>정답 : <strong>[the cat]</strong> [cat was] [was under] <strong>[under the] [the bed]</strong><br>예측 : <strong>[under the] [the bed]</strong> [bed there] [there was] [was the] <strong>[the cat]</strong></p>
+<p><img src="/images/Rouge/04.PNG"></p>
+<h3 id="ROUGE-L"><a href="#ROUGE-L" class="headerlink" title="ROUGE-L"></a>ROUGE-L</h3><ul>
+<li>가장 긴 공통부분 문자열의 길이를 기준으로 정답과 예측의 결과를 계산함</li>
+</ul>
+<p>정답 : the cat was <strong>under the bed</strong><br>예측 : <strong>under the bed</strong> there was the cat</p>
+<p><img src="/images/Rouge/05.PNG"></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://yumdata.tistory.com/435">https://yumdata.tistory.com/435</a><br><a target="_blank" rel="noopener" href="https://velog.io/@yoonene/ROUGE-Score%EB%9E%80">https://velog.io/@yoonene/ROUGE-Score%EB%9E%80</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/" rel="tag"># 패스트캠퍼스</a>
+              <a href="/tags/UpstageAILab/" rel="tag"># UpstageAILab</a>
+              <a href="/tags/Upstage/" rel="tag"># Upstage</a>
+              <a href="/tags/%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/" rel="tag"># 부트캠프</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/" rel="tag"># 데이터사이언스</a>
+              <a href="/tags/%EB%AC%B4%EB%A3%8C%EA%B5%90%EC%9C%A1/" rel="tag"># 무료교육</a>
+              <a href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90/" rel="tag"># 국비지원</a>
+              <a href="/tags/ROUGE/" rel="tag"># ROUGE</a>
+              <a href="/tags/ROUGE-1/" rel="tag"># ROUGE-1</a>
+              <a href="/tags/ROUGE-2/" rel="tag"># ROUGE-2</a>
+              <a href="/tags/ROUGE-L/" rel="tag"># ROUGE-L</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/06/NLP-Pipeline/" rel="prev" title="NLP Pipeline">
+                  <i class="fa fa-angle-left"></i> NLP Pipeline
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">axa123</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

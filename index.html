@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">58</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,97 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/03/08/ROUGE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/08/ROUGE/" class="post-title-link" itemprop="url">ROUGE</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-08 09:18:42 / Modified: 09:51:21" itemprop="dateCreated datePublished" datetime="2024-03-08T09:18:42+09:00">2024-03-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ROUGE"><a href="#ROUGE" class="headerlink" title="ROUGE"></a>ROUGE</h1><ul>
+<li>평가지표는 ROUGE(Recall-Oriented Understudy for Gisting Evaluation) 사용</li>
+<li>텍스트 자동 요약, 기계 번역 등 자연어 생성 모델의 성능을 평가하기 위한 지표이며, 모델이 생성한 요약본 혹은 번역본을 사람이 미리 만들어 놓은 참조본과 대조해 성능 점수를 계산함</li>
+</ul>
+<p><img src="/images/Rouge/01.PNG"></p>
+<h3 id="Recall과-Precesion"><a href="#Recall과-Precesion" class="headerlink" title="Recall과 Precesion"></a>Recall과 Precesion</h3><p><img src="/images/Rouge/02.PNG"></p>
+<h3 id="ROUGE-1"><a href="#ROUGE-1" class="headerlink" title="ROUGE-1"></a>ROUGE-1</h3><ul>
+<li>한 단어 기준으로 정답과 예측의 결과를 계산함</li>
+</ul>
+<p>정답 : <strong>the cat was under the bed</strong><br>예측 : <strong>the cat was</strong> found <strong>under the bed</strong></p>
+<p><img src="/images/Rouge/03.PNG"></p>
+<h3 id="ROUGE-2"><a href="#ROUGE-2" class="headerlink" title="ROUGE-2"></a>ROUGE-2</h3><ul>
+<li>연속 두단어 기준으로 정답과 예측의 결과를 계산함</li>
+</ul>
+<p>정답 : <strong>[the cat]</strong> [cat was] [was under] <strong>[under the] [the bed]</strong><br>예측 : <strong>[under the] [the bed]</strong> [bed there] [there was] [was the] <strong>[the cat]</strong></p>
+<p><img src="/images/Rouge/04.PNG"></p>
+<h3 id="ROUGE-L"><a href="#ROUGE-L" class="headerlink" title="ROUGE-L"></a>ROUGE-L</h3><ul>
+<li>가장 긴 공통부분 문자열의 길이를 기준으로 정답과 예측의 결과를 계산함</li>
+</ul>
+<p>정답 : the cat was <strong>under the bed</strong><br>예측 : <strong>under the bed</strong> there was the cat</p>
+<p><img src="/images/Rouge/05.PNG"></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://yumdata.tistory.com/435">https://yumdata.tistory.com/435</a><br><a target="_blank" rel="noopener" href="https://velog.io/@yoonene/ROUGE-Score%EB%9E%80">https://velog.io/@yoonene/ROUGE-Score%EB%9E%80</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -279,7 +370,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-03-06 18:21:17" itemprop="dateModified" datetime="2024-03-06T18:21:17+09:00">2024-03-06</time>
+      <time title="Modified: 2024-03-08 09:16:46" itemprop="dateModified" datetime="2024-03-08T09:16:46+09:00">2024-03-08</time>
     </span>
 
   
@@ -330,6 +421,7 @@
 </li>
 </ul>
 <h4 id="예시-2"><a href="#예시-2" class="headerlink" title="예시"></a>예시</h4><p><img src="/images/ConfusionMatrix/04.PNG"></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://yumdata.tistory.com/361">https://yumdata.tistory.com/361</a><br><a target="_blank" rel="noopener" href="https://dojinkimm.github.io/ml/2019/10/26/handson-ch3.html">https://dojinkimm.github.io/ml/2019/10/26/handson-ch3.html</a></p>
 
       
     </div>
@@ -1099,95 +1191,6 @@
 <h2 id="3-상관관계-그래프-보기"><a href="#3-상관관계-그래프-보기" class="headerlink" title="3. 상관관계 그래프 보기"></a>3. 상관관계 그래프 보기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터의 상관계수 행렬을 생성</span></span><br><span class="line">corr = data.corr(numeric_only=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># figure에서 생략될 부분을 지정하는 mask 행렬을 생성</span></span><br><span class="line">mask = np.ones_like(corr, dtype=<span class="built_in">bool</span>)</span><br><span class="line">mask = np.triu(mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 시각화될 그림의 크기를 지정</span></span><br><span class="line"><span class="comment"># 히트맵 형태로 상관행렬 시각화하기</span></span><br><span class="line">plt.figure(figsize=(<span class="number">13</span>,<span class="number">10</span>))</span><br><span class="line">sns.heatmap(data=corr, annot=<span class="literal">True</span>, fmt=<span class="string">&#x27;.2f&#x27;</span>, mask=mask, linewidths=<span class="number">.5</span>, cmap=<span class="string">&#x27;RdYlBu_r&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Correlation Matrix&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/Correlation/01.PNG"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/01/03/Optuna/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/01/03/Optuna/" class="post-title-link" itemprop="url">Optuna 사용하기</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-01-03 09:43:29" itemprop="dateCreated datePublished" datetime="2024-01-03T09:43:29+09:00">2024-01-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-17 11:54:02" itemprop="dateModified" datetime="2024-01-17T11:54:02+09:00">2024-01-17</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Optuna를 이용하여 최적의 하이퍼파라미터 얻기</p>
-<h1 id="1-하이퍼파라미터-범위-설정하기"><a href="#1-하이퍼파라미터-범위-설정하기" class="headerlink" title="1. 하이퍼파라미터 범위 설정하기"></a>1. 하이퍼파라미터 범위 설정하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">optimizer</span>(<span class="params">trial</span>):</span><br><span class="line">    <span class="comment"># 조절할 hyper-parameter 조합을 적어줍니다.</span></span><br><span class="line">    <span class="comment"># bayesian optimization을 이용함</span></span><br><span class="line">    num_leaves = trial.suggest_categorical(<span class="string">&#x27;num_leaves&#x27;</span>, [<span class="number">63</span>, <span class="number">127</span>, <span class="number">255</span>, <span class="number">511</span>, <span class="number">1023</span>, <span class="number">2047</span>]) </span><br><span class="line">    max_depth =  trial.suggest_int(<span class="string">&#x27;max_depth&#x27;</span>, <span class="number">10</span>, <span class="number">15</span>) </span><br><span class="line">    learning_rate =  trial.suggest_float(<span class="string">&#x27;learning_rate&#x27;</span>, <span class="number">0.01</span>, <span class="number">0.1</span>) <span class="comment"># 최소값 : 5, 최대값 : 10</span></span><br><span class="line">    n_estimators =  trial.suggest_int(<span class="string">&#x27;n_estimators&#x27;</span>, <span class="number">100</span>, <span class="number">500</span>)</span><br><span class="line">    min_child_samples = trial.suggest_int(<span class="string">&#x27;min_child_samples&#x27;</span>, <span class="number">10</span>, <span class="number">50</span>)</span><br><span class="line">    reg_lambda =  trial.suggest_int(<span class="string">&#x27;min_samples_leaf&#x27;</span>, <span class="number">0.5</span>, <span class="number">100</span>)</span><br><span class="line">    colsample_bytree =  trial.suggest_float(<span class="string">&#x27;max_features&#x27;</span>, <span class="number">0.5</span>, <span class="number">0.8</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 원하는 모델을 지정합니다, optuna는 시간이 오래걸리기 때문에 저는 보통 RF로 일단 테스트를 해본 뒤에 LGBM을 사용합니다.</span></span><br><span class="line">    model = LGBMRegressor(num_leaves=num_leaves,</span><br><span class="line">                            max_depth=max_depth,</span><br><span class="line">                            learning_rate=learning_rate,</span><br><span class="line">                            n_estimators=n_estimators,</span><br><span class="line">                            min_child_samples=min_child_samples,</span><br><span class="line">                            reg_lambda=reg_lambda,</span><br><span class="line">                            colsample_bytree=colsample_bytree, <span class="comment"># 피쳐 갯수 * colsample_bytree</span></span><br><span class="line">                            random_state=<span class="number">42</span>,</span><br><span class="line">                            verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                            )</span><br><span class="line">    </span><br><span class="line">    evaluation_metric = mean_squared_error</span><br><span class="line">    model.fit(X_train, y_train)</span><br><span class="line">    preds = model.predict(X_val)</span><br><span class="line">    score = evaluation_metric(y_val, preds)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> score</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-최적화-방향-설정"><a href="#2-최적화-방향-설정" class="headerlink" title="2. 최적화 방향 설정"></a>2. 최적화 방향 설정</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 최소/최대 어느 방향의 최적값을 구할 건지.</span></span><br><span class="line"><span class="comment"># evaluation_metric이 mean_squared_error일 경우 낮을수록 좋으므로 minimize가 맞음</span></span><br><span class="line">study = optuna.create_study(direction=<span class="string">&quot;minimize&quot;</span>) </span><br><span class="line">study.optimize(optimizer, n_trials=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-실험-데이터-확인"><a href="#3-실험-데이터-확인" class="headerlink" title="3. 실험 데이터 확인"></a>3. 실험 데이터 확인</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">study.trials_dataframe()</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-Best-score-확인"><a href="#4-Best-score-확인" class="headerlink" title="4. Best score 확인"></a>4. Best score 확인</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Best Score: %.4f&quot;</span> % study.best_value) <span class="comment"># best score 출력</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Best params: &quot;</span>, study.best_trial.params) <span class="comment"># best score일 때의 하이퍼파라미터들</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="5-실험-기록-시각화"><a href="#5-실험-기록-시각화" class="headerlink" title="5. 실험 기록 시각화"></a>5. 실험 기록 시각화</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optuna.visualization.plot_optimization_history(study)</span><br></pre></td></tr></table></figure>
-
-<h1 id="6-hyper-parameter들의-중요도"><a href="#6-hyper-parameter들의-중요도" class="headerlink" title="6. hyper-parameter들의 중요도"></a>6. hyper-parameter들의 중요도</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optuna.visualization.plot_param_importances(study)</span><br></pre></td></tr></table></figure>
-
-<h1 id="7-best-params를-확인함"><a href="#7-best-params를-확인함" class="headerlink" title="7.best_params를 확인함"></a>7.best_params를 확인함</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">study.best_params</span><br></pre></td></tr></table></figure>
 
       
     </div>
