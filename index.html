@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">58</span>
+        <span class="site-state-item-count">63</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,129 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/03/27/Text-Preprocessing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/27/Text-Preprocessing/" class="post-title-link" itemprop="url">Text Preprocessing</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-27 17:00:31 / Modified: 17:53:31" itemprop="dateCreated datePublished" datetime="2024-03-27T17:00:31+09:00">2024-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Text-Preprocessing"><a href="#Text-Preprocessing" class="headerlink" title="Text Preprocessing"></a>Text Preprocessing</h1><ol>
+<li>Tokenization<br>  1.1. 단어 토큰화<br>  1.2. 문장 토큰화</li>
+<li>Cleaning</li>
+<li>Normalization<br>  3.1. Stemming<br>  3.2. Lemmatization</li>
+<li>Edit Distance</li>
+</ol>
+<h2 id="1-Tokenization"><a href="#1-Tokenization" class="headerlink" title="1. Tokenization"></a>1. Tokenization</h2><ul>
+<li>주어진 데이터를 토큰(Token)이라 불리는 단위로 나누는 작업</li>
+</ul>
+<h3 id="1-1-단어-토큰화"><a href="#1-1-단어-토큰화" class="headerlink" title="1.1  단어 토큰화"></a>1.1  단어 토큰화</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line">nltk.download(<span class="string">&#x27;punkt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> word_tokenize</span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> WordPunctTokenizer</span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> TreebankWordTokenizer</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">&quot;Although we may not be fully aware of natural language, we need to master several preprocessing techniques to perform natural language processing.&quot;</span></span><br><span class="line"></span><br><span class="line">word_tokenize(text)</span><br></pre></td></tr></table></figure>
+
+<p>[‘Although’,<br> ‘we’,<br> ‘may’,<br> ‘not’,<br> ‘be’,<br> ‘fully’,<br> ‘aware’,<br> ‘of’,<br> ‘natural’,<br> ‘language’,<br> ‘,’,<br> ‘we’,<br> ‘need’,<br> ‘to’,<br> ‘master’,<br> ‘several’,<br> ‘preprocessing’,<br> ‘techniques’,<br> ‘to’,<br> ‘perform’,<br> ‘natural’,<br> ‘language’,<br> ‘processing’,<br> ‘.’]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">punct_tokenizer = WordPunctTokenizer() </span><br><span class="line">punct_tokenizer.tokenize(text)</span><br></pre></td></tr></table></figure>
+<p>[‘Although’,<br> ‘we’,<br> ‘may’,<br> ‘not’,<br> ‘be’,<br> ‘fully’,<br> ‘aware’,<br> ‘of’,<br> ‘natural’,<br> ‘language’,<br> ‘,’,<br> ‘we’,<br> ‘need’,<br> ‘to’,<br> ‘master’,<br> ‘several’,<br> ‘preprocessing’,<br> ‘techniques’,<br> ‘to’,<br> ‘perform’,<br> ‘natural’,<br> ‘language’,<br> ‘processing’,<br> ‘.’]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tree_tokenizer = TreebankWordTokenizer()</span><br><span class="line">tree_tokenizer.tokenize(text)</span><br></pre></td></tr></table></figure>
+
+<p>[‘Although’,<br> ‘we’,<br> ‘may’,<br> ‘not’,<br> ‘be’,<br> ‘fully’,<br> ‘aware’,<br> ‘of’,<br> ‘natural’,<br> ‘language’,<br> ‘,’,<br> ‘we’,<br> ‘need’,<br> ‘to’,<br> ‘master’,<br> ‘several’,<br> ‘preprocessing’,<br> ‘techniques’,<br> ‘to’,<br> ‘perform’,<br> ‘natural’,<br> ‘language’,<br> ‘processing’,<br> ‘.’]</p>
+<h3 id="1-2-문장-토큰화"><a href="#1-2-문장-토큰화" class="headerlink" title="1.2  문장 토큰화"></a>1.2  문장 토큰화</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sentences = <span class="string">&quot;NLP stands for Natural Language Processing. \</span></span><br><span class="line"><span class="string">It is a branch of artificial intelligence that focuses on the interaction between computers and human languages. \</span></span><br><span class="line"><span class="string">NLP combines techniques from linguistics, computer science, and machine learning to enable computers to understand and interpret. \</span></span><br><span class="line"><span class="string">And it creates human language in a meaningful and useful way.&quot;</span></span><br><span class="line"></span><br><span class="line">nltk.sent_tokenize(sentences)</span><br></pre></td></tr></table></figure>
+
+<p>[‘NLP stands for Natural Language Processing.’,<br> ‘It is a branch of artificial intelligence that focuses on the interaction between computers and human languages.’,<br> ‘NLP combines techniques from linguistics, computer science, and machine learning to enable computers to understand and interpret.’,<br> ‘And it creates human language in a meaningful and useful way.’]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sentences = <span class="string">&quot;I am actively looking for Ph.D. students. and you are a Ph.D student.&quot;</span></span><br><span class="line">nltk.sent_tokenize(sentences)</span><br></pre></td></tr></table></figure>
+
+<p>[‘I am actively looking for Ph.D. students.’, ‘and you are a Ph.D student.’]</p>
+<h2 id="2-Cleaning"><a href="#2-Cleaning" class="headerlink" title="2. Cleaning"></a>2. Cleaning</h2><ul>
+<li>토큰화 작업에 방해가 되거나 의미가 없는 부분의 텍스트, 노이즈를 제거</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</span><br><span class="line">nltk.download(<span class="string">&#x27;stopwords&#x27;</span>)</span><br><span class="line"></span><br><span class="line">stop=<span class="built_in">set</span>(stopwords.words(<span class="string">&#x27;english&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(stop)</span><br></pre></td></tr></table></figure>
+
+<p>{‘i’, ‘don’, ‘just’, ‘been’, ‘into’, ‘ve’, ‘should’, ‘this’, “shouldn’t”, ‘yours’, ‘but’, “aren’t”, ‘your’, ‘about’, “needn’t”, ‘m’, ‘itself’, ‘other’, ‘wasn’, “wouldn’t”, ‘too’, ‘haven’, “doesn’t”, “mightn’t”, ‘hasn’, ‘didn’, ‘once’, ‘and’, “you’ll”, ‘won’, ‘we’, ‘his’, ‘both’, ‘needn’, “you’re”, ‘do’, ‘how’, ‘me’, ‘further’, ‘ain’, ‘an’, ‘isn’, ‘herself’, “wasn’t”, ‘their’, “you’ve”, ‘yourself’, ‘against’, ‘while’, ‘down’, ‘had’, ‘up’, ‘over’, ‘any’, ‘him’, ‘being’, ‘you’, ‘than’, ‘out’, “hasn’t”, ‘more’, ‘off’, ‘can’, “it’s”, ‘is’, ‘during’, ‘aren’, ‘the’, “haven’t”, ‘then’, ‘these’, ‘them’, ‘be’, ‘shan’, ‘whom’, ‘has’, ‘under’, ‘such’, ‘ll’, ‘no’, ‘all’, ‘they’, ‘through’, ‘am’, “you’d”, “weren’t”, ‘wouldn’, ‘with’, ‘in’, ‘my’, ‘on’, ‘that’, ‘if’, ‘was’, ‘why’, ‘ours’, ‘did’, ‘only’, “she’s”, ‘her’, ‘own’, ‘mightn’, ‘mustn’, ‘y’, ‘s’, ‘not’, “isn’t”, ‘where’, ‘few’, ‘by’, ‘our’, ‘so’, ‘most’, ‘of’, ‘because’, ‘have’, ‘re’, ‘as’, ‘are’, “shan’t”, ‘having’, ‘a’, ‘ourselves’, ‘which’, ‘to’, ‘from’, ‘each’, ‘or’, ‘until’, ‘t’, ‘who’, ‘d’, ‘there’, ‘doesn’, ‘himself’, ‘what’, ‘here’, ‘hers’, ‘at’, “didn’t”, ‘hadn’, ‘were’, ‘below’, ‘very’, ‘ma’, ‘now’, ‘it’, ‘those’, ‘some’, ‘themselves’, “that’ll”, ‘does’, ‘shouldn’, ‘between’, ‘when’, ‘after’, ‘myself’, ‘theirs’, ‘doing’, ‘again’, ‘o’, ‘yourselves’, ‘for’, “won’t”, “hadn’t”, ‘same’, “mustn’t”, ‘she’, ‘nor’, ‘above’, “should’ve”, ‘couldn’, “couldn’t”, ‘he’, ‘will’, “don’t”, ‘weren’, ‘its’, ‘before’}</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sentence=<span class="string">&quot;I want to go shopping and buy snacks&quot;</span></span><br><span class="line">tokens=nltk.word_tokenize(sentence)</span><br><span class="line"></span><br><span class="line">clean_tokens=[]</span><br><span class="line"><span class="keyword">for</span> tok <span class="keyword">in</span> tokens:</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(tok.lower())&gt;<span class="number">1</span> <span class="keyword">and</span> (tok.lower() <span class="keyword">not</span> <span class="keyword">in</span> stop): </span><br><span class="line">    clean_tokens.append(tok) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;정상 문장: &quot;</span>,tokens)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;불용어 제거: &quot;</span>,clean_tokens)</span><br></pre></td></tr></table></figure>
+
+<p>정상 문장:  [‘I’, ‘want’, ‘to’, ‘go’, ‘shopping’, ‘and’, ‘buy’, ‘snacks’]<br>불용어 제거:  [‘want’, ‘go’, ‘shopping’, ‘buy’, ‘snacks’]</p>
+<h2 id="3-Normalization"><a href="#3-Normalization" class="headerlink" title="3. Normalization"></a>3. Normalization</h2><ul>
+<li>의미가 중복되거나 의미론적으로 유사한 단어들을 하나로 통합하거나, 단어의 원형을 찾아 통일해주는 작업</li>
+</ul>
+<h3 id="3-1-Stemming-어간-추출"><a href="#3-1-Stemming-어간-추출" class="headerlink" title="3.1. Stemming (어간 추출)"></a>3.1. Stemming (어간 추출)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> PorterStemmer</span><br><span class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> word_tokenize</span><br><span class="line"></span><br><span class="line">stem = PorterStemmer() <span class="comment"># stemmer 선언</span></span><br><span class="line">text = <span class="string">&quot;This was not the map we found on Billy Bonds&#x27; chest, but the exact copy of everything, name and height and sound, except for the red cross and the written note.&quot;</span></span><br><span class="line">words = word_tokenize(text)</span><br><span class="line"><span class="built_in">print</span>(words)</span><br></pre></td></tr></table></figure>
+
+<p>[‘This’, ‘was’, ‘not’, ‘the’, ‘map’, ‘we’, ‘found’, ‘on’, ‘Billy’, ‘Bonds’, “‘“, ‘chest’, ‘,’, ‘but’, ‘the’, ‘exact’, ‘copy’, ‘of’, ‘everything’, ‘,’, ‘name’, ‘and’, ‘height’, ‘and’, ‘sound’, ‘,’, ‘except’, ‘for’, ‘the’, ‘red’, ‘cross’, ‘and’, ‘the’, ‘written’, ‘note’, ‘.’]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> words:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span> --&gt; <span class="subst">&#123;stem.stem(i)&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>This –&gt; thi<br>was –&gt; wa<br>not –&gt; not<br>the –&gt; the<br>map –&gt; map<br>we –&gt; we<br>found –&gt; found<br>on –&gt; on<br>Billy –&gt; billi<br>Bonds –&gt; bond<br>‘ –&gt; ‘<br>chest –&gt; chest<br>, –&gt; ,<br>but –&gt; but<br>the –&gt; the<br>exact –&gt; exact<br>copy –&gt; copi<br>of –&gt; of<br>everything –&gt; everyth<br>, –&gt; ,<br>name –&gt; name<br>and –&gt; and<br>height –&gt; height<br>and –&gt; and<br>sound –&gt; sound<br>, –&gt; ,<br>except –&gt; except<br>for –&gt; for<br>the –&gt; the<br>red –&gt; red<br>cross –&gt; cross<br>and –&gt; and<br>the –&gt; the<br>written –&gt; written<br>note –&gt; note<br>. –&gt; .</p>
+<h2 id="3-2-Lemmatization-원형-추출"><a href="#3-2-Lemmatization-원형-추출" class="headerlink" title="3.2. Lemmatization (원형 추출)"></a>3.2. Lemmatization (원형 추출)</h2><ul>
+<li>문장 속에서 다양한 형태로 활용된(inflected) 단어의 표제어(lemma)를 찾는 일</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> WordNetLemmatizer</span><br><span class="line">nltk.download(<span class="string">&#x27;wordnet&#x27;</span>)</span><br><span class="line"></span><br><span class="line">l = WordNetLemmatizer() </span><br><span class="line">words = [<span class="string">&#x27;doing&#x27;</span>, <span class="string">&#x27;has&#x27;</span>, <span class="string">&#x27;going&#x27;</span>, <span class="string">&#x27;loves&#x27;</span>, <span class="string">&#x27;lives&#x27;</span>, <span class="string">&#x27;flying&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> words:</span><br><span class="line">  lemma = l.lemmatize(i, pos=<span class="string">&#x27;v&#x27;</span>)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span> --&gt; <span class="subst">&#123;lemma&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>doing –&gt; do<br>has –&gt; have<br>going –&gt; go<br>loves –&gt; love<br>lives –&gt; live<br>flying –&gt; fly</p>
+<h2 id="4-Edit-Distance"><a href="#4-Edit-Distance" class="headerlink" title="4. Edit Distance"></a>4. Edit Distance</h2><ul>
+<li>2개의 문자열이 얼만큼 다른가를 거리개념으로 치환해 숫자로 표현한 것. 삽입, 삭제, 교체 연산이 존재함.</li>
+<li>heat 과  hit 두단어의 차이는 2입니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"><span class="keyword">from</span> nltk.metrics <span class="keyword">import</span> edit_distance</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(edit_distance(<span class="string">&quot;heat&quot;</span>,<span class="string">&quot;hit&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>2</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -173,7 +296,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-03-08 09:18:42 / Modified: 09:51:21" itemprop="dateCreated datePublished" datetime="2024-03-08T09:18:42+09:00">2024-03-08</time>
+      <time title="Created: 2024-03-08 09:18:42 / Modified: 10:20:25" itemprop="dateCreated datePublished" datetime="2024-03-08T09:18:42+09:00">2024-03-08</time>
     </span>
 
   
@@ -1132,85 +1255,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/01/17/Correlation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/01/17/Correlation/" class="post-title-link" itemprop="url">Correlation</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2024-01-17 11:33:15 / Modified: 12:33:08" itemprop="dateCreated datePublished" datetime="2024-01-17T11:33:15+09:00">2024-01-17</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>상관관계 그래프 보기</p>
-<h2 id="1-필요-라이브러리"><a href="#1-필요-라이브러리" class="headerlink" title="1. 필요 라이브러리"></a>1. 필요 라이브러리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_diabetes</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-데이터-로드"><a href="#2-데이터-로드" class="headerlink" title="2. 데이터 로드"></a>2. 데이터 로드</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 당뇨병 데이터셋을 로드</span></span><br><span class="line">diabetes = load_diabetes(scaled=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 분석에 필요한 정보만 가져온 후, pandas 데이터프레임으로 변환</span></span><br><span class="line">data = diabetes[<span class="string">&quot;data&quot;</span>]</span><br><span class="line">data = pd.DataFrame(data, columns=diabetes[<span class="string">&quot;feature_names&quot;</span>])</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-상관관계-그래프-보기"><a href="#3-상관관계-그래프-보기" class="headerlink" title="3. 상관관계 그래프 보기"></a>3. 상관관계 그래프 보기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터의 상관계수 행렬을 생성</span></span><br><span class="line">corr = data.corr(numeric_only=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># figure에서 생략될 부분을 지정하는 mask 행렬을 생성</span></span><br><span class="line">mask = np.ones_like(corr, dtype=<span class="built_in">bool</span>)</span><br><span class="line">mask = np.triu(mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 시각화될 그림의 크기를 지정</span></span><br><span class="line"><span class="comment"># 히트맵 형태로 상관행렬 시각화하기</span></span><br><span class="line">plt.figure(figsize=(<span class="number">13</span>,<span class="number">10</span>))</span><br><span class="line">sns.heatmap(data=corr, annot=<span class="literal">True</span>, fmt=<span class="string">&#x27;.2f&#x27;</span>, mask=mask, linewidths=<span class="number">.5</span>, cmap=<span class="string">&#x27;RdYlBu_r&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Correlation Matrix&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/Correlation/01.PNG"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
