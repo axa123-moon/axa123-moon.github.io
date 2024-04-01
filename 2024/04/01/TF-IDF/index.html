@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"axa123-moon.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="TF-IDF (Term Frequency-Inverse Document Frequency) Document Term Matrix(DTM) 내 단어마다 중요도를 고려하여 가중치를 주는 통계적인 단어 표현방법  1. TF-IDF 계산방법 TF-IDF &#x3D; TF * IDF  2. TF (Term Frequency) 특정 문서 d 에서 특정 단어 t의 출현">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TF IDF">
+<meta property="og:url" content="https://axa123-moon.github.io/2024/04/01/TF-IDF/index.html">
+<meta property="og:site_name" content="AI Beginner&#39;s Blog">
+<meta property="og:description" content="TF-IDF (Term Frequency-Inverse Document Frequency) Document Term Matrix(DTM) 내 단어마다 중요도를 고려하여 가중치를 주는 통계적인 단어 표현방법  1. TF-IDF 계산방법 TF-IDF &#x3D; TF * IDF  2. TF (Term Frequency) 특정 문서 d 에서 특정 단어 t의 출현">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/01.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/02.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/04.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/03.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/01.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/02.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/04.PNG">
+<meta property="og:image" content="https://axa123-moon.github.io/images/TFIDF/03.PNG">
+<meta property="article:published_time" content="2024-04-01T05:02:40.000Z">
+<meta property="article:modified_time" content="2024-04-01T06:09:54.904Z">
+<meta property="article:author" content="axa123">
+<meta property="article:tag" content="패스트캠퍼스">
+<meta property="article:tag" content="UpstageAILab">
+<meta property="article:tag" content="Upstage">
+<meta property="article:tag" content="부트캠프">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="데이터사이언스">
+<meta property="article:tag" content="무료교육">
+<meta property="article:tag" content="국비지원">
+<meta property="article:tag" content="TF">
+<meta property="article:tag" content="IDF">
+<meta property="article:tag" content="TF-IDF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://axa123-moon.github.io/images/TFIDF/01.PNG">
+
+
+<link rel="canonical" href="https://axa123-moon.github.io/2024/04/01/TF-IDF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://axa123-moon.github.io/2024/04/01/TF-IDF/","path":"2024/04/01/TF-IDF/","title":"TF IDF"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TF IDF | AI Beginner's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">AI Beginner's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TF-IDF-Term-Frequency-Inverse-Document-Frequency"><span class="nav-number">1.</span> <span class="nav-text">TF-IDF (Term Frequency-Inverse Document Frequency)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TF-IDF-%EA%B3%84%EC%82%B0%EB%B0%A9%EB%B2%95"><span class="nav-number">1.1.</span> <span class="nav-text">1. TF-IDF 계산방법</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TF-Term-Frequency"><span class="nav-number">1.2.</span> <span class="nav-text">2. TF (Term Frequency)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DF-Document-Frequency"><span class="nav-number">1.3.</span> <span class="nav-text">3. DF (Document Frequency)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-IDF-Inverse-Document-Frequency"><span class="nav-number">1.4.</span> <span class="nav-text">4. IDF (Inverse Document Frequency)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-TF-IDF"><span class="nav-number">1.5.</span> <span class="nav-text">5. TF-IDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Coding"><span class="nav-number">1.6.</span> <span class="nav-text">6. Coding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">1.6.1.</span> <span class="nav-text">References</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">axa123</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/04/01/TF-IDF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TF IDF | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TF IDF
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-04-01 14:02:40 / Modified: 15:09:54" itemprop="dateCreated datePublished" datetime="2024-04-01T14:02:40+09:00">2024-04-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="TF-IDF-Term-Frequency-Inverse-Document-Frequency"><a href="#TF-IDF-Term-Frequency-Inverse-Document-Frequency" class="headerlink" title="TF-IDF (Term Frequency-Inverse Document Frequency)"></a>TF-IDF (Term Frequency-Inverse Document Frequency)</h1><ul>
+<li>Document Term Matrix(DTM) 내 단어마다 중요도를 고려하여 가중치를 주는 통계적인 단어 표현방법</li>
+</ul>
+<h2 id="1-TF-IDF-계산방법"><a href="#1-TF-IDF-계산방법" class="headerlink" title="1. TF-IDF 계산방법"></a>1. TF-IDF 계산방법</h2><ul>
+<li>TF-IDF &#x3D; TF * IDF</li>
+</ul>
+<h2 id="2-TF-Term-Frequency"><a href="#2-TF-Term-Frequency" class="headerlink" title="2. TF (Term Frequency)"></a>2. TF (Term Frequency)</h2><ul>
+<li>특정 문서 d 에서 특정 단어 t의 출현빈도</li>
+<li>tf(d, t)</li>
+</ul>
+<p>문서1 : 사과가 맛있다<br>문서2 : 사과 가격이 비싸다<br>문서3 : 아침에 사과가 좋다<br>문서4 : 배 가격이 사과 가격보다 비싸다</p>
+<p><img src="/images/TFIDF/01.PNG"></p>
+<h2 id="3-DF-Document-Frequency"><a href="#3-DF-Document-Frequency" class="headerlink" title="3. DF (Document Frequency)"></a>3. DF (Document Frequency)</h2><ul>
+<li>특정 단어 t가 등장한 문서의 수</li>
+<li>df(t)</li>
+</ul>
+<p><img src="/images/TFIDF/02.PNG"></p>
+<h2 id="4-IDF-Inverse-Document-Frequency"><a href="#4-IDF-Inverse-Document-Frequency" class="headerlink" title="4. IDF (Inverse Document Frequency)"></a>4. IDF (Inverse Document Frequency)</h2><ul>
+<li>DF에 역수</li>
+<li>여러 문서에서 등장한 단어의 가중치를 낮추는 역할</li>
+<li>log 안의 식에서 분모에 1을 더해주는 이유는 특정 단어가 전체 문서에서 등장하지 않을 경우에 분모가 0이 되는것을 방지</li>
+<li>D : 문서 갯수<br>idf(d,t) &#x3D; log(D&#x2F;(1 + df(t)))</li>
+</ul>
+<p>맛있다의 경우<br>0.693147 &#x3D; log(4&#x2F;(1+1))</p>
+<p><img src="/images/TFIDF/04.PNG"></p>
+<h2 id="5-TF-IDF"><a href="#5-TF-IDF" class="headerlink" title="5. TF-IDF"></a>5. TF-IDF</h2><ul>
+<li>TF-IDF &#x3D; TF * IDF<br><img src="/images/TFIDF/03.PNG"></li>
+</ul>
+<h2 id="6-Coding"><a href="#6-Coding" class="headerlink" title="6. Coding"></a>6. Coding</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line"></span><br><span class="line">documents = [</span><br><span class="line">    <span class="string">&quot;사과가 맛있다&quot;</span>,</span><br><span class="line">    <span class="string">&quot;사과 가격이 비싸다&quot;</span>,</span><br><span class="line">    <span class="string">&quot;아침에 사과가 좋다&quot;</span>,</span><br><span class="line">    <span class="string">&quot;배 가격이 사과 가격보다 비싸다&quot;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">cv = CountVectorizer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Document Term Matrix</span></span><br><span class="line">X = cv.fit_transform(documents).toarray()</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the feature names</span></span><br><span class="line">features = cv.get_feature_names_out()</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a DataFrame from the bag of words representation</span></span><br><span class="line">tf = pd.DataFrame(X, columns=features)</span><br><span class="line">tf</span><br></pre></td></tr></table></figure>
+<p><img src="/images/TFIDF/01.PNG"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Document Frequency </span></span><br><span class="line">df = tf.astype(<span class="built_in">bool</span>).<span class="built_in">sum</span>(axis = <span class="number">0</span>)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+<p><img src="/images/TFIDF/02.PNG"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 문서 개수</span></span><br><span class="line">D = <span class="built_in">len</span>(tf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Inverse Document Frequency</span></span><br><span class="line">idf = np.log((D) / (df+<span class="number">1</span>))</span><br><span class="line">idf</span><br></pre></td></tr></table></figure>
+<p><img src="/images/TFIDF/04.PNG"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TF-IDF</span></span><br><span class="line">tfidf = tf * idf                      </span><br><span class="line">tfidf = tfidf / np.linalg.norm(tfidf, axis = <span class="number">1</span>, keepdims = <span class="literal">True</span>)</span><br><span class="line">tfidf</span><br></pre></td></tr></table></figure>
+<p><img src="/images/TFIDF/03.PNG"></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://m.blog.naver.com/mk_crew/222070694314">https://m.blog.naver.com/mk_crew/222070694314</a><br><a target="_blank" rel="noopener" href="https://heytech.tistory.com/337">https://heytech.tistory.com/337</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%ED%8C%A8%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4/" rel="tag"># 패스트캠퍼스</a>
+              <a href="/tags/UpstageAILab/" rel="tag"># UpstageAILab</a>
+              <a href="/tags/Upstage/" rel="tag"># Upstage</a>
+              <a href="/tags/%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84/" rel="tag"># 부트캠프</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%82%AC%EC%9D%B4%EC%96%B8%EC%8A%A4/" rel="tag"># 데이터사이언스</a>
+              <a href="/tags/%EB%AC%B4%EB%A3%8C%EA%B5%90%EC%9C%A1/" rel="tag"># 무료교육</a>
+              <a href="/tags/%EA%B5%AD%EB%B9%84%EC%A7%80%EC%9B%90/" rel="tag"># 국비지원</a>
+              <a href="/tags/TF/" rel="tag"># TF</a>
+              <a href="/tags/IDF/" rel="tag"># IDF</a>
+              <a href="/tags/TF-IDF/" rel="tag"># TF-IDF</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/27/Text-Preprocessing/" rel="prev" title="Text Preprocessing">
+                  <i class="fa fa-angle-left"></i> Text Preprocessing
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">axa123</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
