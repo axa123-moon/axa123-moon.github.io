@@ -173,7 +173,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-04-01 14:02:40 / Modified: 15:09:54" itemprop="dateCreated datePublished" datetime="2024-04-01T14:02:40+09:00">2024-04-01</time>
+      <time title="Created: 2024-04-01 14:02:40 / Modified: 15:13:05" itemprop="dateCreated datePublished" datetime="2024-04-01T14:02:40+09:00">2024-04-01</time>
     </span>
 
   
@@ -220,7 +220,7 @@
 <p><img src="/images/TFIDF/02.PNG"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 문서 개수</span></span><br><span class="line">D = <span class="built_in">len</span>(tf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Inverse Document Frequency</span></span><br><span class="line">idf = np.log((D) / (df+<span class="number">1</span>))</span><br><span class="line">idf</span><br></pre></td></tr></table></figure>
 <p><img src="/images/TFIDF/04.PNG"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TF-IDF</span></span><br><span class="line">tfidf = tf * idf                      </span><br><span class="line">tfidf = tfidf / np.linalg.norm(tfidf, axis = <span class="number">1</span>, keepdims = <span class="literal">True</span>)</span><br><span class="line">tfidf</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TF-IDF</span></span><br><span class="line">tfidf = tf * idf                      </span><br><span class="line"><span class="comment">#tfidf = tfidf / np.linalg.norm(tfidf, axis = 1, keepdims = True)</span></span><br><span class="line">tfidf</span><br></pre></td></tr></table></figure>
 <p><img src="/images/TFIDF/03.PNG"></p>
 <h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://m.blog.naver.com/mk_crew/222070694314">https://m.blog.naver.com/mk_crew/222070694314</a><br><a target="_blank" rel="noopener" href="https://heytech.tistory.com/337">https://heytech.tistory.com/337</a></p>
 
