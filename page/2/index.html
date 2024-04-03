@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">68</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,180 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2024/01/31/%EC%95%84%ED%8C%8C%ED%8A%B8%EA%B0%80%EA%B2%A9%EC%98%88%EC%B8%A1%EB%8C%80%ED%9A%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/31/%EC%95%84%ED%8C%8C%ED%8A%B8%EA%B0%80%EA%B2%A9%EC%98%88%EC%B8%A1%EB%8C%80%ED%9A%8C/" class="post-title-link" itemprop="url">아파트가격예측대회</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-01-31 10:17:54 / Modified: 11:43:22" itemprop="dateCreated datePublished" datetime="2024-01-31T10:17:54+09:00">2024-01-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="아파트-가격-예측대회"><a href="#아파트-가격-예측대회" class="headerlink" title="아파트 가격 예측대회"></a>아파트 가격 예측대회</h1><h2 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1.Abstract"></a>1.Abstract</h2><h2 id="1-1-Goal-of-the-Competition"><a href="#1-1-Goal-of-the-Competition" class="headerlink" title="1.1 Goal of the Competition"></a>1.1 Goal of the Competition</h2><ul>
+<li>서울시 아파트 실거래가 매매 데이터를 기반으로 아파트 가격을 예측하는 대회</li>
+</ul>
+<h2 id="1-2-Timeline"><a href="#1-2-Timeline" class="headerlink" title="1.2 Timeline"></a>1.2 Timeline</h2><ul>
+<li>2024.01.15 ~ 2024.01.25 19:00</li>
+</ul>
+<h2 id="1-3-Description-of-the-work"><a href="#1-3-Description-of-the-work" class="headerlink" title="1.3 Description of the work"></a>1.3 Description of the work</h2><ul>
+<li>제공되는 4개의 데이터셋을 이용하여 모델을 학습하고, 서울시 각 지역의 아파트 매매 실거래가를 예측</li>
+<li>데이터셋은 첫번째는 국토교통부에서 제공하는 아파트 실거래가 데이터로 아파트의 위치, 크기, 건축 연도, 주변 시설 및 교통 편의성과 같은 다양한 특징들을 포함하고 있습니다. 두번째와 세번째 데이터는 추가 데이터로, 서울시에서 제공하는 지하철역과 버스정류장에 대한 다양한 정보들을 포함하고 있습니다. 마지막 네번째 데이터는 평가 데이터로, 최종 모델성능에 대한 검증을 위해 사용됩니다.</li>
+</ul>
+<h2 id="2-Process-Competition-Model"><a href="#2-Process-Competition-Model" class="headerlink" title="2. Process : Competition Model"></a>2. Process : Competition Model</h2><h2 id="2-1-Contents"><a href="#2-1-Contents" class="headerlink" title="2.1 Contents"></a>2.1 Contents</h2><ul>
+<li>Library Import</li>
+<li>Data Load</li>
+<li>Data Preprocessing</li>
+<li>Feature Engineering</li>
+<li>Model Training</li>
+<li>Inference</li>
+<li>Output File Save</li>
+</ul>
+<h2 id="2-2-Data-Load"><a href="#2-2-Data-Load" class="headerlink" title="2.2 Data Load"></a>2.2 Data Load</h2><h3 id="2-2-1-필요한-데이터를-load"><a href="#2-2-1-필요한-데이터를-load" class="headerlink" title="2.2.1 필요한 데이터를 load"></a>2.2.1 필요한 데이터를 load</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">train_path = <span class="string">&#x27;dataset/train.csv&#x27;</span></span><br><span class="line">test_path  = <span class="string">&#x27;dataset/test.csv&#x27;</span></span><br><span class="line">gps_path = <span class="string">&#x27;output/address_xy.csv&#x27;</span></span><br><span class="line">transport_path = <span class="string">&#x27;output/address_subway_bus.csv&#x27;</span></span><br><span class="line">landprice_path = <span class="string">&#x27;dataset/국토교통부_표준지공시지가_20230101.csv&#x27;</span></span><br><span class="line">buyindex_path = <span class="string">&#x27;output/apartment_region_index.csv&#x27;</span></span><br><span class="line">dt = pd.read_csv(train_path)</span><br><span class="line">dt_test = pd.read_csv(test_path)</span><br><span class="line">dt_gps = pd.read_csv(gps_path)</span><br><span class="line">dt_transport = pd.read_csv(transport_path)</span><br><span class="line">dt_landprice = pd.read_csv(landprice_path)</span><br><span class="line">dt_buyindex = pd.read_csv(buyindex_path, encoding=<span class="string">&#x27;EUC-KR&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-Dataset-Shape-확인"><a href="#2-2-2-Dataset-Shape-확인" class="headerlink" title="2.2.2 Dataset Shape 확인"></a>2.2.2 Dataset Shape 확인</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Train data shape : &#x27;</span>, dt.shape, <span class="string">&#x27;Test data shape : &#x27;</span>, dt_test.shape, <span class="string">&#x27;GPS data shape : &#x27;</span>, dt_gps.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Transport data shape : &#x27;</span>, dt_transport.shape, <span class="string">&#x27;Land Price data shape : &#x27;</span>, dt_landprice.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Buy index data shape : &#x27;</span>, dt_buyindex.shape)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-3-Dataset-내용-확인"><a href="#2-2-3-Dataset-내용-확인" class="headerlink" title="2.2.3 Dataset 내용 확인"></a>2.2.3 Dataset 내용 확인</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">display(dt.head(<span class="number">1</span>))</span><br><span class="line">display(dt_test.head(<span class="number">1</span>))      <span class="comment"># 부동산 실거래가(=Target) column이 제외된 모습입니다.</span></span><br><span class="line">display(dt_gps.head(<span class="number">1</span>))</span><br><span class="line">display(dt_transport.head(<span class="number">1</span>))</span><br><span class="line">display(dt_landprice.head(<span class="number">1</span>))</span><br><span class="line">display(dt_buyindex.head(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-3-외부-데이터-합치기"><a href="#2-2-3-외부-데이터-합치기" class="headerlink" title="2.2.3 외부 데이터 합치기"></a>2.2.3 외부 데이터 합치기</h3><ul>
+<li>GPS 좌표 합치기</li>
+<li>주소기준 지하철 갯수, 버스정류장 갯수</li>
+<li>아파트 매매 지수</li>
+<li>표준지 공시지가</li>
+</ul>
+<h2 id="2-3-Data-Preprocessing"><a href="#2-3-Data-Preprocessing" class="headerlink" title="2.3 Data Preprocessing"></a>2.3 Data Preprocessing</h2><ul>
+<li>모델링 전에 데이터 내 결측치, 이상치 등을 제거</li>
+<li>범주형과 연속형 변수 확인</li>
+</ul>
+<h2 id="2-3-1-결측치-확인"><a href="#2-3-1-결측치-확인" class="headerlink" title="2.3.1 결측치 확인"></a>2.3.1 결측치 확인</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">13</span>, <span class="number">2</span>))</span><br><span class="line">missing = concat.isnull().<span class="built_in">sum</span>() / concat.shape[<span class="number">0</span>]</span><br><span class="line">missing = missing[missing &gt; <span class="number">0</span>]</span><br><span class="line">missing.sort_values(inplace=<span class="literal">True</span>)</span><br><span class="line">missing.plot.bar(color=<span class="string">&#x27;orange&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;변수별 결측치 비율&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/ApartmentPricePrediction/01.PNG"></p>
+<h2 id="2-3-2-결측치제거"><a href="#2-3-2-결측치제거" class="headerlink" title="2.3.2 결측치제거"></a>2.3.2 결측치제거</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 결측치가 1000000만개 이상인 feature 제외</span></span><br><span class="line">selected = <span class="built_in">list</span>(concat.columns[concat.isnull().<span class="built_in">sum</span>() &lt;= <span class="number">1000000</span>])</span><br><span class="line">concat_select = concat[selected]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-3-연속형-변수와-범주형-변수-분리"><a href="#2-3-3-연속형-변수와-범주형-변수-분리" class="headerlink" title="2.3.3 연속형 변수와 범주형 변수 분리"></a>2.3.3 연속형 변수와 범주형 변수 분리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">continuous_columns = []</span><br><span class="line">categorical_columns = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> concat_select.columns:</span><br><span class="line">    <span class="keyword">if</span> pd.api.types.is_numeric_dtype(concat_select[column]):</span><br><span class="line">        continuous_columns.append(column)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        categorical_columns.append(column)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-4-NULL-처리"><a href="#2-3-4-NULL-처리" class="headerlink" title="2.3.4 NULL 처리"></a>2.3.4 NULL 처리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 범주형 변수에 대한 보간</span></span><br><span class="line">concat_select[categorical_columns] = concat_select[categorical_columns].fillna(<span class="string">&#x27;NULL&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 연속형 변수에 대한 보간 (선형 보간)</span></span><br><span class="line">concat_select[continuous_columns] = concat_select[continuous_columns].interpolate(method=<span class="string">&#x27;linear&#x27;</span>, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-5-이상치-처리"><a href="#2-3-5-이상치-처리" class="headerlink" title="2.3.5 이상치 처리"></a>2.3.5 이상치 처리</h2><ul>
+<li>IQR(Inter Quartile Range)를 이용하여 Q1-1.5<em>IQR(하위 이상치) 및  Q1+1.5</em>IQR(상위 이상치) 제외</li>
+</ul>
+<h2 id="2-4-Feature-Engineering"><a href="#2-4-Feature-Engineering" class="headerlink" title="2.4 Feature Engineering"></a>2.4 Feature Engineering</h2><ul>
+<li>파생변수 만들기</li>
+<li>도메인 지식에 기반해서 만드는 것이 중요</li>
+</ul>
+<h2 id="2-4-1-강남구-유무-Feature-추가"><a href="#2-4-1-강남구-유무-Feature-추가" class="headerlink" title="2.4.1 강남구 유무 Feature 추가"></a>2.4.1 강남구 유무 Feature 추가</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">all</span> = <span class="built_in">list</span>(concat_select[<span class="string">&#x27;구&#x27;</span>].unique())</span><br><span class="line">gangnam = [<span class="string">&#x27;강서구&#x27;</span>, <span class="string">&#x27;영등포구&#x27;</span>, <span class="string">&#x27;동작구&#x27;</span>, <span class="string">&#x27;서초구&#x27;</span>, <span class="string">&#x27;강남구&#x27;</span>, <span class="string">&#x27;송파구&#x27;</span>, <span class="string">&#x27;강동구&#x27;</span>]</span><br><span class="line">gangbuk = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">all</span> <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> gangnam]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-2-신축-재건축-유무-Feature-추가"><a href="#2-4-2-신축-재건축-유무-Feature-추가" class="headerlink" title="2.4.2 신축&#x2F;재건축 유무 Feature 추가"></a>2.4.2 신축&#x2F;재건축 유무 Feature 추가</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">concat_select[<span class="string">&#x27;신축여부&#x27;</span>] = concat_select[<span class="string">&#x27;건축년도&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &gt;= <span class="number">2009</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">concat_select[<span class="string">&#x27;재건축&#x27;</span>] = concat_select[<span class="string">&#x27;건축년도&#x27;</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x &lt; <span class="number">1990</span> <span class="keyword">else</span> <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-3-거래량-Feature-추가"><a href="#2-4-3-거래량-Feature-추가" class="headerlink" title="2.4.3 거래량 Feature 추가"></a>2.4.3 거래량 Feature 추가</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat_select[<span class="string">&#x27;거래량_년월동&#x27;</span>] =  concat_select.groupby([<span class="string">&#x27;동&#x27;</span>,<span class="string">&#x27;계약년월&#x27;</span>])[<span class="string">&#x27;계약년월&#x27;</span>].transform(<span class="keyword">lambda</span> x: x.count())</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-4-최저가격-최대가격-비율-Feature-추가"><a href="#2-4-4-최저가격-최대가격-비율-Feature-추가" class="headerlink" title="2.4.4 최저가격&#x2F;최대가격&#x2F;비율 Feature 추가"></a>2.4.4 최저가격&#x2F;최대가격&#x2F;비율 Feature 추가</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">concat_select[<span class="string">&#x27;year_avg_price&#x27;</span>] = concat_select.groupby([<span class="string">&#x27;동&#x27;</span>, <span class="string">&#x27;아파트명&#x27;</span>, <span class="string">&#x27;전용면적&#x27;</span>,<span class="string">&#x27;year&#x27;</span>])[<span class="string">&#x27;target&#x27;</span>].transform(<span class="string">&#x27;mean&#x27;</span>)</span><br><span class="line">concat_select[<span class="string">&#x27;year_max_price&#x27;</span>] = concat_select.groupby([<span class="string">&#x27;동&#x27;</span>, <span class="string">&#x27;아파트명&#x27;</span>, <span class="string">&#x27;전용면적&#x27;</span>,<span class="string">&#x27;year&#x27;</span>])[<span class="string">&#x27;target&#x27;</span>].transform(<span class="string">&#x27;max&#x27;</span>)</span><br><span class="line">concat_select[<span class="string">&#x27;price_ratio&#x27;</span>] = (concat_select[<span class="string">&#x27;year_max_price&#x27;</span>] - concat_select[<span class="string">&#x27;year_avg_price&#x27;</span>]) / concat_select[<span class="string">&#x27;year_max_price&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-5-Feature별-상관계수-확인"><a href="#2-4-5-Feature별-상관계수-확인" class="headerlink" title="2.4.5 Feature별 상관계수 확인"></a>2.4.5 Feature별 상관계수 확인</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터의 상관계수 행렬을 생성</span></span><br><span class="line">corr = concat_select.corr(numeric_only=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># figure에서 생략될 부분을 지정하는 mask 행렬을 생성</span></span><br><span class="line">mask = np.ones_like(corr, dtype=<span class="built_in">bool</span>)</span><br><span class="line">mask = np.triu(mask)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 시각화될 그림의 크기를 지정</span></span><br><span class="line"><span class="comment"># 히트맵 형태로 상관행렬 시각화하기</span></span><br><span class="line">plt.figure(figsize=(<span class="number">13</span>,<span class="number">10</span>))</span><br><span class="line">sns.heatmap(data=corr, annot=<span class="literal">True</span>, fmt=<span class="string">&#x27;.2f&#x27;</span>, mask=mask, linewidths=<span class="number">.5</span>, cmap=<span class="string">&#x27;RdYlBu_r&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Correlation Matrix&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/ApartmentPricePrediction/02.PNG"></p>
+<h2 id="2-4-6-중요도-낮은-Feature제거"><a href="#2-4-6-중요도-낮은-Feature제거" class="headerlink" title="2.4.6 중요도 낮은 Feature제거"></a>2.4.6 중요도 낮은 Feature제거</h2><ul>
+<li>모델 생성 후 중요도가 낮은 Feature들 제거<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">drop_list = [<span class="string">&quot;k-단지분류&quot;</span>,<span class="string">&quot;k-전화번호&quot;</span>,<span class="string">&quot;k-팩스번호&quot;</span>, <span class="string">&quot;k-세대타입&quot;</span>, <span class="string">&quot;k-관리방식&quot;</span>,</span><br><span class="line">             <span class="string">&quot;k-복도유형&quot;</span>, <span class="string">&quot;k-난방방식&quot;</span>,<span class="string">&#x27;k-수정일자&#x27;</span>, <span class="string">&#x27;고용보험관리번호&#x27;</span>, <span class="string">&#x27;경비비관리형태&#x27;</span>, </span><br><span class="line">             <span class="string">&#x27;세대전기계약방법&#x27;</span>, <span class="string">&#x27;청소비관리형태&#x27;</span>, <span class="string">&quot;임대방식&quot;</span>,  <span class="string">&quot;단지승인일&quot;</span>, <span class="string">&quot;사용허가여부&quot;</span>, </span><br><span class="line">             <span class="string">&quot;관리비 업로드&quot;</span>, <span class="string">&quot;단지신청일&quot;</span>, <span class="string">&quot;좌표X&quot;</span>, <span class="string">&quot;좌표Y&quot;</span>, <span class="string">&quot;addr&quot;</span>, </span><br><span class="line">             <span class="string">&#x27;k-135㎡초과&#x27;</span>, <span class="string">&quot;등기신청일자&quot;</span>, <span class="string">&quot;거래유형&quot;</span>, <span class="string">&quot;중개사소재지&quot;</span>, <span class="string">&quot;k-건설사&quot;</span>, </span><br><span class="line">             <span class="string">&quot;k-시행사&quot;</span>, <span class="string">&quot;k-사용검사일-사용승인일&quot;</span>, <span class="string">&quot;k-홈페이지&quot;</span>, <span class="string">&quot;k-등록일자&quot;</span>,</span><br><span class="line">             <span class="string">&quot;계약년월일&quot;</span>, <span class="string">&quot;해제사유발생일&quot;</span>,</span><br><span class="line">             <span class="string">&quot;단지소개기존clob&quot;</span>, <span class="string">&#x27;본번&#x27;</span>, <span class="string">&#x27;부번&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;k-전용면적1&#x27;</span>, <span class="string">&#x27;k-전용면적2&#x27;</span>, <span class="string">&#x27;k-전용면적3&#x27;</span>, <span class="string">&#x27;k-관리비부과면적&#x27;</span></span><br><span class="line">             ]</span><br><span class="line"></span><br><span class="line">concat_select.drop(columns=drop_list, inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-5-Model-Training"><a href="#2-5-Model-Training" class="headerlink" title="2.5 Model Training"></a>2.5 Model Training</h2><h2 id="2-5-1-범주형-변수-Encoding"><a href="#2-5-1-범주형-변수-Encoding" class="headerlink" title="2.5.1 범주형 변수 Encoding"></a>2.5.1 범주형 변수 Encoding</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 각 변수에 대한 LabelEncoder를 저장할 딕셔너리</span></span><br><span class="line">label_encoders = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Implement Label Encoding</span></span><br><span class="line"><span class="keyword">for</span> col <span class="keyword">in</span> tqdm( categorical_columns_v2 ):</span><br><span class="line">    lbl = LabelEncoder()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Label-Encoding을 fit</span></span><br><span class="line">    lbl.fit( dt_train[col].astype(<span class="built_in">str</span>) )</span><br><span class="line">    dt_train[col] = lbl.transform(dt_train[col].astype(<span class="built_in">str</span>))</span><br><span class="line">    label_encoders[col] = lbl </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> label <span class="keyword">in</span> np.unique(dt_test[col]):</span><br><span class="line">      <span class="keyword">if</span> label <span class="keyword">not</span> <span class="keyword">in</span> lbl.classes_: <span class="comment"># unseen label 데이터인 경우</span></span><br><span class="line">        lbl.classes_ = np.append(lbl.classes_, label)</span><br><span class="line"></span><br><span class="line">    dt_test[col] = lbl.transform(dt_test[col].astype(<span class="built_in">str</span>))</span><br><span class="line"></span><br><span class="line">dt_train.head(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/ApartmentPricePrediction/03.PNG"></p>
+<h2 id="2-5-2-Model-Training"><a href="#2-5-2-Model-Training" class="headerlink" title="2.5.2 Model Training"></a>2.5.2 Model Training</h2><ul>
+<li>Train과 Valid dataset을 분할하는 과정에서는 <code>holdout</code> 방법을 사용</li>
+</ul>
+<h2 id="2-5-2-1-학습-데이터와-검증-데이터-분리"><a href="#2-5-2-1-학습-데이터와-검증-데이터-분리" class="headerlink" title="2.5.2.1 학습 데이터와 검증 데이터 분리"></a>2.5.2.1 학습 데이터와 검증 데이터 분리</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y_train = dt_train[<span class="string">&#x27;target&#x27;</span>]</span><br><span class="line">X_train = dt_train.drop([<span class="string">&#x27;target&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 학습 데이터와 검증 데이터를 8:2 비율로 나눔</span></span><br><span class="line">X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-5-2-2-Optuna를-이용하여-학습"><a href="#2-5-2-2-Optuna를-이용하여-학습" class="headerlink" title="2.5.2.2 Optuna를 이용하여 학습"></a>2.5.2.2 Optuna를 이용하여 학습</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">optimizer</span>(<span class="params">trial</span>):</span><br><span class="line">    <span class="comment"># 조절할 hyper-parameter 조합을 적어줍니다.</span></span><br><span class="line">    num_leaves = trial.suggest_int(<span class="string">&#x27;num_leaves&#x27;</span>, <span class="number">30</span>, <span class="number">5000</span>) </span><br><span class="line">    max_depth =  trial.suggest_int(<span class="string">&#x27;max_depth&#x27;</span>, <span class="number">10</span>, <span class="number">30</span>) </span><br><span class="line">    learning_rate =  trial.suggest_float(<span class="string">&#x27;learning_rate&#x27;</span>, <span class="number">0.01</span>, <span class="number">0.1</span>) <span class="comment"># 최소값 : 5, 최대값 : 10</span></span><br><span class="line">    n_estimators =  trial.suggest_int(<span class="string">&#x27;n_estimators&#x27;</span>, <span class="number">100</span>, <span class="number">600</span>)</span><br><span class="line">    min_child_samples = trial.suggest_int(<span class="string">&#x27;min_child_samples&#x27;</span>, <span class="number">10</span>, <span class="number">50</span>)</span><br><span class="line">    reg_lambda =  trial.suggest_int(<span class="string">&#x27;reg_lambda&#x27;</span>, <span class="number">0.5</span>, <span class="number">100</span>)</span><br><span class="line">    colsample_bytree =  trial.suggest_float(<span class="string">&#x27;colsample_bytree&#x27;</span>, <span class="number">0.5</span>, <span class="number">0.8</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 원하는 모델을 지정합니다, optuna는 시간이 오래걸리기 때문에 저는 보통 RF로 일단 테스트를 해본 뒤에 LGBM을 사용합니다.</span></span><br><span class="line">    model = LGBMRegressor(</span><br><span class="line">                            num_leaves=num_leaves,</span><br><span class="line">                            max_depth=max_depth,</span><br><span class="line">                            learning_rate=learning_rate,</span><br><span class="line">                            n_estimators=n_estimators,</span><br><span class="line">                            min_child_samples=min_child_samples,</span><br><span class="line">                            reg_lambda=reg_lambda,</span><br><span class="line">                            colsample_bytree=colsample_bytree, <span class="comment"># 피쳐 갯수 * colsample_bytree</span></span><br><span class="line">                            random_state=<span class="number">42</span>,</span><br><span class="line">                            verbose=-<span class="number">1</span> <span class="comment"># 설정하지 않을 경우 경고 많이 나옴</span></span><br><span class="line">                            )</span><br><span class="line"></span><br><span class="line">    evaluation_metric = mean_squared_error</span><br><span class="line">    model.fit(X_train, y_train)</span><br><span class="line">    preds = model.predict(X_val)</span><br><span class="line">    score = evaluation_metric(y_val, preds)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> score</span><br><span class="line"></span><br><span class="line"><span class="comment"># 최소/최대 어느 방향의 최적값을 구할 건지.</span></span><br><span class="line"><span class="comment"># evaluation_metric이 mean_squared_error일 경우 낮을수록 좋으므로 minimize가 맞음</span></span><br><span class="line">study = optuna.create_study(direction=<span class="string">&quot;minimize&quot;</span>) </span><br><span class="line">study.optimize(optimizer, n_trials=<span class="number">10</span>)</span><br><span class="line">study.trials_dataframe()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Best Score: %.4f&quot;</span> % study.best_value) <span class="comment"># best score 출력</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Best params: &quot;</span>, study.best_trial.params) <span class="comment"># best score일 때의 하이퍼파라미터들</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-5-2-3-model-finalization"><a href="#2-5-2-3-model-finalization" class="headerlink" title="2.5.2.3 model finalization"></a>2.5.2.3 model finalization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">best_params = study.best_params</span><br><span class="line"><span class="comment">#best_params = &#123;&#x27;num_leaves&#x27;: 3634, &#x27;max_depth&#x27;: 15, &#x27;learning_rate&#x27;: 0.09623189665884449, &#x27;n_estimators&#x27;: 496, &#x27;min_child_samples&#x27;: 13, &#x27;min_samples_leaf&#x27;: 9, &#x27;max_features&#x27;: 0.6099117970002513&#125;</span></span><br><span class="line">best_model = LGBMRegressor(**best_params,</span><br><span class="line">                        random_state=<span class="number">42</span>,</span><br><span class="line">                        verbose=-<span class="number">1</span>)</span><br><span class="line">evaluation_metric = mean_squared_error</span><br><span class="line">best_model.fit(X_train, y_train)</span><br><span class="line">preds = best_model.predict(X_val)</span><br><span class="line">score = evaluation_metric(y_val, preds)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation RMSE : %.4f&quot;</span> % np.sqrt(score))</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-5-2-4-변수-중요도-확인"><a href="#2-5-2-4-변수-중요도-확인" class="headerlink" title="2.5.2.4 변수 중요도 확인"></a>2.5.2.4 변수 중요도 확인</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">importances = pd.Series(best_model.feature_importances_, index=<span class="built_in">list</span>(X_train.columns))</span><br><span class="line">importances = importances.sort_values(ascending=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">10</span>,<span class="number">8</span>))</span><br><span class="line">plt.title(<span class="string">&quot;Feature Importances&quot;</span>)</span><br><span class="line">sns.barplot(x=importances, y=importances.index)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/ApartmentPricePrediction/04.PNG"></p>
+<h2 id="2-5-3-Feature-selection"><a href="#2-5-3-Feature-selection" class="headerlink" title="2.5.3 Feature selection"></a>2.5.3 Feature selection</h2><ul>
+<li>어떤 변수가 유용한 변수인지 확인해보기</li>
+</ul>
+<h2 id="2-5-4-Valid-prediction-분석"><a href="#2-5-4-Valid-prediction-분석" class="headerlink" title="2.5.4. Valid prediction 분석"></a>2.5.4. Valid prediction 분석</h2><ul>
+<li>예측이 잘 되었는지 확인</li>
+</ul>
+<h2 id="2-6-Inference"><a href="#2-6-Inference" class="headerlink" title="2.6 Inference"></a>2.6 Inference</h2><ul>
+<li>테스트데이터를 이용한 예측값 도출<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pred = model.predict(X_test)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-7-Output-File-Save"><a href="#2-7-Output-File-Save" class="headerlink" title="2.7 Output File Save"></a>2.7 Output File Save</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pred_df = pd.DataFrame(pred.astype(<span class="built_in">int</span>), columns=[<span class="string">&quot;target&quot;</span>])</span><br><span class="line">pred_df.to_csv(<span class="string">f&#x27;output/output_<span class="subst">&#123;filename&#125;</span>.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Process-Issues"><a href="#3-Process-Issues" class="headerlink" title="3. Process : Issues"></a>3. Process : Issues</h2><ul>
+<li>어떤 모델을 사용해야 할지에 대한 모델 선정에 대한 이슈가 있었으나, 여러 모델 (XGBoost, LSTM, RandomForest) 들 가운데서 LSTM이 가장 학습시간이 적게 소모되었으며 성능도 좋게 나왔음</li>
+<li>Optuna를 이용하여 하이퍼파라메터를 튜닝하였으나, Local score와 Public score에 성능향상이 차이가 많이 존재하였음</li>
+</ul>
+<h2 id="4-Role"><a href="#4-Role" class="headerlink" title="4. Role"></a>4. Role</h2><ul>
+<li>각자 본인들의 의견에 따라 Feature추가 및 모델 선정을 학습하였음</li>
+<li>발표 자료 정리 및 발표 진행하였음</li>
+</ul>
+<h2 id="5-Result"><a href="#5-Result" class="headerlink" title="5. Result"></a>5. Result</h2><ul>
+<li><p>리더보드 (대회진행)<br><img src="/images/ApartmentPricePrediction/05.PNG"></p>
+</li>
+<li><p>리더보드 (최종)<br><img src="/images/ApartmentPricePrediction/06.PNG"></p>
+</li>
+</ul>
+<h2 id="6-Conclusion"><a href="#6-Conclusion" class="headerlink" title="6. Conclusion"></a>6. Conclusion</h2><ul>
+<li>팀으로 진행하면서 각자 생각한 의견 및 분석 결과를 공유함으로 데이터를 이해하고, 모델 학습을 진행하는데 도움이 많이 되었음.</li>
+<li>LGBM의 Default 하이퍼파라메터가 좋은 성능을 제공하여서, 경기 초반에는 하이퍼파라메터 튜닝보다는 Feature Engineering이 중요하다는 것을 알았음</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -975,173 +1149,6 @@
 </li>
 </ul>
 <h1 id="3-예제-코드"><a href="#3-예제-코드" class="headerlink" title="3. 예제 코드"></a>3. 예제 코드</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀 분석시</span></span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line"></span><br><span class="line">model = RandomForestRegressor(n_estimators=<span class="number">200</span>,</span><br><span class="line">                               max_depth=<span class="number">15</span>,</span><br><span class="line">                               max_features=<span class="number">0.7</span>,</span><br><span class="line">                               min_samples_split=<span class="number">10</span>,</span><br><span class="line">                               min_samples_leaf=<span class="number">5</span>,</span><br><span class="line">                               random_state=<span class="number">42</span>,</span><br><span class="line">                               n_jobs=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">model.fit(X_train, y_train)</span><br><span class="line">evaluation_metric = r2_score</span><br><span class="line">pred_train = model.predict(X_train)</span><br><span class="line">pred_val = model.predict(X_val)</span><br><span class="line"></span><br><span class="line">train_score = evaluation_metric(y_train, pred_train)</span><br><span class="line">val_score = evaluation_metric(y_val, pred_val)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Train r2 Score : %.4f&quot;</span> % train_score)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Validation r2 Score : %.4f&quot;</span> % val_score)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/24/Visualization_01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="axa123">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | AI Beginner's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/11/24/Visualization_01/" class="post-title-link" itemprop="url">Visualization (1)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2023-11-24 11:10:02" itemprop="dateCreated datePublished" datetime="2023-11-24T11:10:02+09:00">2023-11-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-01-02 15:53:50" itemprop="dateModified" datetime="2024-01-02T15:53:50+09:00">2024-01-02</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>시각화 관련 코드를 작성해 보았습니다.<br>Seaborn 제공 라이브러리를 이용합니다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
-
-<h1 id="1-Visualizing-statistical-relationships"><a href="#1-Visualizing-statistical-relationships" class="headerlink" title="1. Visualizing statistical relationships"></a>1. Visualizing statistical relationships</h1><pre><code>    두 변수 사이에 의미 있는 관계 확인하기 (https://seaborn.pydata.org/tutorial/relational.html)
-</code></pre>
-<ul>
-<li>relplot</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 떨어져 있는 변수들의 관계 확인하기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(data=df, x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_4_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(data=df, x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>, hue=<span class="string">&quot;smoker&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_6_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># style 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df,</span><br><span class="line">    x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>, hue=<span class="string">&quot;smoker&quot;</span>, style=<span class="string">&quot;smoker&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_8_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># palette 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df,</span><br><span class="line">    x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>,</span><br><span class="line">    hue=<span class="string">&quot;size&quot;</span>, palette=<span class="string">&quot;ch:r=-.5,l=.75&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_14_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가 , lineplot 과 유사함</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;dowjones&quot;</span>)</span><br><span class="line">sns.relplot(data=df, x=<span class="string">&quot;Date&quot;</span>, y=<span class="string">&quot;Price&quot;</span>, kind=<span class="string">&quot;line&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_21_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># col 추가 - col기준으로 여러개의 plot을 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df,</span><br><span class="line">    x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>, hue=<span class="string">&quot;smoker&quot;</span>, col=<span class="string">&quot;time&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_55_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># col_wrap, height 추가 - col의 갯수가 5개, height은 FacetGrid 높이</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;fmri&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df.query(<span class="string">&quot;region == &#x27;frontal&#x27;&quot;</span>), kind=<span class="string">&quot;line&quot;</span>,</span><br><span class="line">    x=<span class="string">&quot;timepoint&quot;</span>, y=<span class="string">&quot;signal&quot;</span>, hue=<span class="string">&quot;event&quot;</span>, style=<span class="string">&quot;event&quot;</span>,</span><br><span class="line">    col=<span class="string">&quot;subject&quot;</span>, col_wrap=<span class="number">5</span>, height=<span class="number">5</span>, </span><br><span class="line">    aspect=<span class="number">.75</span>, linewidth=<span class="number">2.5</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/relational_59_0.png"></p>
-<h1 id="2-Visualizing-distributions-of-data"><a href="#2-Visualizing-distributions-of-data" class="headerlink" title="2. Visualizing distributions of data"></a>2. Visualizing distributions of data</h1><pre><code>    일변량 히스토그램 확인하기 (https://seaborn.pydata.org/tutorial/distributions.html)
-</code></pre>
-<ul>
-<li>displot</li>
-</ul>
-<h2 id="2-1-데이터-건수-확인하기"><a href="#2-1-데이터-건수-확인하기" class="headerlink" title="2.1 데이터 건수 확인하기"></a>2.1 데이터 건수 확인하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_3_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># binwidth 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, binwidth=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_5_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bins 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, bins=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_7_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_17_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple 추가 - stack</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, multiple=<span class="string">&quot;stack&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_21_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple 추가 - dodge</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;sex&quot;</span>, multiple=<span class="string">&quot;dodge&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_23_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># col 추가 - col기준으로 여러개의 plot을 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, col=<span class="string">&quot;sex&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_25_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># stat에 density 사용 - density 정규화는 막대의 면적이 1이 되도록 축척을 조정</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, stat=<span class="string">&quot;density&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_27_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># stat에 probability 사용 - 높이의 합이 1이됨</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, stat=<span class="string">&quot;probability&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_31_0.png"></p>
-<h2 id="2-2-KDE-Kernel-density-estimation-확인하기"><a href="#2-2-KDE-Kernel-density-estimation-확인하기" class="headerlink" title="2.2 KDE(Kernel density estimation) 확인하기"></a>2.2 KDE(Kernel density estimation) 확인하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic - 히스토그램 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;diamonds&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;carat&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_51_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kde 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;diamonds&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;carat&quot;</span>, kde=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_53_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가 - kde 모형 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_33_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가 </span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_39_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fill 추가 </span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>, fill=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_43_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>, multiple=<span class="string">&quot;stack&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_41_0.png"></p>
-<h2 id="2-3-Visualizing-bivariate-distributions-이변량-분포-시각화"><a href="#2-3-Visualizing-bivariate-distributions-이변량-분포-시각화" class="headerlink" title="2.3 Visualizing bivariate distributions (이변량 분포 시각화)"></a>2.3 Visualizing bivariate distributions (이변량 분포 시각화)</h2><pre><code>    두 변수간의 분포 확인하기
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_60_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_62_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(penguins, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_66_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind, hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_66_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># binwidth 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(penguins, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, binwidth=(<span class="number">2</span>, <span class="number">.5</span>))</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_68_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cbar 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(penguins, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, binwidth=(<span class="number">2</span>, <span class="number">.5</span>), cbar=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_70_0.png"></p>
-<h2 id="2-4-Distribution-visualization-in-other-settings"><a href="#2-4-Distribution-visualization-in-other-settings" class="headerlink" title="2.4 Distribution visualization in other settings"></a>2.4 Distribution visualization in other settings</h2><ul>
-<li>jointplot</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.jointplot(data=df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_80_0.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.jointplot(data=df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.jointplot(data=df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_82_0.png"></p>
-<ul>
-<li>pairplot</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.pairplot(df)</span><br></pre></td></tr></table></figure>
-<p><img src="https://seaborn.pydata.org/_images/distributions_90_0.png"></p>
-<ul>
-<li>PairGrid<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">g = sns.PairGrid(penguins)</span><br><span class="line">g.map_upper(sns.histplot)</span><br><span class="line">g.map_lower(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line">g.map_diag(sns.histplot, kde=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<img src="https://seaborn.pydata.org/_images/distributions_92_0.png"></li>
-</ul>
-<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/tutorial.html">Seaborn Tutorial</a></li>
-</ul>
-
       
     </div>
 

@@ -112,12 +112,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">68</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -134,6 +134,173 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://axa123-moon.github.io/2023/11/24/Visualization_01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="axa123">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | AI Beginner's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/24/Visualization_01/" class="post-title-link" itemprop="url">Visualization (1)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-11-24 11:10:02" itemprop="dateCreated datePublished" datetime="2023-11-24T11:10:02+09:00">2023-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-01-02 15:53:50" itemprop="dateModified" datetime="2024-01-02T15:53:50+09:00">2024-01-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>시각화 관련 코드를 작성해 보았습니다.<br>Seaborn 제공 라이브러리를 이용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-Visualizing-statistical-relationships"><a href="#1-Visualizing-statistical-relationships" class="headerlink" title="1. Visualizing statistical relationships"></a>1. Visualizing statistical relationships</h1><pre><code>    두 변수 사이에 의미 있는 관계 확인하기 (https://seaborn.pydata.org/tutorial/relational.html)
+</code></pre>
+<ul>
+<li>relplot</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 떨어져 있는 변수들의 관계 확인하기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(data=df, x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_4_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(data=df, x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>, hue=<span class="string">&quot;smoker&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_6_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># style 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df,</span><br><span class="line">    x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>, hue=<span class="string">&quot;smoker&quot;</span>, style=<span class="string">&quot;smoker&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_8_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># palette 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df,</span><br><span class="line">    x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>,</span><br><span class="line">    hue=<span class="string">&quot;size&quot;</span>, palette=<span class="string">&quot;ch:r=-.5,l=.75&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_14_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가 , lineplot 과 유사함</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;dowjones&quot;</span>)</span><br><span class="line">sns.relplot(data=df, x=<span class="string">&quot;Date&quot;</span>, y=<span class="string">&quot;Price&quot;</span>, kind=<span class="string">&quot;line&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_21_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># col 추가 - col기준으로 여러개의 plot을 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;tips&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df,</span><br><span class="line">    x=<span class="string">&quot;total_bill&quot;</span>, y=<span class="string">&quot;tip&quot;</span>, hue=<span class="string">&quot;smoker&quot;</span>, col=<span class="string">&quot;time&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_55_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># col_wrap, height 추가 - col의 갯수가 5개, height은 FacetGrid 높이</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;fmri&quot;</span>)</span><br><span class="line">sns.relplot(</span><br><span class="line">    data=df.query(<span class="string">&quot;region == &#x27;frontal&#x27;&quot;</span>), kind=<span class="string">&quot;line&quot;</span>,</span><br><span class="line">    x=<span class="string">&quot;timepoint&quot;</span>, y=<span class="string">&quot;signal&quot;</span>, hue=<span class="string">&quot;event&quot;</span>, style=<span class="string">&quot;event&quot;</span>,</span><br><span class="line">    col=<span class="string">&quot;subject&quot;</span>, col_wrap=<span class="number">5</span>, height=<span class="number">5</span>, </span><br><span class="line">    aspect=<span class="number">.75</span>, linewidth=<span class="number">2.5</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/relational_59_0.png"></p>
+<h1 id="2-Visualizing-distributions-of-data"><a href="#2-Visualizing-distributions-of-data" class="headerlink" title="2. Visualizing distributions of data"></a>2. Visualizing distributions of data</h1><pre><code>    일변량 히스토그램 확인하기 (https://seaborn.pydata.org/tutorial/distributions.html)
+</code></pre>
+<ul>
+<li>displot</li>
+</ul>
+<h2 id="2-1-데이터-건수-확인하기"><a href="#2-1-데이터-건수-확인하기" class="headerlink" title="2.1 데이터 건수 확인하기"></a>2.1 데이터 건수 확인하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_3_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># binwidth 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, binwidth=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_5_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bins 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, bins=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_7_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_17_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple 추가 - stack</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, multiple=<span class="string">&quot;stack&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_21_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple 추가 - dodge</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;sex&quot;</span>, multiple=<span class="string">&quot;dodge&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_23_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># col 추가 - col기준으로 여러개의 plot을 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, col=<span class="string">&quot;sex&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_25_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># stat에 density 사용 - density 정규화는 막대의 면적이 1이 되도록 축척을 조정</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, stat=<span class="string">&quot;density&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_27_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># stat에 probability 사용 - 높이의 합이 1이됨</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, stat=<span class="string">&quot;probability&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_31_0.png"></p>
+<h2 id="2-2-KDE-Kernel-density-estimation-확인하기"><a href="#2-2-KDE-Kernel-density-estimation-확인하기" class="headerlink" title="2.2 KDE(Kernel density estimation) 확인하기"></a>2.2 KDE(Kernel density estimation) 확인하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic - 히스토그램 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;diamonds&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;carat&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_51_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kde 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;diamonds&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;carat&quot;</span>, kde=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_53_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가 - kde 모형 보여줌</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_33_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가 </span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_39_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fill 추가 </span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>, fill=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_43_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># multiple 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;flipper_length_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>, multiple=<span class="string">&quot;stack&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_41_0.png"></p>
+<h2 id="2-3-Visualizing-bivariate-distributions-이변량-분포-시각화"><a href="#2-3-Visualizing-bivariate-distributions-이변량-분포-시각화" class="headerlink" title="2.3 Visualizing bivariate distributions (이변량 분포 시각화)"></a>2.3 Visualizing bivariate distributions (이변량 분포 시각화)</h2><pre><code>    두 변수간의 분포 확인하기
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_60_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_62_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(penguins, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_66_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind, hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_66_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># binwidth 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(penguins, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, binwidth=(<span class="number">2</span>, <span class="number">.5</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_68_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cbar 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.displot(penguins, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, binwidth=(<span class="number">2</span>, <span class="number">.5</span>), cbar=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_70_0.png"></p>
+<h2 id="2-4-Distribution-visualization-in-other-settings"><a href="#2-4-Distribution-visualization-in-other-settings" class="headerlink" title="2.4 Distribution visualization in other settings"></a>2.4 Distribution visualization in other settings</h2><ul>
+<li>jointplot</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.jointplot(data=df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_80_0.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hue 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.jointplot(data=df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kind 추가</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.jointplot(data=df, x=<span class="string">&quot;bill_length_mm&quot;</span>, y=<span class="string">&quot;bill_depth_mm&quot;</span>, hue=<span class="string">&quot;species&quot;</span>, kind=<span class="string">&quot;kde&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_82_0.png"></p>
+<ul>
+<li>pairplot</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">sns.pairplot(df)</span><br></pre></td></tr></table></figure>
+<p><img src="https://seaborn.pydata.org/_images/distributions_90_0.png"></p>
+<ul>
+<li>PairGrid<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># basic</span></span><br><span class="line">df = sns.load_dataset(<span class="string">&quot;penguins&quot;</span>)</span><br><span class="line">g = sns.PairGrid(penguins)</span><br><span class="line">g.map_upper(sns.histplot)</span><br><span class="line">g.map_lower(sns.kdeplot, fill=<span class="literal">True</span>)</span><br><span class="line">g.map_diag(sns.histplot, kde=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<img src="https://seaborn.pydata.org/_images/distributions_92_0.png"></li>
+</ul>
+<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://seaborn.pydata.org/tutorial.html">Seaborn Tutorial</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
